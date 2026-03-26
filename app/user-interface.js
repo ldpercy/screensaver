@@ -1,4 +1,4 @@
-import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
+import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 import { screensaverApp } from "./screensaverApp.js";
 import * as polygon from "../screensaver/polygon/polygon.js";
 import * as polygonPreset from "../screensaver/polygon/polygon-preset.js";
@@ -126,15 +126,15 @@ class UserInterface {
 	constructor() {
 		this.element = HTMLApp.buildElementMap(document, this.elementMap)
 		HTMLApp.addEventListeners(this.eventListeners, this);
-		console.debug('user-interface constructor');
+		//console.debug('user-interface constructor');
 	}
 
 
 	setUrlParameters() {
 
-		console.debug('setUrlParameters');
+		//console.debug('setUrlParameters');
 
-		const presetName = polygonApp.getUrlParameter('preset');
+		const presetName = screensaverApp.getUrlParameter('preset');
 
 		if (polygonPreset[presetName]) {
 
@@ -199,13 +199,13 @@ class UserInterface {
 
 	colourSchemeListener(event) {
 		event.preventDefault();
-		polygonApp.setColourScheme(event.target.dataset.colourscheme);
+		screensaverApp.setColourScheme(event.target.dataset.colourscheme);
 	}
 
 	colourSchemeSpecialListener(event) {
 		//console.log('colourSchemeListener', event.target.dataset);
 		event.preventDefault();
-		polygonApp.setColourScheme(event.target.dataset.colourschemespecial);
+		screensaverApp.setColourScheme(event.target.dataset.colourschemespecial);
 
 	}
 
@@ -236,7 +236,7 @@ class UserInterface {
 		const url = new URL(`data:text/plain;utf8,${svg}`);
 		this.element.saveLink.href = url.toString();
 
-		console.log(url.toString());
+		//console.log(url.toString());
 	}
 
 

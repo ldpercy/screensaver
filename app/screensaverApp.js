@@ -1,5 +1,5 @@
 //
-//	polygonApp.js
+//	screensaverApp.js
 //
 
 import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
@@ -8,8 +8,14 @@ import { ui } from "./user-interface.js";
 
 class ScreensaverApp extends HTMLApp {
 
-	appName	= "polygon";
-	appInfo = ["Polygon by ldpercy"];
+	appVersion = 'v0.0.0';
+	projectColour = 'midnightblue';
+	appInfo = [`%c
+		Screensaver ${this.appVersion} by ldpercy
+		https://github.com/ldpercy/screensaver/releases/tag/${this.appVersion}
+		`.replace(/\n\t/g,'\n'),
+		`color: light-dark(hsl(from ${this.projectColour} h s 30), hsl(from ${this.projectColour} h s 70));`,
+	];
 
 
 

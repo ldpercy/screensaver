@@ -1,6 +1,6 @@
 import { Maths } from "../../app/maths.module.js";
 import * as geometry from "../../app/geometry.module.js";
-
+import { ui } from "../../app/user-interface.js"
 
 /** getPolygonPath
  * TODO: this all needs to be converted over to planar space & angle objects
@@ -24,7 +24,7 @@ export function getPolygonPath(
 		copyPaths,			// combined or separate svg paths
 		coordinates,		// absolute or relative
 	) {
-	console.debug(arguments);
+	//console.debug(arguments);
 	let result = '';
 	let path = '';
 	let x = 0, y = 0;
@@ -52,7 +52,7 @@ export function getPolygonPath(
 				x = p.x - lastPoint.x;
 				y = p.y - lastPoint.y;
 
-				path  += (i===0) ? `m${this.round(x)},${this.round(y)} ` : `l${this.round(x)},${this.round(y)} `;
+				path  += (i===0) ? `m${round(x)},${round(y)} ` : `l${round(x)},${round(y)} `;
 				lastPoint = p;
 
 			} else {
@@ -60,7 +60,7 @@ export function getPolygonPath(
 				y = p.y;
 				//console.log(i,Math.round(degrees(pointRadians)),x,y);
 
-				path  += (i===0) ? `M${this.round(x)},${this.round(y)} ` : `L${this.round(x)},${this.round(y)} `;
+				path  += (i===0) ? `M${round(x)},${round(y)} ` : `L${round(x)},${round(y)} `;
 			}
 		}// for i
 
@@ -80,6 +80,8 @@ export function getPolygonPath(
 
 	return result;
 }/* getPolygonPath */
+
+
 
 /** round
  * @param {number} number
