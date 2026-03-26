@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en" data-colourscheme="light">
+<head>
+	<title>Polygon ⛤</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="../../favicon.svg">
+	<link rel="stylesheet" href="./form.css"/>
+	<link rel="stylesheet" href="polygon.css"/>
+
+	<link rel="stylesheet" href="../../[common]/heading.css">
+	<link rel="stylesheet" href="../../[common]/link.css">
+	<link rel="stylesheet" href="../../[common]/color-scheme.css">
+
+	<script type="module" src="./polygonApp.js"></script>
+</head>
+<body >
+
+
+
+	<div class="control-group control-left">
+
+
+		<form id="form-polygon">
+			<header>
+				<h1><a href="">Polygon</a></h1>
+			</header>
+
+
+
+			<label for="input-sides">sides</label>
+			<input id="input-sides" type="number" name="sides" title="sides" min="1" value="5"/>
+
+			<label for="input-pointStep">point step</label>
+			<input id="input-pointStep" type="number" name="pointStep" title="pointStep" value="3"/>
+
+			<label for="input-startDivision">start division</label>
+			<input id="input-startDivision" type="number" name="startDivision" title="startDivision" value="1">
+
+			<label for="input-radius">radius</label>
+			<input id="input-radius" type="number" name="radius" title="radius" value="1000" list="datalist-radius"/>
+			<datalist id="datalist-radius">
+				<option>100</option>
+				<option>200</option>
+				<option>500</option>
+				<option>1000</option>
+				<option>1200</option>
+				<option>1500</option>
+				<option>2000</option>
+				<option>5000</option>
+			</datalist>
+
+			<label for="input-copies"><h2>copies</h2></label>
+			<input id="input-copies" type="number" name="copies" title="copies" min="0" value="2" >
+
+			<label for="input-copyOffset">copy offset</label>
+			<input id="input-copyOffset" type="number" name="copyOffset" title="copyOffset" value="2">
+
+			<label for="input-copyPaths">copy paths</label>
+			<select id="input-copyPaths" name="copyPaths" size="2">
+				<option value="combined">combined</option>
+				<option value="separate" selected>separate</option>
+			</select>
+			<label for="input-coordinates"><h2>coordinates</h2></label>
+			<select id="input-coordinates" name="coordinates" size="2">
+				<option value="absolute" selected>absolute</option>
+				<option value="relative">relative</option>
+			</select>
+			<label for="input-decimalPlaces">decimal places</label>
+			<input id="input-decimalPlaces" type="number" name="decimalPlaces" title="sides" min="0" value="0" max="9"/>
+		</form>
+	</div>
+
+	<div class="control-group control-right">
+		<nav>
+			<a id="link-save" href="#save" title="Save">🖫</a>  <!-- download="foo.text" -->
+			&nbsp;
+			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourscheme="light" data-colourschemespecial="rainbow">🟓</a>
+			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourscheme="dark" data-colourschemespecial="disco">🟒</a>
+			<a title="To folder" href="./">🖿</a>
+			<a title="Parent folder" href="../">🡅</a>
+		</nav>
+
+		<form id="form-preset" name="form-preset">
+			<label for="input-preset"><h2>preset</h2></label>
+			<select name="preset" id="input-preset">
+				<!-- <option>-</option> -->
+
+				<optgroup label="Polygon">
+					<option value="nonagon">nonagon</option>
+					<option value="diPentagram" selected>di-pentagram</option>
+					<option value="diHeptagram">di-heptagram</option>
+					<option value="triHeptadecagram">tri-heptadecagram</option>
+				</optgroup>
+				<optgroup label="Style">
+					<option value="defaultStyle">default style</option>
+					<option>disco</option>
+				</optgroup>
+			</select>
+		</form>
+
+
+		<form id="form-style" name="form-style">
+
+			<label><h2>fill</h2></label>
+
+			<label for="input-startColour">colour</label>
+			<input type="color" name="startColour" id="input-startColour" value="#ffa500">
+
+
+			<label for="input-fillOpacity">
+				fill-opacity
+			</label>
+			<input type="range" name="fillOpacity" id="input-fillOpacity" value="0.5" min="0" max="1" step="0.1">
+
+			<label for="input-fillRule">fill rule</label>
+			<select id="input-fillRule" name="fillRule" size="2">
+				<option value="evenodd" selected>evenodd</option>
+				<option value="nonzero">nonzero</option>
+			</select>
+
+
+			<label><h2>stroke</h2></label>
+
+			<label for="input-strokeWidth">stroke-width</label>
+			<input
+				id="input-strokeWidth"
+				type="string"
+				name="strokeWidth"
+				title="stroke-width"
+				value="5px"
+			>
+
+			<label for="input-strokeLinejoin">stroke-linejoin</label>
+			<select id="input-strokeLinejoin" name="strokeLinejoin">
+				<option value="miter" selected>miter</option>
+				<option value="round">round</option>
+				<option value="bevel">bevel</option>
+				<option value="arcs">arcs (unsupported)</option>
+				<option value="miter-clip">miter-clip (unsupported)</option>
+			</select>
+
+
+			<label><h2>stroke-dash</h2></label>
+
+			<label for="input-antCrawl">
+				<input type="checkbox" name="antCrawl" id="input-antCrawl">
+				dash & animate
+			</label>
+
+			<label for="input-strokeDasharray">stroke-dasharray</label>
+			<input
+				id="input-strokeDasharray"
+				type="string"
+				name="strokeDasharray"
+				title="stroke-dasharray"
+				value="50px 50px"
+			>
+
+			<label for="input-strokeLinecap">stroke-linecap</label>
+			<select id="input-strokeLinecap" name="strokeLinecap">
+				<option selected>butt</option>
+				<option>round</option>
+				<option>square</option>
+			</select>
+
+
+			<label><h2>page</h2></label>
+
+			<label for="input-showGrid">
+				<input type="checkbox" name="showGrid" id="input-showGrid" checked>
+				grid
+			</label>
+			<!--
+			<label for="input-showMarkers">
+				<input type="checkbox" name="showMarkers" id="input-showMarkers">
+				markers
+			</label>
+			 -->
+
+		</form>
+	</div>
+
+	<output id="output">
+		<svg class="svg-polygon" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" >
+			<title>polygon</title>
+			<g class="graphPaper" id="group-grid">
+				<pattern id="pattern-graphPaper" width="100" height="100" patternUnits="userSpaceOnUse">
+					<rect style="stroke: teal; stroke-width: 1px; fill:none;" x="0" y="0" width="100" height="100"/>
+				</pattern>
+				<rect class="viewBox" style="x: -100%; y: -100%; width: 200%; height: 200%; stroke:none; fill: url(#pattern-graphPaper);"/>
+				<line x1="-100%" y1="0" x2="100%" y2="0" style="stroke: teal; stroke-width: 2px;"><title>x-axis</title></line>
+				<line x1="0" y1="-100%" x2="0" y2="100%" style="stroke: teal; stroke-width: 2px;"><title>y-axis</title></line>
+				<circle r="10" style="stroke: teal; stroke-width: 2px; fill:none;"><title>origin</title></circle>
+			</g>
+
+			<defs>
+				<marker id="markerStart" markerWidth="100" markerHeight="100" refX="0" refY="0" viewBox="-30 -30 60 60">
+					<circle class="marker-start" cx="0" cy="0" r="25"/>
+				</marker>
+				<marker id="markerEnd" markerWidth="100" markerHeight="100" refX="0" refY="0" viewBox="-30 -30 60 60">
+					<rect class="marker-end" x="-10" y="-10" width="20" height="20"/>
+				</marker>
+				<marker id="marker" markerWidth="40" markerHeight="100" refX="0" refY="0" orient="auto" viewBox="-20 -50 40 100">
+					<rect class="marker-mid" x="-20" y="-50" width="40" height="100"/>
+				</marker>
+
+				<marker id="wedge" markerWidth="100" markerHeight="100" refX="0" refY="60" orient="auto-start-reverse" viewBox="-20 0 40 80">
+					<path class="marker-mid" d="M 0,0 L 20 80 L -20 80 Z"/>
+				</marker>
+
+			</defs>
+
+			<g id="polygon-group" class="evenodd">
+				<path id="star" d=""/>
+			</g>
+		</svg>
+	</output>
+
+</body>
+</html>

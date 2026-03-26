@@ -1,0 +1,66 @@
+.control-group {
+
+	font-family:sans-serif;
+
+
+	form  {
+		display: grid;
+		border:1px solid silver;
+		background-color:#ddd5;
+		border-radius: 1ex;
+		padding:1ex;
+		margin: 1ex;
+
+
+		:nth-child(1) { margin-top:0em; }
+
+	}
+	label { margin-top: 1ex; }
+
+	input, option { text-align: center; padding:1pt; }
+
+	h1 { font-size:3ex; }
+	h2 { font-size:2ex; margin-top:2ex; margin-bottom:1ex; }
+
+
+
+
+
+	label:has(h2) { margin-top:2ex; }
+
+	input[type=color] { width:100%; padding:1px; }
+
+
+	/* label:after { content:':'; } */
+
+	label.noafter:after { content:''; }
+
+	hr { width:100%;  } /* border:1px dotted silver inset; */
+}
+
+
+nav {
+	border:1px solid silver;
+	background-color:#ddd5;
+	border-radius: 1rex;
+	padding:1rex;
+	margin: 1rex;
+	font-size: 2em;
+	line-height: 1em;
+}
+
+
+
+.control-group {
+
+	&.control-left {
+		position:absolute;
+		left:0ex;
+	}
+
+	&.control-right {
+		position:absolute;
+		right:0ex;
+	}
+}
+

@@ -1,0 +1,133 @@
+* {
+	transition: all 0.5s;
+}
+
+
+:root {
+	--stroke-dasharray: 50px 50px;
+	--to-stroke-dashoffset: 100px;
+	--stroke-width: 5px;
+	--stroke-linejoin: miter;
+	--stroke-linecap: butt;
+}
+
+body {
+	margin: 0;
+	padding:0em;
+	font-family: sans-serif;
+	/* background-color: white; */
+	output>svg { display:block; }
+}
+
+
+
+
+/* Polygon styles
+*/
+
+
+
+.svg-polygon {
+
+	width: 100vw;
+	height: 100vh;
+
+	.viewBox {
+		x: -100%;
+		y: -100%;
+		width: 200%;
+		height: 200%;
+		fill: url(#pattern-grid);
+	}
+
+	.grid {
+		stroke: teal;
+		fill:none;
+		stroke-width: 1px;
+	}
+
+	g.show-markers path {
+		marker-start:url(#markerStart);
+		marker-end:url(#markerEnd);
+		marker-mid:url(#wedge);
+	}
+
+	/* grid & markers */
+	.origin { fill:transparent ; stroke:black }
+	marker {
+		stroke-width: 5px;
+
+		.marker-start  { fill:lightgreen ; stroke:green }
+		.marker-end    { fill:pink ; stroke:red }
+		.marker-mid    { fill:yellow ; stroke:orange }
+	}
+
+}/* svg-polygon */
+
+
+
+#polygon-group {
+	--start-colour: orange;
+	--opacity: 0.5;
+
+
+	stroke-width: var(--stroke-width);
+	stroke-linejoin: var(--stroke-linejoin);
+	stroke-linecap: var(--stroke-linecap);
+
+	stroke-miterlimit: 20;
+
+
+	/* stroke-linecap: round;
+	stroke-linecap: square; */
+	/* stroke-linecap: butt; */
+
+
+	path
+	{
+		stroke: lch(from var(--start-colour) l c calc(h + var(--degrees)) / 1) ;
+		fill: lch(from var(--start-colour) l c calc(h + var(--degrees)) / var(--fill-opacity)) ;
+		&:hover {
+			/* stroke-dasharray: var(--stroke-dasharray); */
+			stroke-width: calc(3 * var(--stroke-width));
+		}
+	}
+
+
+	&.evenodd path {
+		fill-rule: evenodd; /* fill-rule: nonzero  */
+	}
+
+
+	&.ant-crawl path {
+		transition: none;
+		stroke-width: var(--stroke-width);
+		stroke-dasharray: var(--stroke-dasharray);
+	}
+
+
+	&.ant-crawl:hover {
+		animation-name: ant-crawl;
+		animation-duration: 1s;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+		animation-direction:normal;
+	}
+
+
+}
+
+
+
+@keyframes ant-crawl {
+	from {
+		stroke-dashoffset: 0px;
+	}
+
+	to {
+		stroke-dashoffset: var(--to-stroke-dashoffset);
+	}
+}
+
+
+
