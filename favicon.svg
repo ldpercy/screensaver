@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 -32 64 64" width="100%" height="100%"	preserveAspectRatio="xMidYMid meet">
 	<title>screensaver favicon</title>
 	<!-- <circle cx="0" cy="0" r="97" fill="slategrey"/> -->
-	<polygon style="fill: #fff;" points="-32,-32 32,-32 +32,32 -32,32"/>
-	<polygon style="fill: #aaf;" points="-28,-24 24,-28 +28,24 -24,28"/>
-	<polygon style="fill: #7f7;" points="-24,-16 16,-24 +24,16 -16,24"/>
-	<polygon style="fill: #f44;" points="-20,-8 8,-20 +20,8 -8,20"/>
-	<polygon style="fill: #000;" points="-0,-16 16,-0 +0,16 -16,0"/>
+	<polygon style="fill: #00f;" points="-32,-32 +32,-32 +32,+32 -32,+32"/>
+	<polygon style="fill: #fff;" points="-28,-24 +24,-28 +28,+24 -24,+28"/>
+	<polygon style="fill: #000;" points="-24,-16 +16,-24 +24,+16 -16,+24"/>
+	<polygon style="fill: #0f0;" points="-20,-08 +08,-20 +20,+08 -08,+20"/>
+	<polygon style="fill: #f00;" points="-16,-00 +00,-16 +16,+00 -00,+16"/>
 </svg>
