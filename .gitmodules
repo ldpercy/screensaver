@@ -1,0 +1,3 @@
+[submodule "[html-common]"]
+	path = [html-common]
+	url = /mnt/knebworth-data/ldpercy/html-common
