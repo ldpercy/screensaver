@@ -1,7 +1,7 @@
 import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
-import { polygonApp } from "./polygonApp.js";
-import * as polygonPreset from "./polygon-preset.js";
-
+import { screensaverApp } from "./screensaverApp.js";
+import * as polygon from "../screensaver/polygon/polygon.js";
+import * as polygonPreset from "../screensaver/polygon/polygon-preset.js";
 
 
 
@@ -242,9 +242,9 @@ class UserInterface {
 
 
 	redraw() {
-		//console.debug('polygonApp.redraw', this.element);
+		//console.debug('polygon.redraw', this.element);
 
-		const polygonGroup = polygonApp.getPolygonPath(
+		const polygonGroup = polygon.getPolygonPath(
 			this.sides,
 			this.pointStep,
 			this.startDivision,
@@ -265,7 +265,7 @@ class UserInterface {
 
 
 	updateStyle() {
-		//console.debug('polygonApp.updateStyle');
+		//console.debug('polygon.updateStyle');
 
 
 		if ( document.forms['form-style']['input-fillRule'].value === 'evenodd') {
@@ -421,7 +421,7 @@ class UserInterface {
 
 	/** @param {string} colourScheme	*/
 	set colourScheme(colourScheme) {
-		polygonApp.setColourScheme(colourScheme);
+		screensaverApp.setColourScheme(colourScheme);
 	}
 
 
