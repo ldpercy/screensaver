@@ -2,6 +2,8 @@ import { Maths } from "../../app/maths.module.js";
 import * as geometry from "../../app/geometry.module.js";
 import { ui } from "../../app/user-interface.js"
 
+import * as polygonPreset from "./polygon-preset.js";
+
 /** getPolygonPath
  * TODO: this all needs to be converted over to planar space & angle objects
  *
@@ -94,5 +96,45 @@ function round(number, decimalPlaces = ui.decimalPlaces) {
 
 
 
+
+export function redraw() {
+	//console.debug('polygon.redraw', this.element);
+
+	const polygonGroup = getPolygonPath(
+		ui.sides,
+		ui.pointStep,
+		ui.startDivision,
+		ui.radius,
+		ui.copies,
+		ui.copyOffset,
+		ui.copyPaths,
+		ui.coordinates,
+	);
+
+	//console.log(starPath);
+	document.getElementById('polygon-group').innerHTML = polygonGroup;
+}/* redraw */
+
+
+
+export function loadPreset(presetName) {
+
+	const preset  = polygonPreset[presetName];
+
+	console.log('loadPreset', presetName, preset );
+
+	if (preset) {
+		for (let key in preset.polygon) {
+			this[key] = preset.polygon[key];
+		}
+
+		for (let key in preset.style) {
+			this[key] = preset.style[key];
+		}
+	}
+
+	redraw();
+
+}
 
 

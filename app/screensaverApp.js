@@ -4,6 +4,8 @@
 
 import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 import { ui } from "./user-interface.js";
+import * as polygon from "../screensaver/polygon/polygon.js";
+
 
 
 class ScreensaverApp extends HTMLApp {
@@ -24,12 +26,13 @@ class ScreensaverApp extends HTMLApp {
 		super.documentDOMContentLoaded();
 		this.setColourScheme(localStorage.polygon_colourScheme || 'light');
 
-		if (this.getUrlParameter('preset')) {
-			ui.loadPreset(this.getUrlParameter('preset'));
-		}
+		// if (this.getUrlParameter('preset')) {
+		// 	ui.loadPreset(this.getUrlParameter('preset'));
+		// }
 
 		ui.updateStyle();
-		ui.redraw();
+		ui.update();
+		polygon.redraw();
 
 	}/* documentDOMContentLoaded */
 

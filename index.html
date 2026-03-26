@@ -22,12 +22,27 @@
 	<div class="control-group control-left">
 
 
-		<form id="form-polygon">
+		<form id="form-screensaver" name="form-screensaver">
 			<header>
 				<h1><a href="">Screensaver</a></h1>
 			</header>
+			<a id="link-save" href="#save" title="Save">Save 🖫</a>  <!-- download="foo.text" -->
 
+			<select name="screensaver" id="select-screensaver">
+				<option>polygon</option>
+				<!-- <option>unobtainium</option> -->
+			</select>
+		</form>
 
+		<form id="form-screensaver-settings">
+			<label for="input-screensaver-preset"><h2>Polygon</h2></label>
+			<select name="preset" id="input-screensaver-preset">
+				<!-- <option>-</option> -->
+				<option value="nonagon">nonagon</option>
+				<option value="diPentagram" selected>di-pentagram</option>
+				<option value="diHeptagram">di-heptagram</option>
+				<option value="triHeptadecagram">tri-heptadecagram</option>
+			</select>
 
 			<label for="input-sides">sides</label>
 			<input id="input-sides" type="number" name="sides" title="sides" min="1" value="5"/>
@@ -51,7 +66,7 @@
 				<option>5000</option>
 			</datalist>
 
-			<label for="input-copies"><h2>copies</h2></label>
+			<label for="input-copies"><h3>copies</h3></label>
 			<input id="input-copies" type="number" name="copies" title="copies" min="0" value="2" >
 
 			<label for="input-copyOffset">copy offset</label>
@@ -62,7 +77,7 @@
 				<option value="combined">combined</option>
 				<option value="separate" selected>separate</option>
 			</select>
-			<label for="input-coordinates"><h2>coordinates</h2></label>
+			<label for="input-coordinates"><h3>coordinates</h3></label>
 			<select id="input-coordinates" name="coordinates" size="2">
 				<option value="absolute" selected>absolute</option>
 				<option value="relative">relative</option>
@@ -73,37 +88,19 @@
 	</div>
 
 	<div class="control-group control-right">
-		<nav>
-			<a id="link-save" href="#save" title="Save">🖫</a>  <!-- download="foo.text" -->
-			&nbsp;
-			<a class="colourScheme-selector" href="?colourScheme=light" title="Light colour scheme" data-colourscheme="light" data-colourschemespecial="rainbow">🟓</a>
-			<a class="colourScheme-selector" href="?colourScheme=dark" title="Dark colour scheme" data-colourscheme="dark" data-colourschemespecial="disco">🟒</a>
-			<a title="To folder" href="./">🖿</a>
-			<a title="Parent folder" href="../">🡅</a>
-		</nav>
 
-		<form id="form-preset" name="form-preset">
-			<label for="input-preset"><h2>preset</h2></label>
-			<select name="preset" id="input-preset">
-				<!-- <option>-</option> -->
 
-				<optgroup label="Polygon">
-					<option value="nonagon">nonagon</option>
-					<option value="diPentagram" selected>di-pentagram</option>
-					<option value="diHeptagram">di-heptagram</option>
-					<option value="triHeptadecagram">tri-heptadecagram</option>
-				</optgroup>
-				<optgroup label="Style">
-					<option value="defaultStyle">default style</option>
-					<option>disco</option>
-				</optgroup>
-			</select>
-		</form>
 
 
 		<form id="form-style" name="form-style">
+			<h2>Style</h2>
 
-			<label><h2>fill</h2></label>
+			<select name="preset" id="input-style-preset">
+				<option value="defaultStyle">default style</option>
+				<option>disco</option>
+			</select>
+
+			<label><h3>fill</h3></label>
 
 			<label for="input-startColour">colour</label>
 			<input type="color" name="startColour" id="input-startColour" value="#ffa500">
@@ -121,7 +118,7 @@
 			</select>
 
 
-			<label><h2>stroke</h2></label>
+			<label><h3>stroke</h3></label>
 
 			<label for="input-strokeWidth">stroke-width</label>
 			<input
@@ -142,7 +139,7 @@
 			</select>
 
 
-			<label><h2>stroke-dash</h2></label>
+			<label><h3>stroke-dash</h3></label>
 
 			<label for="input-antCrawl">
 				<input type="checkbox" name="antCrawl" id="input-antCrawl">
@@ -166,7 +163,7 @@
 			</select>
 
 
-			<label><h2>page</h2></label>
+			<label><h3>page</h3></label>
 
 			<label for="input-showGrid">
 				<input type="checkbox" name="showGrid" id="input-showGrid" checked>

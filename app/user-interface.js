@@ -46,22 +46,31 @@ class UserInterface {
 
 	eventListeners = [
 		{
-			query: '#form-polygon',
+			query: '#select-screensaver',
 			type: 'change',
-			listener: this.polygonChangeListener
+			listener: (event)=> { this.loadScreensaver(event.target.value) }
 		},
-
 		{
-			query: '#input-preset',
+			query: '#input-screensaver-preset',
 			type: 'change',
-			listener: (event)=> { this.loadPreset(event.target.value) }
+			listener: (event)=> { this.loadScreensaverPreset(event.target.value) }
 		},
-
+		{
+			query: '#form-screensaver-settings',
+			type: 'change',
+			listener: this.settingsChangeListener
+		},
+		{
+			query: '#input-style-preset',
+			type: 'change',
+			listener: (event)=> { this.loadStylePreset(event.target.value) }
+		},
 		{
 			query: '#form-style',
 			type: 'change',
 			listener: this.styleChangeListener
 		},
+
 		{
 			query: '.colourScheme-selector',
 			type: 'click',
@@ -136,16 +145,19 @@ class UserInterface {
 
 		const presetName = screensaverApp.getUrlParameter('preset');
 
-		if (polygonPreset[presetName]) {
+		// if (polygonPreset[presetName]) {
 
-			this.loadPreset(polygonPreset[presetName]);
-		}
-
+		// 	this.loadPreset(polygonPreset[presetName]);
+		// }
 
 	}
 
 
-	loadPreset(presetName) {
+	loadScreensaver(sreeensaverName) {
+		// load the screensaver
+	}
+
+	loadScreensaverPreset(presetName) {
 
 		const preset  = polygonPreset[presetName];
 
@@ -162,10 +174,32 @@ class UserInterface {
 		}
 
 		this.updateStyle();
-		this.redraw();
+		this.update();
 
 	}
 
+
+
+	loadStylePreset(presetName) {
+
+		const preset  = polygonPreset[presetName];
+
+		console.log('loadPreset', presetName, preset );
+
+		if (preset) {
+			for (let key in preset.polygon) {
+				this[key] = preset.polygon[key];
+			}
+
+			for (let key in preset.style) {
+				this[key] = preset.style[key];
+			}
+		}
+
+		this.updateStyle();
+		this.update();
+
+	}
 
 
 
@@ -187,10 +221,8 @@ class UserInterface {
 	}
 
 
-
-
-	polygonChangeListener(event) {
-		this.redraw();
+	settingsChangeListener(event) {
+		polygon.redraw();
 	}
 
 	styleChangeListener(event) {
@@ -241,24 +273,9 @@ class UserInterface {
 
 
 
-	redraw() {
-		//console.debug('polygon.redraw', this.element);
-
-		const polygonGroup = polygon.getPolygonPath(
-			this.sides,
-			this.pointStep,
-			this.startDivision,
-			this.radius,
-			this.copies,
-			this.copyOffset,
-			this.copyPaths,
-			this.coordinates,
-		);
-
-		//console.log(starPath);
-		document.getElementById('polygon-group').innerHTML = polygonGroup;
-	}/* redraw */
-
+	update() {
+		// update the ui
+	}
 
 
 
