@@ -1,0 +1,53 @@
+/*
+**	html.css
+*/
+
+:root {
+	--project-colour: midnightblue;
+
+	--stroke-dasharray: 50px 50px;
+	--to-stroke-dashoffset: 100px;
+	--stroke-width: 5px;
+	--stroke-linejoin: miter;
+	--stroke-linecap: butt;
+}
+
+* {
+	transition: all 0.5s;
+}
+
+
+html {
+
+	margin:0px;
+	padding:0px;
+
+
+	scrollbar-width: none;
+
+	font-family: sans-serif;
+	font-size: 14px;
+
+	body {
+		--accent-light: #07c;
+		--accent: var(--accent-light);
+
+		margin:0px;
+		padding:0px;
+
+		/* color scheme */
+		color-scheme: light;
+		accent-color: var(--accent);
+		a {
+			color: var(--accent);
+			text-decoration: none;
+			&:hover { text-decoration: underline; }
+		}
+
+		output > svg {
+			display:block;	/*  fix for the extra pixel problem */
+		}
+	}
+
+}/* html */
+

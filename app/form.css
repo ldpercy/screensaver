@@ -19,8 +19,9 @@
 
 	input, option { text-align: center; padding:1pt; }
 
-	h1 { font-size:3ex; }
-	h2 { font-size:2ex; margin-top:2ex; margin-bottom:1ex; }
+	h1 { font-size:2rem; }
+	h2 { font-size:1.6rem; margin-top:2ex; margin-bottom:1ex; }
+	h3 { font-size:1.2rem;  }
 
 
 

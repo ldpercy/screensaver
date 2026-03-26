@@ -1,30 +1,6 @@
-* {
-	transition: all 0.5s;
-}
-
-
-:root {
-	--stroke-dasharray: 50px 50px;
-	--to-stroke-dashoffset: 100px;
-	--stroke-width: 5px;
-	--stroke-linejoin: miter;
-	--stroke-linecap: butt;
-}
-
-body {
-	margin: 0;
-	padding:0em;
-	font-family: sans-serif;
-	/* background-color: white; */
-	output>svg { display:block; }
-}
-
-
-
-
-/* Polygon styles
+/*
+**	polygon.css
 */
-
 
 
 .svg-polygon {
