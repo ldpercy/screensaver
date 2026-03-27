@@ -254,12 +254,12 @@ class UserInterface {
 		// a very quick naive attempt that doesnb't quite work - needs some svg cleaning and rebuilding
 		this.element.saveLink.download = 'polygon_download.svg';
 
-		const polygonGroup = document.getElementById('polygon-group').innerHTML;
+		const polygonGroup = document.getElementById('screensaver-group').innerHTML;
 
 		const svg= `
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" >
 				<title>polygon</title>
-				<g id="polygon-group" style="stroke:black;fill:grey;fill-opacity:50%;">
+				<g id="screensaver-group" style="stroke:black;fill:grey;fill-opacity:50%;">
 					${polygonGroup}
 				</g>
 			</svg>
@@ -286,10 +286,10 @@ class UserInterface {
 
 
 		if ( document.forms['form-style']['input-fillRule'].value === 'evenodd') {
-			document.getElementById('polygon-group').classList.add('evenodd');
+			document.getElementById('screensaver-group').classList.add('evenodd');
 		}
 		else {
-			document.getElementById('polygon-group').classList.remove('evenodd');
+			document.getElementById('screensaver-group').classList.remove('evenodd');
 		}
 
 		if ( document.forms['form-style']['input-showGrid'].checked) {
@@ -300,10 +300,10 @@ class UserInterface {
 		}
 
 		const startColour =  document.forms['form-style']['input-startColour'].value;
-		document.getElementById('polygon-group').style.setProperty('--start-colour',startColour);
+		document.getElementById('screensaver-group').style.setProperty('--start-colour',startColour);
 
 		const opacity =  document.forms['form-style']['input-fillOpacity'].value;
-		document.getElementById('polygon-group').style.setProperty('--fill-opacity', opacity);
+		document.getElementById('screensaver-group').style.setProperty('--fill-opacity', opacity);
 
 
 		// this.setStrokeDasharray();
@@ -516,11 +516,11 @@ class UserInterface {
 	set antCrawl(antCrawl) {
 
 		if (antCrawl) {
-			document.getElementById('polygon-group').classList.add('ant-crawl');
+			document.getElementById('screensaver-group').classList.add('ant-crawl');
 			this.element.antCrawl.checked = true;
 		}
 		else {
-			document.getElementById('polygon-group').classList.remove('ant-crawl');
+			document.getElementById('screensaver-group').classList.remove('ant-crawl');
 			this.element.checked = false;
 		}
 

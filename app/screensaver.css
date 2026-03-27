@@ -1,5 +1,5 @@
 /*
-**	polygon.css
+**	screensaver.css
 */
 
 
@@ -27,9 +27,10 @@
 
 
 
-#polygon-group {
+#screensaver-group {
 	--start-colour: orange;
 	--opacity: 0.5;
+	--degrees:0;
 
 
 	stroke-width: var(--stroke-width);
@@ -38,20 +39,9 @@
 
 	stroke-miterlimit: 20;
 
-
-	/* stroke-linecap: round;
-	stroke-linecap: square; */
-	/* stroke-linecap: butt; */
-
-
-	path
-	{
+	* {
 		stroke: lch(from var(--start-colour) l c calc(h + var(--degrees)) / 1) ;
 		fill: lch(from var(--start-colour) l c calc(h + var(--degrees)) / var(--fill-opacity)) ;
-		&:hover {
-			/* stroke-dasharray: var(--stroke-dasharray); */
-			stroke-width: calc(3 * var(--stroke-width));
-		}
 	}
 
 
@@ -60,7 +50,7 @@
 	}
 
 
-	&.ant-crawl path {
+	&.ant-crawl {
 		transition: none;
 		stroke-width: var(--stroke-width);
 		stroke-dasharray: var(--stroke-dasharray);

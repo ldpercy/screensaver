@@ -6,7 +6,7 @@
 	<link rel="icon" href="./favicon.svg">
 	<link rel="stylesheet" href="./app/html.css"/>
 	<link rel="stylesheet" href="./app/form.css"/>
-	<link rel="stylesheet" href="./screensaver/polygon/polygon.css"/>
+	<link rel="stylesheet" href="./app/screensaver.css"/>
 
 	<script type="module" src="./app/screensaverApp.js"></script>
 </head>
@@ -24,6 +24,7 @@
 			<select name="screensaver" id="select-screensaver" size="3">
 				<option value="polygon">Polygon</option>
 				<option value="circle">Circle</option>
+				<option value="rect">Rect</option>
 			</select>
 		</form>
 
@@ -183,9 +184,7 @@
 
 			<defs></defs>
 
-			<g id="polygon-group" class="evenodd">
-				<path id="star" d=""/>
-			</g>
+			<g id="screensaver-group" class="evenodd"></g>
 		</svg>
 	</output>
 

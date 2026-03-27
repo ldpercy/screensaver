@@ -32,7 +32,7 @@ export function redraw() {
 	);
 
 	//console.log(starPath);
-	document.getElementById('polygon-group').innerHTML = polygonGroup;
+	document.getElementById('screensaver-group').innerHTML = polygonGroup;
 }/* redraw */
 
 
