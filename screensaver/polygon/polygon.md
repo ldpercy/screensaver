@@ -18,7 +18,6 @@ Todo
 * Or some preset examples
 * Add linejoin/linecap settings
 * Add setting/param to turn off the ui (inc grid)
-* Figure out what on earth is going on with the markers
 * Save/export with settings
 * Save settings in localStorage
 * Animation presets??

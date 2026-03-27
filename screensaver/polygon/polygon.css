@@ -22,21 +22,6 @@
 		stroke-width: 1px;
 	}
 
-	g.show-markers path {
-		marker-start:url(#markerStart);
-		marker-end:url(#markerEnd);
-		marker-mid:url(#wedge);
-	}
-
-	/* grid & markers */
-	.origin { fill:transparent ; stroke:black }
-	marker {
-		stroke-width: 5px;
-
-		.marker-start  { fill:lightgreen ; stroke:green }
-		.marker-end    { fill:pink ; stroke:red }
-		.marker-mid    { fill:yellow ; stroke:orange }
-	}
 
 }/* svg-polygon */
 

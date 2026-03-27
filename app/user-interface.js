@@ -292,15 +292,6 @@ class UserInterface {
 			document.getElementById('polygon-group').classList.remove('evenodd');
 		}
 
-
-
-		// if ( document.forms['form-style']['input-showMarkers'].checked) {
-		// 	document.getElementById('polygon-group').classList.add('show-markers');
-		// }
-		// else {
-		// 	document.getElementById('polygon-group').classList.remove('show-markers');
-		// }
-
 		if ( document.forms['form-style']['input-showGrid'].checked) {
 			document.getElementById('group-grid').style.display = '';
 		}
