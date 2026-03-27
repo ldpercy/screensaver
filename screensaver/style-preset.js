@@ -8,7 +8,6 @@ export const defaultStyle = {
 		strokeDasharray	: '27px 27px',
 		antCrawl		: false,
 		grid			: true,
-		//markers: false,
 	},
 }
 
@@ -27,7 +26,6 @@ export const disco = {
 
 		antCrawl		: true,
 		grid			: false,
-		//markers: false,
 	},
 
 };

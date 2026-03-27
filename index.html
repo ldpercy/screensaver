@@ -8,16 +8,9 @@
 	<link rel="stylesheet" href="./app/form.css"/>
 	<link rel="stylesheet" href="./screensaver/polygon/polygon.css"/>
 
-	<!-- <link rel="stylesheet" href="../../[common]/heading.css">
-	<link rel="stylesheet" href="../../[common]/link.css">
-	<link rel="stylesheet" href="../../[common]/color-scheme.css"> -->
-
-	<script type="module" src="./screensaver/polygon/polygon.js"></script>
 	<script type="module" src="./app/screensaverApp.js"></script>
 </head>
 <body >
-
-
 
 	<div class="control-group control-left">
 
@@ -28,15 +21,15 @@
 			</header>
 			<a id="link-save" href="#save" title="Save">Save 🖫</a>  <!-- download="foo.text" -->
 
-
+			<select name="screensaver" id="select-screensaver" size="3">
+				<option value="polygon">Polygon</option>
+				<option value="circle">Circle</option>
+			</select>
 		</form>
 
 		<form id="form-screensaver-settings">
 
-			<select name="screensaver" id="select-screensaver">
-				<option>Polygon</option>
-				<!-- <option>unobtainium</option> -->
-			</select>
+
 
 			<label for="input-screensaver-preset"><h3>Preset</h3></label>
 			<select name="preset" id="input-screensaver-preset">
@@ -176,8 +169,8 @@
 	</div>
 
 	<output id="output">
-		<svg class="svg-polygon" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" >
-			<title>polygon</title>
+		<svg class="svg-screensaver" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" >
+			<title>screensaver</title>
 			<g class="graphPaper" id="group-grid">
 				<pattern id="pattern-graphPaper" width="100" height="100" patternUnits="userSpaceOnUse">
 					<rect style="stroke: teal; stroke-width: 1px; fill:none;" x="0" y="0" width="100" height="100"/>

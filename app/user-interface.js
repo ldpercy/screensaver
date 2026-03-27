@@ -1,6 +1,6 @@
 import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 import { screensaverApp } from "./screensaverApp.js";
-import * as polygon from "../screensaver/polygon/polygon.js";
+import * as polygon from "../screensaver/polygon/module.js";
 import * as polygonPreset from "../screensaver/polygon/polygon-preset.js";
 
 
@@ -48,7 +48,7 @@ class UserInterface {
 		{
 			query: '#select-screensaver',
 			type: 'change',
-			listener: (event)=> { this.loadScreensaver(event.target.value) }
+			listener: (event)=> { screensaverApp.loadScreensaver(event.target.value) }
 		},
 		{
 			query: '#input-screensaver-preset',

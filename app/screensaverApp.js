@@ -4,7 +4,7 @@
 
 import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 import { ui } from "./user-interface.js";
-import * as polygon from "../screensaver/polygon/polygon.js";
+import * as polygon from "../screensaver/polygon/module.js";
 
 
 
@@ -32,9 +32,49 @@ class ScreensaverApp extends HTMLApp {
 
 		ui.updateStyle();
 		ui.update();
-		polygon.redraw();
+		//polygon.init();
+		this.loadScreensaver('polygon');
 
 	}/* documentDOMContentLoaded */
+
+
+
+
+
+	/** loadScreensaver
+	 * @param {string} name
+	 */
+	async loadScreensaver(name) {
+
+		console.log('loadScreensaver', name);
+
+
+		const moduleUrl = `../screensaver/${name}/module.js`;
+
+
+		// need something like railroad-handling here, but can't remember how to implement the pattern
+
+		//try {
+			// this will overwrite the theme binding each time, might need to improve?
+			const screensaverModule = await import(moduleUrl);
+
+			//console.log('screensaverModule',screensaverModule);
+
+			screensaverModule.init();
+
+		// }
+		// catch (error) {
+		// 	console.error(`Error for '${name}'`, error);
+		// 	this.page.element.container.innerHTML = `<h2 class="themeError">${error}</h2>`;
+		// }
+
+	}/* drawClock */
+
+
+
+
+
+
 
 
 }/* ScreensaverApp */
