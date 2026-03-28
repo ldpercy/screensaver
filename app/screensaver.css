@@ -51,13 +51,10 @@
 
 
 	&.ant-crawl {
-		transition: none;
+		transition: all 0.5s;
 		stroke-width: var(--stroke-width);
 		stroke-dasharray: var(--stroke-dasharray);
-	}
 
-
-	&.ant-crawl:hover {
 		animation-name: ant-crawl;
 		animation-duration: 1s;
 		animation-timing-function: linear;

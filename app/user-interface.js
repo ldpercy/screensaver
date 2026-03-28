@@ -14,6 +14,9 @@ class UserInterface {
 	 * Note to self: like this typechecking on elements is totally sidestepped - need to find typesafe ways of doing this
 	 */
 	elementMap = {
+		screensaverSelect	: 'select-screensaver',
+
+
 		radius			: 'input-radius',
 		sides			: 'input-sides',
 		pointStep		: 'input-pointStep',
@@ -48,6 +51,11 @@ class UserInterface {
 		{
 			query: '#select-screensaver',
 			type: 'change',
+			listener: (event)=> { screensaverApp.loadScreensaver(event.target.value) }
+		},
+		{
+			query: '#button-startStop',
+			type: 'click',
 			listener: (event)=> { screensaverApp.loadScreensaver(event.target.value) }
 		},
 		{
@@ -310,6 +318,23 @@ class UserInterface {
 		// this.setStrokeWidth();
 
 	}/* updateStyle */
+
+
+
+	//
+	//	Screensaver accessors
+	//
+
+
+	/**	@returns {string}	*/
+	get selectedScreensaver() {
+		return this.element.screensaverSelect.value;
+	}
+
+	/**	@param {string} screensaverName	*/
+	set selectedScreensaver(screensaverName) {
+		this.element.screensaverSelect.value = screensaverName;
+	}
 
 
 

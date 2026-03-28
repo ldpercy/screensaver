@@ -20,6 +20,8 @@ class ScreensaverApp extends HTMLApp {
 	];
 
 
+	currentScreeensaverModule = undefined;
+	intervalId = undefined;
 
 
 	documentDOMContentLoaded() {
@@ -33,7 +35,7 @@ class ScreensaverApp extends HTMLApp {
 		ui.updateStyle();
 		ui.update();
 		//polygon.init();
-		this.loadScreensaver('polygon');
+		this.loadScreensaver(ui.selectedScreensaver);
 
 	}/* documentDOMContentLoaded */
 
@@ -49,18 +51,28 @@ class ScreensaverApp extends HTMLApp {
 		console.log('loadScreensaver', name);
 
 
+		// unload the previous module if necessary
+		if (this.currentScreeensaverModule && this.currentScreeensaverModule.unload) {
+			this.currentScreeensaverModule.unload();
+		}
+
+
+		document.getElementById('screensaver-group').innerHTML = '';
+
 		const moduleUrl = `../screensaver/${name}/module.js`;
+
+
 
 
 		// need something like railroad-handling here, but can't remember how to implement the pattern
 
 		//try {
 			// this will overwrite the theme binding each time, might need to improve?
-			const screensaverModule = await import(moduleUrl);
+			this.currentScreeensaverModule = await import(moduleUrl);
 
 			//console.log('screensaverModule',screensaverModule);
 
-			screensaverModule.init();
+			this.currentScreeensaverModule.init();
 
 		// }
 		// catch (error) {
@@ -71,6 +83,22 @@ class ScreensaverApp extends HTMLApp {
 	}/* drawClock */
 
 
+
+
+
+	animationStartStop() {
+
+		if (this.intervalId) {
+			clearInterval(this.intervalId);
+			this.intervalId = undefined;
+		}
+		else {
+			this.intervalId = setInterval(
+				()=> { this.currentScreeensaverModule.intervalAnimate() },
+				100
+			);
+		}
+	}/* animationStartStop */
 
 
 
