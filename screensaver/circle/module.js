@@ -1,4 +1,4 @@
-
+import { Screensaver } from "../screensaver.js";
 import * as maths from "../../[html-common]/module/Maths.js";
 
 
@@ -11,38 +11,59 @@ console.log('circle module');	// this only runs the _first_ time the module is l
 
 const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
 
-export function init() {
-
-	//ssg.innerHTML = '<circle cx="30" cy="40" r="500"></circle>';
-
-	ssg.appendChild(c);
-
-	//moveCircle();
-
-	// intervalId = setInterval(
-	// 	()=> { moveCircle() },
-	// 	1000
-	// );
-
-}
 
 
-function intervalAnimate() {
+class CircleScreensaver extends Screensaver {
 
-	const newX = maths.getRandomIntInclusive(-100,100);
-	const newY = maths.getRandomIntInclusive(-100,100);
-	const newR = maths.getRandomIntInclusive(10,1000);
+	constructor() {
+		super();
 
-	c.setAttribute('cx', `${newX}vw`);
-	c.setAttribute('cy', `${newY}vh`);
-	c.setAttribute('r', `${newR}`);
+		console.log('CircleScreensaver constructor');
 
-}
+	}
 
 
-function unload() {
-	clearInterval(intervalId);
-}
+	init() {
+
+		//ssg.innerHTML = '<circle cx="30" cy="40" r="500"></circle>';
+
+		ssg.appendChild(c);
+
+		//moveCircle();
+
+		// intervalId = setInterval(
+		// 	()=> { moveCircle() },
+		// 	1000
+		// );
+
+	}
+
+	intervalAnimate() {
+
+		const newX = maths.getRandomIntInclusive(-100,100);
+		const newY = maths.getRandomIntInclusive(-100,100);
+		const newR = maths.getRandomIntInclusive(10,1000);
+
+		c.setAttribute('cx', `${newX}vw`);
+		c.setAttribute('cy', `${newY}vh`);
+		c.setAttribute('r', `${newR}`);
+
+	}
+
+
+	unload() {
+		clearInterval(intervalId);
+	}
+
+}/* CircleScreensaver */
+
+
+
+
+export const screensaverInstance = new CircleScreensaver();
+
+
+
 
 
 

@@ -260,7 +260,7 @@ class UserInterface {
 		//event.preventDefault();
 
 		// a very quick naive attempt that doesnb't quite work - needs some svg cleaning and rebuilding
-		this.element.saveLink.download = 'polygon_download.svg';
+		this.element.saveLink.download = 'screensaver_download.svg';
 
 		const polygonGroup = document.getElementById('screensaver-group').innerHTML;
 
