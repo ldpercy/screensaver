@@ -2,7 +2,7 @@ import { Screensaver } from "../screensaver.js";
 import * as maths from "../../[html-common]/module/Maths.js";
 
 
-let intervalId;
+
 const ssg = document.getElementById('screensaver-group');
 
 
@@ -25,20 +25,33 @@ class CircleScreensaver extends Screensaver {
 
 	init() {
 
+		console.log('CircleScreensaver init');
+
 		//ssg.innerHTML = '<circle cx="30" cy="40" r="500"></circle>';
 
 		ssg.appendChild(c);
-
-		//moveCircle();
-
-		// intervalId = setInterval(
-		// 	()=> { moveCircle() },
-		// 	1000
-		// );
-
 	}
 
-	intervalAnimate() {
+
+
+	start() {
+		this.intervalId = setInterval(
+			()=> { this.moveCircle() },
+			1000
+		);
+		console.log(this.intervalId);
+	}
+
+
+	stop() {
+		console.log('circle stop:', this.intervalId);
+		clearInterval(this.intervalId);
+		this.intervalId = undefined;
+	}
+
+
+
+	moveCircle() {
 
 		const newX = maths.getRandomIntInclusive(-100,100);
 		const newY = maths.getRandomIntInclusive(-100,100);
@@ -52,7 +65,7 @@ class CircleScreensaver extends Screensaver {
 
 
 	unload() {
-		clearInterval(intervalId);
+		// any other necessary tidy up
 	}
 
 }/* CircleScreensaver */
@@ -60,7 +73,7 @@ class CircleScreensaver extends Screensaver {
 
 
 
-export const screensaverInstance = new CircleScreensaver();
+export const instance = new CircleScreensaver();
 
 
 

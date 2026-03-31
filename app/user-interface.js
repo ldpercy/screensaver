@@ -44,6 +44,7 @@ class UserInterface {
 
 	keyFunctionMap = {
 		'?'	: this.toggleAppInfoDialog,
+		's' : this.startStopHandler,
 	};
 
 
@@ -56,7 +57,7 @@ class UserInterface {
 		{
 			query: '#button-startStop',
 			type: 'click',
-			listener: (event)=> { screensaverApp.loadScreensaver(event.target.value) }
+			listener: (event)=> { screensaverApp.animationStartStop() }
 		},
 		{
 			query: '#input-screensaver-preset',
@@ -161,6 +162,11 @@ class UserInterface {
 	}
 
 
+	startStopHandler() {
+		screensaverApp.animationStartStop();
+	}
+
+
 	loadScreensaver(sreeensaverName) {
 		// load the screensaver
 	}
@@ -227,6 +233,11 @@ class UserInterface {
 	toggleAppInfoDialog() {
 		// console.debug('someone write this');
 	}
+
+
+
+
+
 
 
 	settingsChangeListener(event) {

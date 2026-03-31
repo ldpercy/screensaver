@@ -20,8 +20,8 @@ class ScreensaverApp extends HTMLApp {
 	];
 
 
-	currentScreeensaverModule = undefined;
-	intervalId = undefined;
+	currentModule = undefined;
+	state = 'stopped';
 
 
 	documentDOMContentLoaded() {
@@ -57,8 +57,9 @@ class ScreensaverApp extends HTMLApp {
 
 
 		// unload the previous module if necessary
-		if (this.currentScreeensaverModule && this.currentScreeensaverModule.unload) {
-			this.currentScreeensaverModule.unload();
+		if (this.currentModule) {
+			this.currentModule.instance.stop()
+			this.currentModule.instance.unload();
 		}
 
 
@@ -73,12 +74,12 @@ class ScreensaverApp extends HTMLApp {
 
 		//try {
 			// this will overwrite the theme binding each time, might need to improve?
-			this.currentScreeensaverModule = await import(moduleUrl);
+			this.currentModule = await import(moduleUrl);
 
 			//console.log('screensaverModule',screensaverModule);
 
-			this.currentScreeensaverModule.init();
-
+			this.currentModule.instance.init();
+			this.animationStartStop();
 		// }
 		// catch (error) {
 		// 	console.error(`Error for '${name}'`, error);
@@ -92,16 +93,14 @@ class ScreensaverApp extends HTMLApp {
 
 
 	animationStartStop() {
-
-		if (this.intervalId) {
-			clearInterval(this.intervalId);
-			this.intervalId = undefined;
+		console.log('animationStartStop',this.state);
+		if (this.state === 'stopped') {
+			this.currentModule.instance.start();
+			this.state = 'started';
 		}
 		else {
-			this.intervalId = setInterval(
-				()=> { this.currentScreeensaverModule.intervalAnimate() },
-				100
-			);
+			this.currentModule.instance.stop();
+			this.state = 'stopped';
 		}
 	}/* animationStartStop */
 
