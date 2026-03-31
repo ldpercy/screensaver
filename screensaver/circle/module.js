@@ -76,8 +76,3 @@ class CircleScreensaver extends Screensaver {
 export const instance = new CircleScreensaver();
 
 
-
-
-
-
-

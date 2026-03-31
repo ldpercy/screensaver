@@ -28,72 +28,12 @@
 
 
 
-			<select name="screensaver" id="select-screensaver" size="3">
+			<select name="screensaver" id="select-screensaver" size="5">
 				<option value="polygon">Polygon</option>
 				<option value="circle" selected>Circle</option>
 				<option value="rect">Rect</option>
 			</select>
 		</form>
-
-		<form id="form-screensaver-settings">
-
-
-
-			<label for="input-screensaver-preset"><h3>Preset</h3></label>
-			<select name="preset" id="input-screensaver-preset">
-				<!-- <option>-</option> -->
-				<option value="nonagon">nonagon</option>
-				<option value="diPentagram" selected>di-pentagram</option>
-				<option value="diHeptagram">di-heptagram</option>
-				<option value="triHeptadecagram">tri-heptadecagram</option>
-			</select>
-
-			<label for="input-sides">sides</label>
-			<input id="input-sides" type="number" name="sides" title="sides" min="1" value="5"/>
-
-			<label for="input-pointStep">point step</label>
-			<input id="input-pointStep" type="number" name="pointStep" title="pointStep" value="3"/>
-
-			<label for="input-startDivision">start division</label>
-			<input id="input-startDivision" type="number" name="startDivision" title="startDivision" value="1">
-
-			<label for="input-radius">radius</label>
-			<input id="input-radius" type="number" name="radius" title="radius" value="1000" list="datalist-radius"/>
-			<datalist id="datalist-radius">
-				<option>100</option>
-				<option>200</option>
-				<option>500</option>
-				<option>1000</option>
-				<option>1200</option>
-				<option>1500</option>
-				<option>2000</option>
-				<option>5000</option>
-			</datalist>
-
-			<label for="input-copies"><h3>copies</h3></label>
-			<input id="input-copies" type="number" name="copies" title="copies" min="0" value="2" >
-
-			<label for="input-copyOffset">copy offset</label>
-			<input id="input-copyOffset" type="number" name="copyOffset" title="copyOffset" value="2">
-
-			<label for="input-copyPaths">copy paths</label>
-			<select id="input-copyPaths" name="copyPaths" size="2">
-				<option value="combined">combined</option>
-				<option value="separate" selected>separate</option>
-			</select>
-			<label for="input-coordinates"><h3>coordinates</h3></label>
-			<select id="input-coordinates" name="coordinates" size="2">
-				<option value="absolute" selected>absolute</option>
-				<option value="relative">relative</option>
-			</select>
-			<label for="input-decimalPlaces">decimal places</label>
-			<input id="input-decimalPlaces" type="number" name="decimalPlaces" title="sides" min="0" value="0" max="9"/>
-		</form>
-	</div>
-
-	<div class="control-group control-right">
-
-
 
 
 		<form id="form-style" name="form-style">
@@ -174,6 +114,18 @@
 				grid
 			</label>
 		</form>
+
+
+	</div>
+
+	<div class="control-group control-right">
+
+		<form id="form-screensaver-settings">
+
+
+		</form>
+
+
 	</div>
 
 	<output id="output">

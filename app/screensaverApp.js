@@ -42,7 +42,7 @@ class ScreensaverApp extends HTMLApp {
 
 		ui.updateStyle();
 		ui.update();
-		this.loadScreensaver(ui.selectedScreensaver);
+		//this.loadScreensaver(ui.selectedScreensaver);
 
 	}
 

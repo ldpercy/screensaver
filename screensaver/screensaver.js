@@ -1,7 +1,9 @@
 
 export class Screensaver {
 
-	constructor(){}
+	constructor(){
+		console.log('Screensaver constructor')
+	}
 
 	init() {}
 	start() {}
