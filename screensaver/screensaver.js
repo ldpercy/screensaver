@@ -11,4 +11,10 @@ export class Screensaver {
 	unload() {}
 
 
+	/** @returns {string} */
+	getForm() {
+		return '';
+	}
+
+
 }/* Screensaver */

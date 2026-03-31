@@ -52,9 +52,7 @@ class ScreensaverApp extends HTMLApp {
 	 * @param {string} name
 	 */
 	async loadScreensaver(name) {
-
 		console.log('loadScreensaver', name);
-
 
 		// unload the previous module if necessary
 		if (this.currentModule) {
@@ -62,21 +60,18 @@ class ScreensaverApp extends HTMLApp {
 			this.currentModule.instance.unload();
 		}
 
-
 		document.getElementById('screensaver-group').innerHTML = '';
 
 		const moduleUrl = `../screensaver/${name}/module.js`;
 
-
-
-
 		// need something like railroad-handling here, but can't remember how to implement the pattern
-
 		//try {
 			// this will overwrite the theme binding each time, might need to improve?
 			this.currentModule = await import(moduleUrl);
 
 			//console.log('screensaverModule',screensaverModule);
+
+			document.getElementById('form-screensaver-settings').innerHTML = this.currentModule.instance.getForm();
 
 			this.currentModule.instance.init();
 			this.animationStartStop();
@@ -86,9 +81,7 @@ class ScreensaverApp extends HTMLApp {
 		// 	this.page.element.container.innerHTML = `<h2 class="themeError">${error}</h2>`;
 		// }
 
-	}/* drawClock */
-
-
+	}/* loadScreensaver */
 
 
 

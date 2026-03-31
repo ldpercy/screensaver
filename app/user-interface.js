@@ -16,27 +16,13 @@ class UserInterface {
 	elementMap = {
 		screensaverSelect	: 'select-screensaver',
 
-
-		radius			: 'input-radius',
-		sides			: 'input-sides',
-		pointStep		: 'input-pointStep',
-		startDivision	: 'input-startDivision',
-		copies			: 'input-copies',
-		copyOffset		: 'input-copyOffset',
-		copyPaths		: 'input-copyPaths',
-		coordinates		: 'input-coordinates',
-		decimalPlaces	: 'input-decimalPlaces',
 		saveLink		: 'link-save',
-
 		startColour		: 'input-startColour',
 		fillOpacity		: 'input-fillOpacity',
-
 		strokeWidth		: 'input-strokeWidth',
 		strokeDasharray	: 'input-strokeDasharray',
-
 		strokeLinejoin	: 'input-strokeLinejoin',
 		strokeLinecap	: 'input-strokeLinecap',
-
 		antCrawl		: 'input-antCrawl',
 
 	};
@@ -348,110 +334,6 @@ class UserInterface {
 	}
 
 
-
-
-	//
-	//	Polygon setting accessors
-	//
-
-
-	/**	@returns {number}	*/
-	get sides() {
-		return parseInt(this.element.sides.value);
-	}
-
-	/**	@param {number} sides	*/
-	set sides(sides) {
-		this.element.sides.value = Math.round(sides);
-	}
-
-
-	/**	@returns {number}	*/
-	get pointStep() {
-		return parseInt(this.element.pointStep.value);
-	}
-
-	/**	@param {number} pointStep	*/
-	set pointStep(pointStep) {
-		this.element.pointStep.value = Math.round(pointStep);
-	}
-
-
-	/**	@returns {number}	*/
-	get startDivision() {
-		return parseInt(this.element.startDivision.value);
-	}
-
-	/**	@param {number} startDivision	*/
-	set startDivision(startDivision) {
-		this.element.startDivision.value = Math.round(startDivision);
-	}
-
-
-	/**	@returns {number}	*/
-	get radius() {
-		return parseInt(this.element.radius.value);
-	}
-
-	/**	@param {number} radius	*/
-	set radius(radius) {
-		this.element.radius.value = Math.round(radius);
-	}
-
-
-	/**	@returns {number}	*/
-	get copies() {
-		return parseInt(this.element.copies.value);
-	}
-
-	/**	@param {number} copies	*/
-	set copies(copies) {
-		this.element.copies.value = Math.round(copies);
-	}
-
-
-	/**	@returns {number}	*/
-	get copyOffset() {
-		return parseInt(this.element.copyOffset.value);
-	}
-
-	/**	@param {number} copyOffset	*/
-	set copyOffset(copyOffset) {
-		this.element.copyOffset.value = Math.round(copyOffset);
-	}
-
-
-	/**	@returns {string}	*/
-	get copyPaths() {
-		return this.element.copyPaths.value;
-	}
-
-	/**	@param {string} copyPaths	*/
-	set copyPaths(copyPaths) {
-		this.element.copyPaths.value = copyPaths;
-	}
-
-
-	/**	@returns {string}	*/
-	get coordinates() {
-		return this.element.coordinates.value;
-	}
-
-	/**	@param {string} coordinates	*/
-	set coordinates(coordinates) {
-		this.element.coordinates.value = coordinates;
-	}
-
-
-	/** @returns {number}	*/
-	get decimalPlaces() {
-		return parseInt(this.element.decimalPlaces.value);
-	}
-
-	/** @param {number} decimalPlaces	*/
-	set decimalPlaces(decimalPlaces) {
-		this.element.decimalPlaces.value = Math.round(decimalPlaces);
-	}
 
 
 	//
