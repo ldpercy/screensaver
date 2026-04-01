@@ -2,7 +2,7 @@ import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 import { Screensaver } from "../screensaver.js";
 import { Maths } from "../../app/maths.module.js";
 import * as geometry from "../../app/geometry.module.js";
-import { ui } from "../../app/user-interface.js"
+
 
 import * as polygonPreset from "./polygon-preset.js";
 
@@ -19,7 +19,13 @@ class PolygonScreensaver extends Screensaver {
 	}/* constructor */
 
 
-	eventListeners = [	];
+	eventListeners = [
+		{
+			query: '#input-screensaver-preset',
+			type: 'change',
+			listener: (event)=> { this.loadPreset(event.target.value) }
+		},
+	];
 
 
 	elementMap = {
@@ -37,12 +43,13 @@ class PolygonScreensaver extends Screensaver {
 
 	init() {
 		this.element = HTMLApp.buildElementMap(document, this.elementMap);
+		HTMLApp.addEventListeners(this.eventListeners, this);
 		this.redraw();
 	}
 
 
 	redraw() {
-		//console.debug('polygon.redraw', this.element);
+		console.debug('polygon.redraw', this.element);
 
 		const polygonGroup = this.getPolygonPath(
 			this.sides,
