@@ -11,10 +11,38 @@ export const defaultStyle = {
 	},
 }
 
+
+
+export const light = {
+	style : {
+		colourScheme	: 'light',
+	}
+}
+
+export const dark = {
+	style : {
+		colourScheme	: 'dark',
+	}
+}
+
+export const midnightblue = {
+	style : {
+		colourScheme	: 'midnightblue',
+	}
+}
+
+export const peachpuff = {
+	style : {
+		colourScheme	: 'peachpuff',
+	}
+}
+
+
 export const disco = {
 
 	style : {
-		colourScheme	: 'disco',
+		//colourScheme	: 'disco',
+		colourScheme	: 'dark',
 		startColour		: 'forestgreen',
 		fillOpacity		: '0.2',
 		fullRule		: 'evenodd',
