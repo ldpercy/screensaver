@@ -3,6 +3,14 @@
 */
 
 
+svg, svg * {
+	transition-property: cx, cy, x, y, width, height, r;
+	transition-duration: 0.5s;
+	transition-timing-function: linear;
+}
+
+
+
 .svg-screensaver {
 
 	width: 100vw;
@@ -51,15 +59,17 @@
 
 
 	&.ant-crawl {
-		transition: all 0.5s;
+
 		stroke-width: var(--stroke-width);
 		stroke-dasharray: var(--stroke-dasharray);
+
+		transition: none;
 
 		animation-name: ant-crawl;
 		animation-duration: 1s;
 		animation-timing-function: linear;
 		animation-iteration-count: infinite;
-		animation-direction:normal;
+		animation-direction: normal;
 	}
 
 

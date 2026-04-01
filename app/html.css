@@ -5,16 +5,16 @@
 :root {
 	--project-colour: midnightblue;
 
-	--stroke-dasharray: 50px 50px;
-	--to-stroke-dashoffset: 100px;
-	--stroke-width: 5px;
+	--stroke-dasharray: 1ex 10ex;
+	--to-stroke-dashoffset: 11ex;
+	--stroke-width: 5em;
 	--stroke-linejoin: miter;
 	--stroke-linecap: butt;
 }
 
-* {
-	transition: all 0.5s;
-}
+/* * {
+	transition: all 0.5s ;
+} */
 
 
 html {
