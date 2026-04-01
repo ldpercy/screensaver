@@ -4,7 +4,7 @@
 
 
 svg, svg * {
-	transition-property: cx, cy, x, y, width, height, r;
+	transition-property: cx, cy, x, y, width, height, r, transform, rotate;
 	transition-duration: 0.5s;
 	transition-timing-function: linear;
 }

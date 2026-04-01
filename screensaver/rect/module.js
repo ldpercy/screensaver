@@ -31,7 +31,7 @@ class RectScreensaver extends Screensaver {
 	start() {
 		this.intervalId = setInterval(
 			()=> { this.moveRect() },
-			1000
+			2000
 		);
 		console.log(this.intervalId);
 	}
@@ -51,11 +51,14 @@ class RectScreensaver extends Screensaver {
 		const newY = maths.getRandomIntInclusive(-100,100);
 		const newWidth = maths.getRandomIntInclusive(10,1000);
 		const newHeight = maths.getRandomIntInclusive(10,1000);
+		const rotate = maths.getRandomIntInclusive(0,360);
 
 		r.setAttribute('x', `${newX}vw`);
 		r.setAttribute('y', `${newY}vh`);
 		r.setAttribute('width', `${newWidth}px`);
 		r.setAttribute('height', `${newHeight}px`);
+
+		r.setAttribute('style', `rotate:${rotate}deg`);
 	}
 
 
