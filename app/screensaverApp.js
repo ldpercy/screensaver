@@ -42,7 +42,7 @@ class ScreensaverApp extends HTMLApp {
 
 		ui.updateStyle();
 		ui.update();
-		//this.loadScreensaver(ui.selectedScreensaver);
+		this.loadScreensaver(ui.selectedScreensaver);
 
 	}
 
@@ -74,7 +74,7 @@ class ScreensaverApp extends HTMLApp {
 			document.getElementById('form-screensaver-settings').innerHTML = this.currentModule.instance.getForm();
 
 			this.currentModule.instance.init();
-			this.animationStartStop();
+			this.animationStart();
 		// }
 		// catch (error) {
 		// 	console.error(`Error for '${name}'`, error);
@@ -85,15 +85,23 @@ class ScreensaverApp extends HTMLApp {
 
 
 
+	animationStart() {
+		this.currentModule.instance.start();
+		this.state = 'started';
+	}
+
+	animationStop() {
+		this.currentModule.instance.stop();
+		this.state = 'stopped';
+	}
+
 	animationStartStop() {
-		console.log('animationStartStop',this.state);
+		//console.log('animationStartStop',this.state);
 		if (this.state === 'stopped') {
-			this.currentModule.instance.start();
-			this.state = 'started';
+			this.animationStart();
 		}
 		else {
-			this.currentModule.instance.stop();
-			this.state = 'stopped';
+			this.animationStop();
 		}
 	}/* animationStartStop */
 
