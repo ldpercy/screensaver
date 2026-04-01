@@ -169,6 +169,8 @@ class PolygonScreensaver extends Screensaver {
 
 
 
+
+
 	getForm() {
 		const result = `
 			<label for="input-screensaver-preset"><h3>Preset</h3></label>

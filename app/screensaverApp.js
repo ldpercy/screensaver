@@ -98,7 +98,9 @@ class ScreensaverApp extends HTMLApp {
 	}/* animationStartStop */
 
 
-
+	settingsChanged() {
+		this.currentModule.instance.redraw();
+	}
 
 
 

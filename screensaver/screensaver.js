@@ -8,6 +8,7 @@ export class Screensaver {
 	init() {}
 	start() {}
 	stop() {}
+	redraw() {}
 	unload() {}
 
 

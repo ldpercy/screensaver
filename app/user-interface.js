@@ -1,7 +1,8 @@
 import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 import { screensaverApp } from "./screensaverApp.js";
-import * as polygon from "../screensaver/polygon/module.js";
-import * as polygonPreset from "../screensaver/polygon/polygon-preset.js";
+
+//import * as polygon from "../screensaver/polygon/module.js";
+import * as stylePreset from "../screensaver/style-preset.js";
 
 
 
@@ -45,11 +46,11 @@ class UserInterface {
 			type: 'click',
 			listener: (event)=> { screensaverApp.animationStartStop() }
 		},
-		{
-			query: '#input-screensaver-preset',
-			type: 'change',
-			listener: (event)=> { this.loadScreensaverPreset(event.target.value) }
-		},
+		// {
+		// 	query: '#input-screensaver-preset',
+		// 	type: 'change',
+		// 	listener: (event)=> { this.loadScreensaverPreset(event.target.value) }
+		// },
 		{
 			query: '#form-screensaver-settings',
 			type: 'change',
@@ -157,32 +158,11 @@ class UserInterface {
 		// load the screensaver
 	}
 
-	loadScreensaverPreset(presetName) {
-
-		const preset  = polygonPreset[presetName];
-
-		console.log('loadPreset', presetName, preset );
-
-		if (preset) {
-			for (let key in preset.polygon) {
-				this[key] = preset.polygon[key];
-			}
-
-			for (let key in preset.style) {
-				this[key] = preset.style[key];
-			}
-		}
-
-		this.updateStyle();
-		this.update();
-
-	}
-
 
 
 	loadStylePreset(presetName) {
 
-		const preset  = polygonPreset[presetName];
+		const preset  = stylePreset[presetName];
 
 		console.log('loadPreset', presetName, preset );
 
@@ -221,13 +201,8 @@ class UserInterface {
 	}
 
 
-
-
-
-
-
 	settingsChangeListener(event) {
-		polygon.redraw();
+		screensaverApp.settingsChanged();
 	}
 
 	styleChangeListener(event) {
