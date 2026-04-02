@@ -26,7 +26,7 @@ class ScreensaverApp extends HTMLApp {
 
 	documentDOMContentLoaded() {
 		super.documentDOMContentLoaded();
-		this.setColourScheme(localStorage.screensaver_colourScheme || 'light');
+		this.setColourScheme(localStorage.screensaver_colourScheme || 'dark');
 
 		this.init();
 

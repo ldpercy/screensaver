@@ -45,15 +45,15 @@ html {
 
 
 html {
-	color-scheme: light;
-	--scheme-colour: white;
+	--scheme-colour: black;
 	--html-background: var(--scheme-colour);
+	--accent-colour: hsl(from var(--project-colour) h s 80 );
+
+	color-scheme: dark;
 	background-color: var(--html-background);
+
 	body {
-		/* --body-background: var(--scheme-colour); */
-		/* background-color: var(--scheme-colour); */
 		color: lab( from var(--scheme-colour) calc(sign(l - 70) * -100) 0 0 / 1);
-		/* --accent-colour: hsl(from var(--project-colour) h s 40 ); */
 		accent-color: var(--accent-colour);
 	}
 }
@@ -63,7 +63,7 @@ html {
 html[data-colourscheme=light] {
 	color-scheme: light;
 	--scheme-colour: white;
-	--accent-colour: hsl(from var(--project-colour) h s 50 );
+	--accent-colour: hsl(from var(--project-colour) h 50 50 );
 }
 
 html[data-colourscheme=dark] {
@@ -85,6 +85,6 @@ html[data-colourscheme=peachpuff] {
 	color-scheme: light;
 	--scheme-colour: peachpuff;
 	--html-background: var(--scheme-colour);
-	--accent-colour: hsl(from var(--project-colour) h s 80 );
+	--accent-colour: hsl(from var(--project-colour) h 50 50 );
 }
 
