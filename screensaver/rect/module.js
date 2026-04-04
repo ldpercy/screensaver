@@ -28,17 +28,17 @@ class RectScreensaver extends Screensaver {
 
 
 
-	start() {
+	play() {
 		this.intervalId = setInterval(
 			()=> { this.moveRect() },
 			2000
 		);
-		console.log(this.intervalId);
+		//console.log(this.intervalId);
 	}
 
 
-	stop() {
-		console.log('circle stop:', this.intervalId);
+	pause() {
+		//console.log('circle stop:', this.intervalId);
 		clearInterval(this.intervalId);
 		this.intervalId = undefined;
 	}

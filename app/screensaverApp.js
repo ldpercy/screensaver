@@ -56,7 +56,7 @@ class ScreensaverApp extends HTMLApp {
 
 		// unload the previous module if necessary
 		if (this.currentModule) {
-			this.currentModule.instance.stop()
+			this.currentModule.instance.pause();
 			this.currentModule.instance.unload();
 		}
 
@@ -74,7 +74,7 @@ class ScreensaverApp extends HTMLApp {
 			document.getElementById('form-screensaver-settings').innerHTML = this.currentModule.instance.getForm();
 
 			this.currentModule.instance.init();
-			this.animationStart();
+			this.animationPlay();
 		// }
 		// catch (error) {
 		// 	console.error(`Error for '${name}'`, error);
@@ -85,29 +85,29 @@ class ScreensaverApp extends HTMLApp {
 
 
 
-	animationStart() {
-		this.currentModule.instance.start();
-		this.state = 'started';
+	animationPlay() {
+		this.currentModule.instance.play();
+		this.state = 'playing';
 	}
 
-	animationStop() {
-		this.currentModule.instance.stop();
-		this.state = 'stopped';
+	animationPause() {
+		this.currentModule.instance.pause();
+		this.state = 'paused';
 	}
 
-	animationStartStop() {
-		//console.log('animationStartStop',this.state);
+	animationPlayPause() {
+		//console.log('animationPlayPause',this.state);
 		if (this.state === 'stopped') {
-			this.animationStart();
+			this.animationPlay();
 		}
 		else {
-			this.animationStop();
+			this.animationPause();
 		}
-	}/* animationStartStop */
+	}/* animationPlayPause */
 
 
-	settingsChanged() {
-		this.currentModule.instance.redraw();
+	settingChange() {
+		this.currentModule.instance.settingChange();
 	}
 
 

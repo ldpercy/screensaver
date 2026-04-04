@@ -28,17 +28,17 @@ class CircleScreensaver extends Screensaver {
 
 
 
-	start() {
+	play() {
 		this.intervalId = setInterval(
 			()=> { this.moveCircle() },
 			1000
 		);
-		console.log(this.intervalId);
+		//console.log('intervalId',this.intervalId);
 	}
 
 
-	stop() {
-		console.log('circle stop:', this.intervalId);
+	puase() {
+		//console.log('circle stop:', this.intervalId);
 		clearInterval(this.intervalId);
 		this.intervalId = undefined;
 	}

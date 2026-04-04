@@ -48,6 +48,12 @@ class PolygonScreensaver extends Screensaver {
 	}
 
 
+	settingChange() {
+		this.redraw();
+	}
+
+
+
 	redraw() {
 		console.debug('polygon.redraw', this.element);
 

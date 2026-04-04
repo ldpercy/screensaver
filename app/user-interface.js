@@ -31,7 +31,7 @@ class UserInterface {
 
 	keyFunctionMap = {
 		'?'	: this.toggleAppInfoDialog,
-		's' : this.startStopHandler,
+		' ' : this.playPauseHandler,
 	};
 
 
@@ -42,9 +42,9 @@ class UserInterface {
 			listener: (event)=> { screensaverApp.loadScreensaver(event.target.value) }
 		},
 		{
-			query: '#button-startStop',
+			query: '#button-playPause',
 			type: 'click',
-			listener: (event)=> { screensaverApp.animationStartStop() }
+			listener: (event)=> { screensaverApp.animationPlayPause() }
 		},
 		// {
 		// 	query: '#input-screensaver-preset',
@@ -54,7 +54,7 @@ class UserInterface {
 		{
 			query: '#form-screensaver-settings',
 			type: 'change',
-			listener: this.settingsChangeListener
+			listener: this.settingChangeListener
 		},
 		{
 			query: '#input-style-preset',
@@ -149,8 +149,8 @@ class UserInterface {
 	}
 
 
-	startStopHandler() {
-		screensaverApp.animationStartStop();
+	playPauseHandler() {
+		screensaverApp.animationPlayPause();
 	}
 
 
@@ -201,8 +201,8 @@ class UserInterface {
 	}
 
 
-	settingsChangeListener(event) {
-		screensaverApp.settingsChanged();
+	settingChangeListener(event) {
+		screensaverApp.settingChange();
 	}
 
 	styleChangeListener(event) {

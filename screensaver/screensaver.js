@@ -6,10 +6,14 @@ export class Screensaver {
 	}
 
 	init() {}
-	start() {}
-	stop() {}
-	redraw() {}
+	play() {}
+	pause() {}
 	unload() {}
+
+
+	settingChange() {
+		//send signal to screensaver that it's parameters have changed
+	}
 
 
 	/** @returns {string} */
