@@ -37,7 +37,7 @@ class CircleScreensaver extends Screensaver {
 	}
 
 
-	puase() {
+	pause() {
 		//console.log('circle stop:', this.intervalId);
 		clearInterval(this.intervalId);
 		this.intervalId = undefined;
@@ -60,6 +60,16 @@ class CircleScreensaver extends Screensaver {
 	unload() {
 		// any other necessary tidy up
 	}
+
+
+	getForm() {
+		const result = `
+			<label for="module-shadowCopies">shadow copies</label>
+			<input id="module-shadowCopies" type="number" name="shadowCopies" title="shadow copies" min="1" value="1" max="10"/>
+		`;
+		return result;
+	}
+
 
 }/* CircleScreensaver */
 

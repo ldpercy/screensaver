@@ -39,7 +39,7 @@ class LineScreensaver extends Screensaver {
 	play() {
 		this.intervalId = setInterval(
 			()=> { this.moveLine() },
-			2000
+			1000
 		);
 		//console.log(this.intervalId);
 	}

@@ -21,7 +21,7 @@ class ScreensaverApp extends HTMLApp {
 
 
 	currentModule = undefined;
-	state = 'stopped';
+	state = 'paused';
 
 
 	documentDOMContentLoaded() {
@@ -97,12 +97,13 @@ class ScreensaverApp extends HTMLApp {
 
 	animationPlayPause() {
 		//console.log('animationPlayPause',this.state);
-		if (this.state === 'stopped') {
-			this.animationPlay();
-		}
-		else {
+		if (this.state === 'playing') {
 			this.animationPause();
 		}
+		else {
+			this.animationPlay();
+		}
+		console.log('animationPlayPause',this.state);
 	}/* animationPlayPause */
 
 
