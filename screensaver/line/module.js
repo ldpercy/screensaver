@@ -15,6 +15,7 @@ class LineScreensaver extends Screensaver {
 
 	elementMap = {
 		lines			: 'input-lines',
+		copies			: 'input-copies',
 	};
 
 
@@ -30,7 +31,7 @@ class LineScreensaver extends Screensaver {
 		console.log('LineScreensaver init');
 		this.element = HTMLApp.buildElementMap(document, this.elementMap);
 		//document.getElementById('screensaver-group').innerHTML = '<line x="-400" y="-300" width="600" height="500"></line>';
-		this.moveLine();
+		this.update();
 		ssg.appendChild(l);
 	}
 
@@ -38,7 +39,7 @@ class LineScreensaver extends Screensaver {
 
 	play() {
 		this.intervalId = setInterval(
-			()=> { this.moveLine() },
+			()=> { this.update() },
 			1000
 		);
 		//console.log(this.intervalId);
@@ -53,7 +54,12 @@ class LineScreensaver extends Screensaver {
 
 
 
-	moveLine() {
+	update() {
+
+		const newNode = document.createElementNS('http://www.w3.org/2000/svg','path');
+		ssg.appendChild(newNode);
+		newNode.setAttribute('d', l.getAttribute('d'));
+
 
 		const x1 = maths.getRandomIntInclusive(-1200,+1200);
 		const y1 = maths.getRandomIntInclusive(-1200,+1200);
@@ -64,13 +70,21 @@ class LineScreensaver extends Screensaver {
 			linepoints += ` ${maths.getRandomIntInclusive(-1200,+1200)},${maths.getRandomIntInclusive(-1200,+1200)}`
 		}
 
-		l.setAttribute('d', `M ${x1},${y1} ${linepoints}`);
+		newNode.setAttribute('d', `M ${x1},${y1} ${linepoints}`);
 
-	}
+
+		if (ssg.childElementCount > this.copies)
+		{
+			ssg.firstElementChild.remove();
+		}
+
+
+
+	}/* update */
 
 
 	settingChange() {
-		this.moveLine();
+		this.update();
 	}
 
 
@@ -79,12 +93,17 @@ class LineScreensaver extends Screensaver {
 		const result = `
 			<label for="input-lines">line segments</label>
 			<input id="input-lines" type="number" name="lines" title="lines" min="1" value="1" max="10"/>
+
+			<label for="input-copies">copies</label>
+			<input id="input-copies" type="number" name="copies" title="copies" min="1" value="1" max="10"/>
 		`;
 		return result;
 	}
 
 
-
+	//
+	//	Acessors
+	//
 
 	/**	@returns {number}	*/
 	get lines() {
@@ -94,6 +113,16 @@ class LineScreensaver extends Screensaver {
 	/**	@param {number} lines	*/
 	set lines(lines) {
 		this.element.lines.value = Math.round(lines);
+	}
+
+	/**	@returns {number}	*/
+	get copies() {
+		return parseInt(this.element.copies.value);
+	}
+
+	/**	@param {number} copies	*/
+	set copies(copies) {
+		this.element.copies.value = Math.round(copies);
 	}
 
 
