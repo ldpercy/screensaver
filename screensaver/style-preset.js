@@ -1,6 +1,6 @@
 export const defaultStyle = {
 	style : {
-		colourScheme	: 'light',
+		colourScheme	: 'dark',
 		startColour		: 'orange',
 		fillOpacity		: '0.5',
 		fullRule		: 'evenodd',

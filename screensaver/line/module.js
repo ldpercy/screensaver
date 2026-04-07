@@ -10,16 +10,22 @@ console.log('line module');	// this only runs the _first_ time the module is loa
 
 const ssg = document.getElementById('screensaver-group');
 
+const intervalTime	= 1000;
+const xMin			= -2400;
+const xMax			= +2400;
+const yMin			= -1200;
+const yMax			= +1200;
+
 
 class LineScreensaver extends Screensaver {
 
 
-	intervalTime = 1000;
 
 
 	elementMap = {
-		lineCount			: 'setting-line-count',
-		lineSegments		: 'setting-line-segments',
+		lineType			: 'setting-lineType',
+		lineCount			: 'setting-lineCount',
+		lineSegments		: 'setting-lineSegments',
 		output				: 'output',
 		svg					: 'screensaver-svg',
 	};
@@ -45,7 +51,7 @@ class LineScreensaver extends Screensaver {
 	play() {
 		this.intervalId = setInterval(
 			()=> { this.update() },
-			this.intervalTime
+			intervalTime
 		);
 		//console.log(this.intervalId);
 	}
@@ -61,6 +67,8 @@ class LineScreensaver extends Screensaver {
 
 	update() {
 
+		let d = '';
+
 		const newElement = document.createElementNS('http://www.w3.org/2000/svg','path');
 
 		if (ssg.hasChildNodes()) {
@@ -71,26 +79,31 @@ class LineScreensaver extends Screensaver {
 		ssg.prepend(newElement);
 		//ssg.prepend(newElement);
 
-		console.log(newElement);
+		//console.log(newElement);
 
-
-		const x1 = maths.getRandomIntInclusive(-2400,+2400);
-		const y1 = maths.getRandomIntInclusive(-1200,+1200);
+		const startPoint = this.randomPoint();
 
 		let linepoints = '';
 
 		for (let i = 1; i <= this.lineSegments; i++) {
-			linepoints += ` ${maths.getRandomIntInclusive(-1200,+1200)},${maths.getRandomIntInclusive(-1200,+1200)}`
+			linepoints += ` ${this.randomPoint()}`
 		}
-
-
 
 		while (ssg.childElementCount > this.lineCount)
 		{
 			ssg.lastElementChild.remove();
 		}
 
-		ssg.lastElementChild.setAttribute('d', `M ${x1},${y1} ${linepoints}`);
+		if (this.lineType === "quadratic") {
+			d = `M ${startPoint} Q  ${linepoints}`;
+		}
+		else {
+			d = `M ${startPoint} ${linepoints}`;
+		}
+
+		ssg.lastElementChild.setAttribute('d', d);
+
+
 		// trying to get the viewport in svg units:
 		//console.log('output.getBoundingClientRect', this.element.output.getBoundingClientRect());
 		//console.log('output.getBBox', this.element.output.getBBox());
@@ -98,6 +111,15 @@ class LineScreensaver extends Screensaver {
 		//console.log('svg.getBBox', this.element.svg.getBBox());
 
 	}/* update */
+
+
+	/** @return {string}  */
+	randomPoint() {
+		return `${maths.getRandomIntInclusive(xMin,xMax)},${maths.getRandomIntInclusive(yMin,yMax)}`;
+	}
+
+
+
 
 
 	settingChange() {
@@ -108,11 +130,18 @@ class LineScreensaver extends Screensaver {
 
 	getForm() {
 		const result = `
-			<label for="setting-line-count">line count</label>
-			<input id="setting-line-count" type="number" name="lineCount" title="line count" min="1" value="1" max="10"/>
+			<label for="setting-lineType">type</label>
+			<select id="setting-lineType" name="lineType" title="line type" size=3">
+				<option selected>straight</option>
+				<option>quadratic</option>
+				<!-- <option>cubic</option> -->
+			</select>
 
-			<label for="setting-line-segments">line segments</label>
-			<input id="setting-line-segments" type="number" name="lineSegments" title="line segments" min="1" value="1" max="10"/>
+			<label for="setting-lineCount">line count</label>
+			<input id="setting-lineCount" type="number" name="lineCount" title="line count" min="1" value="1" max="10"/>
+
+			<label for="setting-lineSegments">line segments</label>
+			<input id="setting-lineSegments" type="number" name="lineSegments" title="line segments" min="1" value="1" max="10"/>
 		`;
 		return result;
 	}
@@ -121,6 +150,18 @@ class LineScreensaver extends Screensaver {
 	//
 	//	Acessors
 	//
+
+
+	/**	@returns {string}	*/
+	get lineType() {
+		return this.element.lineType.value;
+	}
+
+	/**	@param {number} lineType	*/
+	set lineType(lineType) {
+		this.element.lineType.value = lineType;
+	}
+
 
 	/**	@returns {number}	*/
 	get lineCount() {
