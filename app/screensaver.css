@@ -2,6 +2,14 @@
 **	screensaver.css
 */
 
+:root {
+	--stroke-dasharray: 1ex 10ex;
+	--to-stroke-dashoffset: 11ex;
+	--stroke-width: 2em;
+	--stroke-linejoin: miter;
+	--stroke-linecap: butt;
+}
+
 
 svg, svg * {
 	transition-property: d, x, y, width, height, cx, cy, r, rx, ry, transform, rotate;

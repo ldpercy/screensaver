@@ -5,11 +5,7 @@
 :root {
 	--project-colour: midnightblue;
 
-	--stroke-dasharray: 1ex 10ex;
-	--to-stroke-dashoffset: 11ex;
-	--stroke-width: 5em;
-	--stroke-linejoin: miter;
-	--stroke-linecap: butt;
+
 }
 
 
