@@ -9,13 +9,19 @@ console.log('line module');	// this only runs the _first_ time the module is loa
 
 
 const ssg = document.getElementById('screensaver-group');
-const l = document.createElementNS('http://www.w3.org/2000/svg','path');
+
 
 class LineScreensaver extends Screensaver {
 
+
+	intervalTime = 1000;
+
+
 	elementMap = {
-		lines			: 'input-lines',
-		copies			: 'input-copies',
+		lineCount			: 'setting-line-count',
+		lineSegments		: 'setting-line-segments',
+		output				: 'output',
+		svg					: 'screensaver-svg',
 	};
 
 
@@ -32,7 +38,6 @@ class LineScreensaver extends Screensaver {
 		this.element = HTMLApp.buildElementMap(document, this.elementMap);
 		//document.getElementById('screensaver-group').innerHTML = '<line x="-400" y="-300" width="600" height="500"></line>';
 		this.update();
-		ssg.appendChild(l);
 	}
 
 
@@ -40,7 +45,7 @@ class LineScreensaver extends Screensaver {
 	play() {
 		this.intervalId = setInterval(
 			()=> { this.update() },
-			1000
+			this.intervalTime
 		);
 		//console.log(this.intervalId);
 	}
@@ -56,29 +61,36 @@ class LineScreensaver extends Screensaver {
 
 	update() {
 
-		const newNode = document.createElementNS('http://www.w3.org/2000/svg','path');
-		ssg.appendChild(newNode);
-		newNode.setAttribute('d', l.getAttribute('d'));
+		const newElement = document.createElementNS('http://www.w3.org/2000/svg','path');
+
+		if (ssg.hasChildNodes()) {
+			newElement.setAttribute('d', ssg.lastElementChild.getAttribute('d'));
+		}
+
+		//ssg.appendChild(newElement);
+		ssg.prepend(newElement);
+		//ssg.prepend(newElement);
+
+		console.log(newElement);
 
 
-		const x1 = maths.getRandomIntInclusive(-1200,+1200);
+		const x1 = maths.getRandomIntInclusive(-2400,+2400);
 		const y1 = maths.getRandomIntInclusive(-1200,+1200);
 
 		let linepoints = '';
 
-		for (let i = 1; i <= this.lines; i++) {
+		for (let i = 1; i <= this.lineSegments; i++) {
 			linepoints += ` ${maths.getRandomIntInclusive(-1200,+1200)},${maths.getRandomIntInclusive(-1200,+1200)}`
 		}
 
-		newNode.setAttribute('d', `M ${x1},${y1} ${linepoints}`);
 
 
-		if (ssg.childElementCount > this.copies)
+		while (ssg.childElementCount > this.lineCount)
 		{
-			ssg.firstElementChild.remove();
+			ssg.lastElementChild.remove();
 		}
 
-
+		ssg.lastElementChild.setAttribute('d', `M ${x1},${y1} ${linepoints}`);
 		// trying to get the viewport in svg units:
 		//console.log('output.getBoundingClientRect', this.element.output.getBoundingClientRect());
 		//console.log('output.getBBox', this.element.output.getBBox());
@@ -96,11 +108,11 @@ class LineScreensaver extends Screensaver {
 
 	getForm() {
 		const result = `
-			<label for="input-lines">line segments</label>
-			<input id="input-lines" type="number" name="lines" title="lines" min="1" value="1" max="10"/>
+			<label for="setting-line-count">line count</label>
+			<input id="setting-line-count" type="number" name="lineCount" title="line count" min="1" value="1" max="10"/>
 
-			<label for="input-copies">copies</label>
-			<input id="input-copies" type="number" name="copies" title="copies" min="1" value="1" max="10"/>
+			<label for="setting-line-segments">line segments</label>
+			<input id="setting-line-segments" type="number" name="lineSegments" title="line segments" min="1" value="1" max="10"/>
 		`;
 		return result;
 	}
@@ -111,23 +123,23 @@ class LineScreensaver extends Screensaver {
 	//
 
 	/**	@returns {number}	*/
-	get lines() {
-		return parseInt(this.element.lines.value);
+	get lineCount() {
+		return parseInt(this.element.lineCount.value);
 	}
 
-	/**	@param {number} lines	*/
-	set lines(lines) {
-		this.element.lines.value = Math.round(lines);
+	/**	@param {number} lineCount	*/
+	set lineCount(lineCount) {
+		this.element.lineCount.value = Math.round(lineCount);
 	}
 
 	/**	@returns {number}	*/
-	get copies() {
-		return parseInt(this.element.copies.value);
+	get lineSegments() {
+		return parseInt(this.element.lineSegments.value);
 	}
 
-	/**	@param {number} copies	*/
-	set copies(copies) {
-		this.element.copies.value = Math.round(copies);
+	/**	@param {number} lineSegments	*/
+	set lineSegments(lineSegments) {
+		this.element.lineSegments.value = Math.round(lineSegments);
 	}
 
 
