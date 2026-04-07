@@ -79,6 +79,11 @@ class LineScreensaver extends Screensaver {
 		}
 
 
+		// trying to get the viewport in svg units:
+		//console.log('output.getBoundingClientRect', this.element.output.getBoundingClientRect());
+		//console.log('output.getBBox', this.element.output.getBBox());
+		//console.log('svg.getBoundingClientRect', this.element.svg.getBoundingClientRect());
+		//console.log('svg.getBBox', this.element.svg.getBBox());
 
 	}/* update */
 
