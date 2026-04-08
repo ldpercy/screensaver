@@ -46,67 +46,78 @@
 				<option>peachpuff</option>
 			</select>
 
-			<label><h3>fill</h3></label>
 
-			<label for="input-startColour">colour</label>
-			<input type="color" name="startColour" id="input-startColour" value="#ffa500">
-
-
-			<label for="input-fillOpacity">
-				fill-opacity
-			</label>
-			<input type="range" name="fillOpacity" id="input-fillOpacity" value="0.5" min="0" max="1" step="0.1">
-
-			<label for="input-fillRule">fill rule</label>
-			<select id="input-fillRule" name="fillRule" size="2">
-				<option value="evenodd" selected>evenodd</option>
-				<option value="nonzero">nonzero</option>
-			</select>
+			<details open>
+				<summary><h3>fill</h3></summary>
+				<div>
+					<!-- <label></label> -->
+					<label for="input-startColour">colour</label>
+					<input type="color" name="startColour" id="input-startColour" value="#ffa500">
 
 
-			<label><h3>stroke</h3></label>
+					<label for="input-fillOpacity">
+						fill-opacity
+					</label>
+					<input type="range" name="fillOpacity" id="input-fillOpacity" value="0.5" min="0" max="1" step="0.1">
 
-			<label for="input-strokeWidth">stroke-width</label>
-			<input
-				id="input-strokeWidth"
-				type="string"
-				name="strokeWidth"
-				title="stroke-width"
-				value="2em"
-			>
-
-			<label for="input-strokeLinejoin">stroke-linejoin</label>
-			<select id="input-strokeLinejoin" name="strokeLinejoin">
-				<option value="miter" selected>miter</option>
-				<option value="round">round</option>
-				<option value="bevel">bevel</option>
-				<option value="arcs">arcs (unsupported)</option>
-				<option value="miter-clip">miter-clip (unsupported)</option>
-			</select>
+					<label for="input-fillRule">fill rule</label>
+					<select id="input-fillRule" name="fillRule" size="2">
+						<option value="evenodd" selected>evenodd</option>
+						<option value="nonzero">nonzero</option>
+					</select>
+				</div>
+			</details>
 
 
-			<label><h3>stroke-dash</h3></label>
 
-			<label for="input-antCrawl">
-				<input type="checkbox" name="antCrawl" id="input-antCrawl">
-				dash & animate
-			</label>
+			<details open>
+				<summary><h3>stroke</h3></summary>
+				<div>
 
-			<label for="input-strokeDasharray">stroke-dasharray</label>
-			<input
-				id="input-strokeDasharray"
-				type="string"
-				name="strokeDasharray"
-				title="stroke-dasharray"
-				value="1ex 10ex"
-			>
+					<label for="input-strokeWidth">stroke-width</label>
+					<input
+						id="input-strokeWidth"
+						type="string"
+						name="strokeWidth"
+						title="stroke-width"
+						value="2em"
+					>
 
-			<label for="input-strokeLinecap">stroke-linecap</label>
-			<select id="input-strokeLinecap" name="strokeLinecap">
-				<option selected>butt</option>
-				<option>round</option>
-				<option>square</option>
-			</select>
+					<label for="input-strokeLinejoin">stroke-linejoin</label>
+					<select id="input-strokeLinejoin" name="strokeLinejoin">
+						<option value="miter" selected>miter</option>
+						<option value="round">round</option>
+						<option value="bevel">bevel</option>
+						<option value="arcs">arcs (unsupported)</option>
+						<option value="miter-clip">miter-clip (unsupported)</option>
+					</select>
+
+
+					<label><h4>stroke-dash</h4></label>
+
+					<label for="input-antCrawl">
+						<input type="checkbox" name="antCrawl" id="input-antCrawl">
+						dash & animate
+					</label>
+
+					<label for="input-strokeDasharray">stroke-dasharray</label>
+					<input
+						id="input-strokeDasharray"
+						type="string"
+						name="strokeDasharray"
+						title="stroke-dasharray"
+						value="1ex 10ex"
+					>
+
+					<label for="input-strokeLinecap">stroke-linecap</label>
+					<select id="input-strokeLinecap" name="strokeLinecap">
+						<option selected>butt</option>
+						<option>round</option>
+						<option>square</option>
+					</select>
+
+				</div>
+			</details>
 
 
 			<label><h3>page</h3></label>
