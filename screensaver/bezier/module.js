@@ -92,8 +92,16 @@ class BezierScreensaver extends Screensaver {
 			ssg.lastElementChild.remove();
 		}
 
+
+
 		if (this.lineType === "quadraticClosed") {
 			d = `M ${startPoint} Q  ${linepoints} ${this.randomPoint()} ${startPoint} z`;
+		}
+		else if (this.lineType === "smoothQuadraticOpen") {
+			d = `M ${startPoint} T  ${linepoints}`;
+		}
+		else if (this.lineType === "smoothQuadraticClosed") {
+			d = `M ${startPoint} T  ${linepoints} ${this.randomPoint()} ${startPoint} z`;
 		}
 		else {
 			d = `M ${startPoint} Q  ${linepoints}`;
@@ -131,11 +139,17 @@ class BezierScreensaver extends Screensaver {
 	getForm() {
 		const result = `
 			<label for="setting-lineType">type</label>
-			<select id="setting-lineType" name="lineType" title="line type" size=3">
+			<select id="setting-lineType" name="lineType" title="line type" size="7">
 				<option value="quadraticOpen">quadratic - open</option>
-				<option value="quadraticClosed" selected>quadratic - closed</option>
+				<option value="quadraticClosed">quadratic - closed</option>
+				<option value="smoothQuadraticOpen" selected>smooth quadratic - open</option>
+				<option value="smoothQuadraticClosed">smooth quadratic - closed</option>
+
 				<!-- <option>cubic</option> -->
 			</select>
+
+
+
 
 			<label for="setting-lineCount">line count</label>
 			<input id="setting-lineCount" type="number" name="lineCount" title="line count" min="1" value="1" max="10"/>
