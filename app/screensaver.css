@@ -2,21 +2,27 @@
 **	screensaver.css
 */
 
-:root {
+
+
+
+#screensaver-output {
+
 	--stroke-dasharray: 1ex 10ex;
 	--to-stroke-dashoffset: 11ex;
 	--stroke-width: 2em;
 	--stroke-linejoin: miter;
 	--stroke-linecap: butt;
-}
+	--blend-mode: normal;
 
-
-svg, svg * {
-	transition-property: d, x, y, width, height, cx, cy, r, rx, ry, transform, rotate;
 	transition-duration: 0.5s;
 	transition-timing-function: linear;
 	transition-behavior: allow-discrete;
 
+	mix-blend-mode: var(--blend-mode);
+
+	svg, svg * {
+		transition-property: d, x, y, width, height, cx, cy, r, rx, ry, transform, rotate;
+	}
 }
 
 

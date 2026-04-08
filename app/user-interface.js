@@ -356,7 +356,7 @@ class UserInterface {
 
 	/** @param {string} strokeWidth	*/
 	set strokeWidth(strokeWidth) {
-		document.body.style.setProperty('--stroke-width', strokeWidth);
+		this.element.output.style.setProperty('--stroke-width', strokeWidth);
 		this.element.strokeWidth.value = strokeWidth;
 	}
 
@@ -367,12 +367,12 @@ class UserInterface {
 
 	/** @param {string} strokeDasharray	*/
 	set strokeDasharray(strokeDasharray) {
-		document.body.style.setProperty('--stroke-dasharray', strokeDasharray);
+		this.element.output.style.setProperty('--stroke-dasharray', strokeDasharray);
 
 		const dasharaySum = strokeDasharray.trim().split(' ').join(' + ');
 		//console.debug(dasharaySum);
 
-		document.body.style.setProperty('--to-stroke-dashoffset',`calc(${dasharaySum})`);
+		this.element.output.style.setProperty('--to-stroke-dashoffset',`calc(${dasharaySum})`);
 		this.element.strokeDasharray.value = strokeDasharray;
 	}
 
@@ -387,7 +387,7 @@ class UserInterface {
 
 	/** @param {string} strokeLinejoin	*/
 	set strokeLinejoin(strokeLinejoin) {
-		document.body.style.setProperty('--stroke-linejoin', strokeLinejoin);
+		this.element.output.style.setProperty('--stroke-linejoin', strokeLinejoin);
 		this.element.strokeLinejoin.value = strokeLinejoin;
 	}
 
@@ -399,7 +399,7 @@ class UserInterface {
 
 	/** @param {string} strokeLinecap	*/
 	set strokeLinecap(strokeLinecap) {
-		document.body.style.setProperty('--stroke-linecap', strokeLinecap);
+		this.element.output.style.setProperty('--stroke-linecap', strokeLinecap);
 		this.element.strokeLinecap.value = strokeLinecap;
 	}
 
