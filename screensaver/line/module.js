@@ -26,7 +26,7 @@ class LineScreensaver extends Screensaver {
 		lineType			: 'setting-lineType',
 		lineCount			: 'setting-lineCount',
 		lineSegments		: 'setting-lineSegments',
-		output				: 'output',
+		output				: 'screensaver-output',
 		svg					: 'screensaver-svg',
 	};
 

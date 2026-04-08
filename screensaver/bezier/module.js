@@ -24,7 +24,7 @@ class BezierScreensaver extends Screensaver {
 		lineType			: 'setting-lineType',
 		lineCount			: 'setting-lineCount',
 		lineSegments		: 'setting-lineSegments',
-		output				: 'output',
+		output				: 'screensaver-output',
 		svg					: 'screensaver-svg',
 	};
 
@@ -124,9 +124,13 @@ class BezierScreensaver extends Screensaver {
 		return `${maths.getRandomIntInclusive(xMin,xMax)},${maths.getRandomIntInclusive(yMin,yMax)}`;
 	}
 
+	randomPointConservative() {
+		return `${maths.getRandomIntInclusive(xMin/2,xMax/2)},${maths.getRandomIntInclusive(yMin/2,yMax/2)}`;
+	}
+
 	/** @return {string}  */
 	quadraticPoint() {
-		return `${this.randomPoint()} ${this.randomPoint()}`;
+		return `${this.randomPointConservative()} ${this.randomPoint()}`;
 	}
 
 

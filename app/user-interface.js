@@ -25,7 +25,7 @@ class UserInterface {
 		strokeLinejoin	: 'input-strokeLinejoin',
 		strokeLinecap	: 'input-strokeLinecap',
 		antCrawl		: 'input-antCrawl',
-
+		output			: 'screensaver-output',
 	};
 
 
@@ -232,15 +232,15 @@ class UserInterface {
 		//event.preventDefault();
 
 		// a very quick naive attempt that doesnb't quite work - needs some svg cleaning and rebuilding
-		this.element.saveLink.download = 'screensaver_download.svg';
+		this.element.saveLink.download = `screensaver_${this.selectedScreensaver}.svg`;
 
-		const polygonGroup = document.getElementById('screensaver-group').innerHTML;
+		const screensaverGroup = document.getElementById('screensaver-group').innerHTML;
 
 		const svg= `
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" >
-				<title>polygon</title>
+				<title>screensaver - ${this.selectedScreensaver}</title>
 				<g id="screensaver-group" style="stroke:black;fill:grey;fill-opacity:50%;">
-					${polygonGroup}
+					${screensaverGroup}
 				</g>
 			</svg>
 		`;
