@@ -4,7 +4,7 @@ import * as maths from "../../[html-common]/module/Maths.js";
 
 
 
-console.log('line module');	// this only runs the _first_ time the module is loaded - not sure what the stipulations around that are though, whether it's possible to unload etc
+//console.log('bezier module');	// this only runs the _first_ time the module is loaded - not sure what the stipulations around that are though, whether it's possible to unload etc
 
 
 
@@ -17,9 +17,7 @@ const yMin			= -1200;
 const yMax			= +1200;
 
 
-class LineScreensaver extends Screensaver {
-
-
+class BezierScreensaver extends Screensaver {
 
 
 	elementMap = {
@@ -33,16 +31,16 @@ class LineScreensaver extends Screensaver {
 
 	constructor() {
 		super();
-		console.log('LineScreensaver constructor');
+		console.log('BezierScreensaver constructor');
 	}
 
 
 
 
 	init() {
-		console.log('LineScreensaver init');
+		console.log('BezierScreensaver init');
 		this.element = HTMLApp.buildElementMap(document, this.elementMap);
-		//document.getElementById('screensaver-group').innerHTML = '<line x="-400" y="-300" width="600" height="500"></line>';
+
 		this.update();
 	}
 
@@ -86,7 +84,7 @@ class LineScreensaver extends Screensaver {
 		let linepoints = '';
 
 		for (let i = 1; i <= this.lineSegments; i++) {
-			linepoints += ` ${this.randomPoint()}`
+			linepoints += ` ${this.quadraticPoint()}`
 		}
 
 		while (ssg.childElementCount > this.lineCount)
@@ -94,7 +92,12 @@ class LineScreensaver extends Screensaver {
 			ssg.lastElementChild.remove();
 		}
 
-		d = `M ${startPoint} ${linepoints}`;
+		if (this.lineType === "quadraticClosed") {
+			d = `M ${startPoint} Q  ${linepoints} ${this.randomPoint()} ${startPoint} z`;
+		}
+		else {
+			d = `M ${startPoint} Q  ${linepoints}`;
+		}
 
 		ssg.lastElementChild.setAttribute('d', d);
 
@@ -113,8 +116,10 @@ class LineScreensaver extends Screensaver {
 		return `${maths.getRandomIntInclusive(xMin,xMax)},${maths.getRandomIntInclusive(yMin,yMax)}`;
 	}
 
-
-
+	/** @return {string}  */
+	quadraticPoint() {
+		return `${this.randomPoint()} ${this.randomPoint()}`;
+	}
 
 
 	settingChange() {
@@ -125,14 +130,12 @@ class LineScreensaver extends Screensaver {
 
 	getForm() {
 		const result = `
-			<!--
 			<label for="setting-lineType">type</label>
 			<select id="setting-lineType" name="lineType" title="line type" size=3">
-				<option selected>straight</option>
-				<option>quadratic</option>
-				<option>cubic</option>
+				<option value="quadraticOpen">quadratic - open</option>
+				<option value="quadraticClosed" selected>quadratic - closed</option>
+				<!-- <option>cubic</option> -->
 			</select>
-			-->
 
 			<label for="setting-lineCount">line count</label>
 			<input id="setting-lineCount" type="number" name="lineCount" title="line count" min="1" value="1" max="10"/>
@@ -182,7 +185,7 @@ class LineScreensaver extends Screensaver {
 
 
 
-}/* LineScreensaver */
+}/* BezierScreensaver */
 
 
-export const instance = new LineScreensaver();
+export const instance = new BezierScreensaver();
