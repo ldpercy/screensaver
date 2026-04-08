@@ -25,6 +25,7 @@ class UserInterface {
 		strokeLinejoin	: 'input-strokeLinejoin',
 		strokeLinecap	: 'input-strokeLinecap',
 		antCrawl		: 'input-antCrawl',
+		blendMode		: 'input-blendMode',
 		output			: 'screensaver-output',
 	};
 
@@ -109,6 +110,11 @@ class UserInterface {
 			query: '#input-antCrawl',
 			type: 'change',
 			listener: (event)=> { this.antCrawl = event.target.checked }
+		},
+		{
+			query: '#input-blendMode',
+			type: 'change',
+			listener: (event)=> { this.blendMode = event.target.value }
 		},
 		{
 			element: document,
@@ -417,6 +423,19 @@ class UserInterface {
 			this.element.checked = false;
 		}
 
+	}
+
+
+
+	/** @returns {string}	*/
+	get blendMode() {
+		return this.element.blendMode.value;
+	}
+
+	/** @param {string} blendMode	*/
+	set blendMode(blendMode) {
+		this.element.output.style.setProperty('--blend-mode', blendMode);
+		this.element.blendMode.value = blendMode;
 	}
 
 
