@@ -7,3 +7,11 @@ Screensaver
 </p>
 
 
+Experimental/proof-of-concept graphics demos in HTML, CSS, SVG & JavaScript.
+
+
+> [!WARNING]
+> This is all in-browser which can be pretty inefficient - some settings will chew up a lot of processor time.
+
+
+
