@@ -1,11 +1,13 @@
 /*
-**	html.css
+**	screensaverApp.css
 */
+
+@import "./user-interface.css";
+@import "./screensaver-output.css";
+
 
 :root {
 	--project-colour: midnightblue;
-
-
 }
 
 
