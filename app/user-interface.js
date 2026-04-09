@@ -9,7 +9,15 @@ import * as stylePreset from "../screensaver/style-preset.js";
 
 class UserInterface {
 
+
 	element = {};
+
+
+	constructor() {
+		this.element = HTMLApp.buildElementMap(document, this.elementMap)
+		HTMLApp.addEventListeners(this.eventListeners, this);
+		//console.debug('user-interface constructor');
+	}
 
 	/** @type {object}
 	 * Note to self: like this typechecking on elements is totally sidestepped - need to find typesafe ways of doing this
@@ -27,13 +35,11 @@ class UserInterface {
 		antCrawl		: 'input-antCrawl',
 		blendMode		: 'input-blendMode',
 		output			: 'screensaver-output',
+		appInfoDialog	: 'dialog-appInfo',
 	};
 
 
-	keyFunctionMap = {
-		'?'	: this.toggleAppInfoDialog,
-		' ' : this.playPauseHandler,
-	};
+
 
 
 	eventListeners = [
@@ -45,7 +51,7 @@ class UserInterface {
 		{
 			query: '#button-playPause',
 			type: 'click',
-			listener: (event)=> { screensaverApp.animationPlayPause() }
+			listener: (event)=> { screensaverApp.togglePlayState() }
 		},
 		// {
 		// 	query: '#input-screensaver-preset',
@@ -129,16 +135,33 @@ class UserInterface {
 		{
 			query: '#button-showAppInfo',
 			type: 'click',
-			listener: this.toggleAppInfoDialog,
+			listener: this.showAppInfoDialog,
+		},
+		{
+			query: '#dialog-appInfo',
+			type: 'close',
+			listener: this.appInfoDialogClose,
 		},
 	];
 
 
-	constructor() {
-		this.element = HTMLApp.buildElementMap(document, this.elementMap)
-		HTMLApp.addEventListeners(this.eventListeners, this);
-		//console.debug('user-interface constructor');
-	}
+
+	keyFunctionMap = {
+		'?'	: this.showAppInfoDialog.bind(this),	// nb this might need attention
+		' ' : this.playPauseHandler,
+	};
+
+
+
+	keyboardHandler(event) {
+		if (!event.altKey && !event.ctrlKey && !event.metaKey) {
+
+			if (this.keyFunctionMap[event.key]) {
+				event.preventDefault();
+				this.keyFunctionMap[event.key]();
+			}
+		}
+	}/* keyboardHandler */
 
 
 	setUrlParameters() {
@@ -156,7 +179,7 @@ class UserInterface {
 
 
 	playPauseHandler() {
-		screensaverApp.animationPlayPause();
+		screensaverApp.togglePlayState();
 	}
 
 
@@ -191,19 +214,17 @@ class UserInterface {
 
 
 
-	keyboardHandler(event) {
-		if (!event.altKey && !event.ctrlKey && !event.metaKey) {
+	/*
+	this method is not receiving class 'this', it's receiving
+	*/
+	showAppInfoDialog() {
+		console.debug(this);
+		screensaverApp.playState = 'paused';
+		this.element.appInfoDialog.showModal();
+	}
 
-			if (this.keyFunctionMap[event.key]) {
-				event.preventDefault();
-				this.keyFunctionMap[event.key]();
-			}
-		}
-	}/* keyboardHandler */
-
-
-	toggleAppInfoDialog() {
-		// console.debug('someone write this');
+	appInfoDialogClose() {
+		//screensaverApp.playState = this.screensaverState;
 	}
 
 

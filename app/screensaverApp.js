@@ -21,7 +21,7 @@ class ScreensaverApp extends HTMLApp {
 
 
 	currentModule = undefined;
-	state = 'paused';
+	#playState = 'paused';
 
 
 	documentDOMContentLoaded() {
@@ -74,7 +74,7 @@ class ScreensaverApp extends HTMLApp {
 			document.getElementById('form-screensaver-settings').innerHTML = this.currentModule.instance.getForm();
 
 			this.currentModule.instance.init();
-			this.animationPlay();
+			this.playState = 'playing';
 		// }
 		// catch (error) {
 		// 	console.error(`Error for '${name}'`, error);
@@ -84,27 +84,32 @@ class ScreensaverApp extends HTMLApp {
 	}/* loadScreensaver */
 
 
+	/** @param {string} state*/
+	set playState(state) {
 
-	animationPlay() {
-		this.currentModule.instance.play();
-		this.state = 'playing';
+		if (state === 'playing') {
+			this.currentModule.instance.play();
+			this.#playState = 'playing';
+		}
+		else if (state === 'paused') {
+			this.currentModule.instance.pause();
+			this.#playState = 'paused';
+		}
 	}
 
-	animationPause() {
-		this.currentModule.instance.pause();
-		this.state = 'paused';
+	get playState()	{
+		return this.#playState;
 	}
 
-	animationPlayPause() {
-		//console.log('animationPlayPause',this.state);
-		if (this.state === 'playing') {
-			this.animationPause();
+	togglePlayState() {
+		if (this.playState === 'paused') {
+			this.playState = 'playing';
 		}
 		else {
-			this.animationPlay();
+			this.playState = 'paused';
 		}
-		console.log('animationPlayPause',this.state);
-	}/* animationPlayPause */
+	}
+
 
 
 	settingChange() {
