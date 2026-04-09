@@ -28,6 +28,10 @@
 				<option value="bezier" selected>bezier</option>
 				<option value="rect">rect</option>
 			</select>
+
+
+
+			<button type="button" id="button-showAppInfo"><strong>🛈 Screensaver help</strong></button>
 		</form>
 
 
@@ -181,6 +185,27 @@
 			-->
 		</svg>
 	</output>
+
+
+	<dialog id="dialog-appInfo" closedby="any">
+		<h1>
+			<a href="https://github.com/ldpercy/screensaver/">Screensaver</a>
+			<a href="https://github.com/ldpercy/screensaver/releases/tag/v0.0.0">v0.0.0</a>
+			by <a href="https://github.com/ldpercy/">ldpercy</a>
+		</h1>
+
+		<h2>Keyboard shortcuts</h2>
+		<dl>
+			<dt><kbd>␣</kbd> (space)</dt>
+			<dd>Toggle play/pause</dd>
+
+			<dt><kbd>?</kbd></dt>
+			<dd>Show this dialog</dd>
+		</dl>
+
+
+	</dialog>
+
 
 </body>
 </html>
