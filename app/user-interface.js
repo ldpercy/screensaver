@@ -14,9 +14,10 @@ class UserInterface {
 
 
 	constructor() {
+		//console.debug('user-interface constructor');
 		this.element = HTMLApp.buildElementMap(document, this.elementMap)
 		HTMLApp.addEventListeners(this.eventListeners, this);
-		//console.debug('user-interface constructor');
+		this.keyboardHandler = HTMLApp.newKeyboardHandler(this.keyFunctionMap,this);
 	}
 
 	/** @type {object}
@@ -125,7 +126,8 @@ class UserInterface {
 		{
 			element: document,
 			type: 'keydown',
-			listener: this.keyboardHandler
+			//listener: this.keyboardHandler							//	Use this for a local keyboard handler
+			listener: (event) => { this.keyboardHandler(event); }		//	Use this for one generated from HTMLApp
 		},
 		{
 			query: 'select,input',
@@ -147,21 +149,12 @@ class UserInterface {
 
 
 	keyFunctionMap = {
-		'?'	: this.showAppInfoDialog.bind(this),	// nb this might need attention
+		'?'	: this.showAppInfoDialog,		// 'this' binding now being handled by the newKeyboardHandler from htmlApp
 		' ' : this.playPauseHandler,
 	};
 
 
 
-	keyboardHandler(event) {
-		if (!event.altKey && !event.ctrlKey && !event.metaKey) {
-
-			if (this.keyFunctionMap[event.key]) {
-				event.preventDefault();
-				this.keyFunctionMap[event.key]();
-			}
-		}
-	}/* keyboardHandler */
 
 
 	setUrlParameters() {
