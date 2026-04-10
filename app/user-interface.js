@@ -186,7 +186,7 @@ class UserInterface {
 
 		const preset  = stylePreset[presetName];
 
-		console.log('loadPreset', presetName, preset );
+		//console.log('loadPreset', presetName, preset );
 
 		if (preset) {
 			for (let key in preset.polygon) {
@@ -211,7 +211,7 @@ class UserInterface {
 	this method is not receiving class 'this', it's receiving
 	*/
 	showAppInfoDialog() {
-		console.debug(this);
+		// console.debug(this);
 		screensaverApp.playState = 'paused';
 		this.element.appInfoDialog.showModal();
 	}
