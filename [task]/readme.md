@@ -1,7 +1,7 @@
 Task
 ====
 
-* Add info dialog
+
 * Add global settings for interval and transition timing
 * Seeded random numbers
 * Separate fill/stroke animations for different elements
@@ -35,4 +35,5 @@ Task
 
 
 ### Done
+* Add info dialog
 * Scheme switching back online
