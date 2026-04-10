@@ -20,19 +20,29 @@
 			<button type="button" id="button-playPause"><strong>⏯ play / pause</strong></button>
 
 			<a id="link-save" href="#save" title="Save">Save 🖫</a>  <!-- download="foo.text" -->
+			<button type="button" id="button-showAppInfo"><strong>🛈 Screensaver help</strong></button>
+
 
 			<select name="screensaver" id="select-screensaver" size="5">
 				<option value="polygon">polygon</option>
 				<option value="circle">circle</option>
 				<option value="line">line</option>
-				<option value="bezier" selected>bezier</option>
+				<option value="bezier">bezier</option>
 				<option value="rect">rect</option>
 			</select>
 
 
-
-			<button type="button" id="button-showAppInfo"><strong>🛈 Screensaver help</strong></button>
 		</form>
+		<form id="form-screensaver-settings">
+			<!--
+			This will be populated by the individual screensaver
+			-->
+		</form>
+
+	</div>
+
+	<div class="control-group control-right">
+
 
 
 		<form id="form-style" name="form-style">
@@ -62,7 +72,7 @@
 					<input type="range" name="fillOpacity" id="input-fillOpacity" value="0.5" min="0" max="1" step="0.1">
 
 					<label for="input-fillRule">fill rule</label>
-					<select id="input-fillRule" name="fillRule" size="2">
+					<select id="input-fillRule" name="fillRule" size="1">
 						<option value="evenodd" selected>evenodd</option>
 						<option value="nonzero">nonzero</option>
 					</select>
@@ -153,14 +163,7 @@
 		</form>
 
 
-	</div>
 
-	<div class="control-group control-right">
-		<form id="form-screensaver-settings">
-			<!--
-			This will be populated by the individual screensaver
-			-->
-		</form>
 	</div>
 
 	<output id="screensaver-output">
