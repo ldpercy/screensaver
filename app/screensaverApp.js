@@ -10,7 +10,7 @@ import { ui } from "./user-interface.js";
 
 class ScreensaverApp extends HTMLApp {
 
-	appVersion = 'v0.0.0';
+	appVersion = 'v0.1.0';
 	projectColour = 'midnightblue';
 	appInfo = [`%c
 		Screensaver ${this.appVersion} by ldpercy
