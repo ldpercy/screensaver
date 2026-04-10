@@ -51,9 +51,12 @@
 
 
 #select-screensaver {
-	font-size: 1.2rem;
-	font-weight:bold;
-	height: 5rem;
+	height: 7rem;
+
+	option[selected] {
+		font-size: 1.5rem;
+		font-weight:bold;
+	}
 }
 
 

@@ -47,7 +47,7 @@ class UserInterface {
 		{
 			query: '#select-screensaver',
 			type: 'change',
-			listener: (event)=> { screensaverApp.loadScreensaver(event.target.value) }
+			listener: (event)=> { this.selectScreensaver(event.target.value) }
 		},
 		{
 			query: '#button-playPause',
@@ -156,6 +156,16 @@ class UserInterface {
 
 
 
+	selectScreensaver(screensaverName) {
+		//this.element.screensaverSelect[screensaverName].selected = true;
+		//console.debug(this.element.screensaverSelect);
+		//console.debug(this.element.screensaverSelect.selectedIndex);
+		this.selectedScreensaver = screensaverName;
+		screensaverApp.loadScreensaver(screensaverName);
+	}
+
+
+
 
 	setUrlParameters() {
 
@@ -176,9 +186,6 @@ class UserInterface {
 	}
 
 
-	loadScreensaver(sreeensaverName) {
-		// load the screensaver
-	}
 
 
 
@@ -325,8 +332,17 @@ class UserInterface {
 
 	/**	@param {string} screensaverName	*/
 	set selectedScreensaver(screensaverName) {
+
 		this.element.screensaverSelect.value = screensaverName;
-	}
+		// feels like there must be abetter way to do this...:
+		Array.from(this.element.screensaverSelect.options).forEach(element => {
+			element.removeAttribute('selected')
+		});
+		Array.from(this.element.screensaverSelect.selectedOptions).forEach(element => {
+			element.setAttribute('selected',true);
+		});
+
+	}/* set selectedScreensaver */
 
 
 

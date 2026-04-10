@@ -19,7 +19,7 @@ class ScreensaverApp extends HTMLApp {
 		`color: light-dark(hsl(from ${this.projectColour} h s 30), hsl(from ${this.projectColour} h s 70));`,
 	];
 
-
+	defaultScreensaver = 'bezier';
 	currentModule = undefined;
 	#playState = 'paused';
 
@@ -42,7 +42,8 @@ class ScreensaverApp extends HTMLApp {
 
 		ui.updateStyle();
 		ui.update();
-		this.loadScreensaver(ui.selectedScreensaver);
+		ui.selectedScreensaver = this.defaultScreensaver;
+		this.loadScreensaver(this.defaultScreensaver);
 
 	}
 
