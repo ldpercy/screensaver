@@ -21,6 +21,8 @@
 .ui-panel {
 	font-family:sans-serif;
 
+	min-width: 14rem;
+
 	display: grid;
 	border:1px solid silver;
 	background-color:#ccc5;

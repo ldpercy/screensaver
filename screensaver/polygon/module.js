@@ -55,7 +55,7 @@ class PolygonScreensaver extends Screensaver {
 
 
 	redraw() {
-		console.debug('polygon.redraw', this.element);
+		//console.debug('polygon.redraw', this.element);
 
 		const polygonGroup = this.getPolygonPath(
 			this.sides,

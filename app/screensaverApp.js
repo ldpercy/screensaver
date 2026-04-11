@@ -3,7 +3,8 @@
 //
 
 import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
-import { ui } from "./user-interface.js";
+import { appPanel } from "./panel-app.js";
+import { stylePanel } from "./panel-style.js";
 
 
 
@@ -40,9 +41,8 @@ class ScreensaverApp extends HTMLApp {
 		// 	ui.loadPreset(this.getUrlParameter('preset'));
 		// }
 
-		ui.updateStyle();
-		ui.update();
-		ui.selectedScreensaver = this.defaultScreensaver;
+		stylePanel.updateStyle();
+		appPanel.selectedScreensaver = this.defaultScreensaver;
 		this.loadScreensaver(this.defaultScreensaver);
 
 	}
