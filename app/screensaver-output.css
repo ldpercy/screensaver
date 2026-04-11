@@ -56,9 +56,9 @@
 
 
 #screensaver-group {
-	--fill-colour: orange;
+	--fill-colour: cyan;
 	--fill-opacity: 0.7;
-	--stroke-colour: red;
+	--stroke-colour: orange;
 	--stroke-opacity: 0.7;
 
 	--degrees:0;
@@ -76,7 +76,6 @@
 		mix-blend-mode: var(--blend-mode);
 		fill:	lch(from var(--fill-colour)		l c calc(h + var(--degrees)) / var(--fill-opacity)) ;
 		stroke:	lch(from var(--stroke-colour)	l c calc(h + var(--degrees)) / var(--stroke-opacity)) ;
-
 	}
 
 

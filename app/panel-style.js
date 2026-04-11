@@ -25,6 +25,10 @@ class StylePanel {
 	elementMap = {
 		fillColour		: 'input-fillColour',
 		fillOpacity		: 'input-fillOpacity',
+
+		strokeColour	: 'input-strokeColour',
+		strokeOpacity	: 'input-strokeOpacity',
+
 		strokeWidth		: 'input-strokeWidth',
 		strokeDasharray	: 'input-strokeDasharray',
 		strokeLinejoin	: 'input-strokeLinejoin',
@@ -40,24 +44,6 @@ class StylePanel {
 
 
 	eventListeners = [
-		// {
-		// 	query: '#input-screensaver-preset',
-		// 	type: 'change',
-		// 	listener: (event)=> { this.loadScreensaverPreset(event.target.value) }
-		// },
-		{
-			query: '#form-screensaver-settings',
-			type: 'change',
-			listener: this.settingChangeListener
-		},
-
-		{
-			query: '#button-fillColourRandom',
-			type: 'click',
-			listener: (event)=> { this.element.fillColour.value = randomColourHex(); }
-		},
-
-
 		{
 			query: '#input-style-preset',
 			type: 'change',
@@ -68,22 +54,42 @@ class StylePanel {
 			type: 'change',
 			listener: this.styleChangeListener
 		},
+		// fill
+		{
+			query: '#input-fillColour',
+			type: 'change',
+			listener: (event)=> { this.fillColour = event.target.value; }
+		},
+		{
+			query: '#button-fillColourRandom',
+			type: 'click',
+			listener: ()=> { this.fillColour = randomColourHex(); }
+		},
+		// stroke
+		{
+			query: '#input-strokeColour',
+			type: 'change',
+			listener: (event)=> { this.strokeColour = event.target.value; }
+		},
+		{
+			query: '#button-strokeColourRandom',
+			type: 'click',
+			listener: ()=> { this.strokeColour = randomColourHex(); }
+		},
+
 		{
 			query: '#input-strokeDasharray',
 			type: 'change',
-			//listener: this.setStrokeDasharray,
 			listener: (event)=> { this.strokeDasharray = event.target.value }
 		},
 		{
 			query: '#input-strokeWidth',
 			type: 'change',
-			//listener: this.setStrokeWidth,
 			listener: (event)=> { this.strokeWidth = event.target.value }
 		},
 		{
 			query: '#input-strokeLinejoin',
 			type: 'change',
-			//listener: this.setStrokeLinejoin,
 			listener: (event)=> { this.strokeLinejoin = event.target.value }
 		},
 		{
@@ -101,6 +107,7 @@ class StylePanel {
 			type: 'change',
 			listener: (event)=> { this.dashAnimate = event.target.checked }
 		},
+		// page
 		{
 			query: '#input-blendMode',
 			type: 'change',
@@ -140,7 +147,7 @@ class StylePanel {
 	}
 
 	styleChangeListener(event) {
-		console.debug('styleChangeListener',event)
+		//console.debug('styleChangeListener',event)
 		this.updateStyle();
 	}
 
@@ -179,8 +186,7 @@ class StylePanel {
 			document.getElementById('group-grid').style.display = 'none';
 		}
 
-		const fillColour =  document.forms['form-style']['input-fillColour'].value;
-		document.getElementById('screensaver-group').style.setProperty('--fill-colour',fillColour);
+
 
 		const opacity =  document.forms['form-style']['input-fillOpacity'].value;
 		document.getElementById('screensaver-group').style.setProperty('--fill-opacity', opacity);
@@ -220,6 +226,7 @@ class StylePanel {
 	/** @param {string} fillColour	*/
 	set fillColour(fillColour) {
 		this.element.fillColour.value = fillColour;
+		document.getElementById('screensaver-group').style.setProperty('--fill-colour',fillColour);
 	}
 
 
@@ -232,6 +239,30 @@ class StylePanel {
 	set fillOpacity(fillOpacity) {
 		this.element.fillOpacity.value = fillOpacity;
 	}
+
+	// stroke
+
+	/** @returns {string}	*/
+	get strokeColour() {
+		return this.element.strokeColour.value;
+	}
+
+	/** @param {string} strokeColour	*/
+	set strokeColour(strokeColour) {
+		this.element.strokeColour.value = strokeColour;
+		document.getElementById('screensaver-group').style.setProperty('--stroke-colour', strokeColour);
+	}
+
+	/** @returns {number}	*/
+	get strokeOpacity() {
+		return this.element.strokeOpacity.value;
+	}
+
+	/** @param {number} strokeOpacity	*/
+	set strokeOpacity(strokeOpacity) {
+		this.element.strokeOpacity.value = strokeOpacity;
+	}
+
 
 
 	/** @returns {string}	*/

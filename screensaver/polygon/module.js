@@ -15,7 +15,7 @@ class PolygonScreensaver extends Screensaver {
 
 	constructor() {
 		super();
-		console.log('PolygonScreensaver constructor');
+		//console.log('PolygonScreensaver constructor');
 	}/* constructor */
 
 
@@ -190,13 +190,13 @@ class PolygonScreensaver extends Screensaver {
 			<select name="preset" id="input-screensaver-preset">
 				<!-- <option>-</option> -->
 				<option value="nonagon">nonagon</option>
-				<option value="diPentagram" selected>di-pentagram</option>
-				<option value="diHeptagram">di-heptagram</option>
+				<option value="diPentagram">di-pentagram</option>
+				<option value="diHeptagram" selected>di-heptagram</option>
 				<option value="triHeptadecagram">tri-heptadecagram</option>
 			</select>
 
 			<label for="input-sides">sides</label>
-			<input id="input-sides" type="number" name="sides" title="sides" min="1" value="5"/>
+			<input id="input-sides" type="number" name="sides" title="sides" min="1" value="7"/>
 
 			<label for="input-pointStep">point step</label>
 			<input id="input-pointStep" type="number" name="pointStep" title="pointStep" value="3"/>
