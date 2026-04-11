@@ -23,6 +23,7 @@ class StylePanel {
 	 * Note to self: like this typechecking on elements is totally sidestepped - need to find typesafe ways of doing this
 	 */
 	elementMap = {
+		ssg				: 'screensaver-group',
 		fillColour		: 'input-fillColour',
 		fillOpacity		: 'input-fillOpacity',
 
@@ -65,6 +66,12 @@ class StylePanel {
 			type: 'click',
 			listener: ()=> { this.fillColour = randomColourHex(); }
 		},
+		{
+			query: '#input-fillOpacity',
+			type: 'click',
+			listener: (event)=> { this.fillOpacity = event.target.value; }
+		},
+
 		// stroke
 		{
 			query: '#input-strokeColour',
@@ -75,6 +82,11 @@ class StylePanel {
 			query: '#button-strokeColourRandom',
 			type: 'click',
 			listener: ()=> { this.strokeColour = randomColourHex(); }
+		},
+		{
+			query: '#input-strokeOpacity',
+			type: 'click',
+			listener: (event)=> { this.strokeOpacity = event.target.value; }
 		},
 
 		{
@@ -186,12 +198,6 @@ class StylePanel {
 			document.getElementById('group-grid').style.display = 'none';
 		}
 
-
-
-		const opacity =  document.forms['form-style']['input-fillOpacity'].value;
-		document.getElementById('screensaver-group').style.setProperty('--fill-opacity', opacity);
-
-
 		// this.setStrokeDasharray();
 		// this.setStrokeWidth();
 
@@ -226,7 +232,7 @@ class StylePanel {
 	/** @param {string} fillColour	*/
 	set fillColour(fillColour) {
 		this.element.fillColour.value = fillColour;
-		document.getElementById('screensaver-group').style.setProperty('--fill-colour',fillColour);
+		this.element.ssg.style.setProperty('--fill-colour',fillColour);
 	}
 
 
@@ -238,6 +244,7 @@ class StylePanel {
 	/** @param {number} fillOpacity	*/
 	set fillOpacity(fillOpacity) {
 		this.element.fillOpacity.value = fillOpacity;
+		this.element.ssg.style.setProperty('--fill-opacity', fillOpacity);
 	}
 
 	// stroke
@@ -250,7 +257,7 @@ class StylePanel {
 	/** @param {string} strokeColour	*/
 	set strokeColour(strokeColour) {
 		this.element.strokeColour.value = strokeColour;
-		document.getElementById('screensaver-group').style.setProperty('--stroke-colour', strokeColour);
+		this.element.ssg.style.setProperty('--stroke-colour', strokeColour);
 	}
 
 	/** @returns {number}	*/
@@ -261,6 +268,7 @@ class StylePanel {
 	/** @param {number} strokeOpacity	*/
 	set strokeOpacity(strokeOpacity) {
 		this.element.strokeOpacity.value = strokeOpacity;
+		this.element.ssg.style.setProperty('--stroke-opacity', strokeOpacity);
 	}
 
 
