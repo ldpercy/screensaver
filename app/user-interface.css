@@ -2,27 +2,40 @@
 **	user-interface.css
 */
 
-.control-group {
 
+.panel-group {
+
+	&.group-left {
+		position:absolute;
+		left:0ex;
+	}
+
+	&.group-right {
+		position:absolute;
+		right:0ex;
+	}
+}
+
+
+
+.ui-panel {
 	font-family:sans-serif;
 
-
-	form  {
-		display: grid;
-		border:1px solid silver;
-		background-color:#ccc5;
-		border-radius: 1ex;
-		padding:1ex;
-		margin: 1ex;
+	display: grid;
+	border:1px solid silver;
+	background-color:#ccc5;
+	border-radius: 1ex;
+	padding:1ex;
+	margin: 1ex;
 
 
-		:nth-child(1) { margin-top:0em; }
+	:nth-child(1) { margin-top:0em; }
 
 
-		details { margin-top:1em; }
-		details>div {	display: grid; 	}
-		summary>h3 { display:inline-block;}
-	}
+	details { margin-top:1em; }
+	details>div {	display: grid; 	}
+	summary>h3 { display:inline-block;}
+
 
 	label {
 		margin-top: 1ex;
@@ -39,8 +52,6 @@
 	h4 { font-size:1rem; margin-top:1ex; margin-bottom:.6ex; }
 
 
-
-
 	label:has(h2) { margin-top:2ex; }
 
 	.colourWithRandom {
@@ -54,15 +65,13 @@
 		}
 	}
 
-
-
-
 	/* label:after { content:':'; } */
-
 	label.noafter:after { content:''; }
 
 	hr { width:100%;  } /* border:1px dotted silver inset; */
-}
+
+}/* ui-panel */
+
 
 
 #select-screensaver {
@@ -76,38 +85,6 @@
 		text-align:center;
 	}
 }
-
-
-nav {
-	border:1px solid silver;
-	background-color:#ddd5;
-	border-radius: 1rex;
-	padding:1rex;
-	margin: 1rex;
-	font-size: 2em;
-	line-height: 1em;
-}
-
-
-
-.control-group {
-
-	&.control-left {
-		position:absolute;
-		left:0ex;
-	}
-
-	&.control-right {
-		position:absolute;
-		right:0ex;
-	}
-}
-
-
-
-
-
-
 
 
 #dialog-appInfo {
