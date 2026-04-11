@@ -228,19 +228,23 @@ class PolygonScreensaver extends Screensaver {
 				<option value="combined">combined</option>
 				<option value="separate" selected>separate</option>
 			</select>
-			<label for="input-coordinates"><h3>coordinates</h3></label>
-			<select id="input-coordinates" name="coordinates" size="2">
-				<option value="absolute" selected>absolute</option>
-				<option value="relative">relative</option>
-			</select>
-			<label for="input-decimalPlaces">decimal places</label>
-			<input id="input-decimalPlaces" type="number" name="decimalPlaces" title="sides" min="0" value="0" max="9"/>
+
+			<input type="hidden" id="input-coordinates" name="coordinates" value="absolute">
+			<input type="hidden" id="input-decimalPlaces" name="decimalPlaces" value="0">
 		`;
 		return result;
 	}
 
 
-
+	/*
+		<label for="input-coordinates"><h3>coordinates</h3></label>
+		<select id="input-coordinates" name="coordinates" size="2">
+			<option value="absolute" selected>absolute</option>
+			<option value="relative">relative</option>
+		</select>
+		<label for="input-decimalPlaces">decimal places</label>
+		<input id="input-decimalPlaces" type="number" name="decimalPlaces" title="sides" min="0" value="0" max="9"/>
+	*/
 
 
 	//
