@@ -166,7 +166,7 @@ class BezierScreensaver extends Screensaver {
 
 
 	//
-	//	Acessors
+	//	Accessors
 	//
 
 

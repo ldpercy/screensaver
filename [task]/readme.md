@@ -5,7 +5,7 @@ Task
 * Add global settings for interval and transition timing
 * Seeded random numbers
 * Separate fill/stroke animations for different elements
-* Separate dash & animate switches
+
 * Move grid out of main svg screensaver element
 * Have random point selection reactive to the bounding boxes of already-present elements
 * 3d warps and rotates for the main screeensaver drawing area, even multiiple drawing areas
@@ -28,12 +28,13 @@ Task
 * Figure out how to abstract movement styles
 * Movement based on fixed space/grid or the viewport space
 * some movements aren't animating in firefox
-* html-only screensavers (non-svg), & hybrid html>svg
+* html-only screensavers (non-svg), & hybrid html>svg / svg>html
 * shared properties between screensavers
 
 
 
 
 ### Done
+* Separate dash & animate switches
 * Add info dialog
 * Scheme switching back online

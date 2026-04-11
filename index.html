@@ -61,15 +61,18 @@
 			<details open>
 				<summary><h3>fill</h3></summary>
 				<div>
-					<!-- <label></label> -->
-					<label for="input-startColour">colour</label>
-					<input type="color" name="startColour" id="input-startColour" value="#ffa500">
-
+					<label for="input-fillColour" class="colourWithRandom">
+						colour
+						<div>
+						<input type="color" name="fillColour" id="input-fillColour" value="#ffa500">
+						<button type="button" name="randomFillColour" id="button-fillColourRandom">🎲</button>
+						</div>
+					</label>
 
 					<label for="input-fillOpacity">
 						fill-opacity
 					</label>
-					<input type="range" name="fillOpacity" id="input-fillOpacity" value="0.5" min="0" max="1" step="0.1">
+					<input type="range" name="fillOpacity" id="input-fillOpacity" value="0.7" min="0" max="1" step="0.1">
 
 					<label for="input-fillRule">fill rule</label>
 					<select id="input-fillRule" name="fillRule" size="1">
@@ -77,13 +80,25 @@
 						<option value="nonzero">nonzero</option>
 					</select>
 				</div>
-			</details>
-
+			</details><!-- fill -->
 
 
 			<details open>
 				<summary><h3>stroke</h3></summary>
 				<div>
+					<label for="input-strokeColour" class="colourWithRandom">
+						colour
+						<div>
+						<input type="color" name="strokeColour" id="input-strokeColour" value="#ff0000">
+						<button type="button" name="randomFillColour" id="button-strokeColourRandom">🎲</button>
+						</div>
+					</label>
+
+					<label for="input-strokeOpacity">
+						stroke-opacity
+					</label>
+					<input type="range" name="strokeOpacity" id="input-strokeOpacity" value="0.7" min="0" max="1" step="0.1">
+
 
 					<label for="input-strokeWidth">stroke-width</label>
 					<input
@@ -127,11 +142,8 @@
 						title="stroke-dasharray"
 						value="1rem 4rem"
 					>
-
-
-
 				</div>
-			</details>
+			</details><!-- stroke -->
 
 
 			<h3>page</h3>

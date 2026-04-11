@@ -26,7 +26,7 @@ class UserInterface {
 		screensaverSelect	: 'select-screensaver',
 
 		saveLink		: 'link-save',
-		startColour		: 'input-startColour',
+		fillColour		: 'input-fillColour',
 		fillOpacity		: 'input-fillOpacity',
 		strokeWidth		: 'input-strokeWidth',
 		strokeDasharray	: 'input-strokeDasharray',
@@ -64,6 +64,23 @@ class UserInterface {
 			type: 'change',
 			listener: this.settingChangeListener
 		},
+
+
+		// {
+		// 	query: '.colourScheme-selector',
+		// 	type: 'click',
+		// 	listener: this.colourSchemeListener
+		// },
+		// {
+		// 	query: '.colourScheme-selector',
+		// 	type: 'dblclick',
+		// 	listener: this.colourSchemeSpecialListener
+		// },
+		{
+			query: '#link-save',
+			type: 'click',
+			listener: this.saveListener
+		},
 		{
 			query: '#input-style-preset',
 			type: 'change',
@@ -73,22 +90,6 @@ class UserInterface {
 			query: '#form-style',
 			type: 'change',
 			listener: this.styleChangeListener
-		},
-
-		{
-			query: '.colourScheme-selector',
-			type: 'click',
-			listener: this.colourSchemeListener
-		},
-		{
-			query: '.colourScheme-selector',
-			type: 'dblclick',
-			listener: this.colourSchemeSpecialListener
-		},
-		{
-			query: '#link-save',
-			type: 'click',
-			listener: this.saveListener
 		},
 		{
 			query: '#input-strokeDasharray',
@@ -307,8 +308,8 @@ class UserInterface {
 			document.getElementById('group-grid').style.display = 'none';
 		}
 
-		const startColour =  document.forms['form-style']['input-startColour'].value;
-		document.getElementById('screensaver-group').style.setProperty('--start-colour',startColour);
+		const fillColour =  document.forms['form-style']['input-fillColour'].value;
+		document.getElementById('screensaver-group').style.setProperty('--fill-colour',fillColour);
 
 		const opacity =  document.forms['form-style']['input-fillOpacity'].value;
 		document.getElementById('screensaver-group').style.setProperty('--fill-opacity', opacity);
@@ -354,7 +355,7 @@ class UserInterface {
 
 	// /** @returns {string}	*/
 	// get colourScheme() {
-	// 	return this.element.startColour.value;
+	// 	return this.element.fillColour.value;
 	// }
 
 	/** @param {string} colourScheme	*/
@@ -365,13 +366,13 @@ class UserInterface {
 
 
 	/** @returns {string}	*/
-	get startColour() {
-		return this.element.startColour.value;
+	get fillColour() {
+		return this.element.fillColour.value;
 	}
 
-	/** @param {string} startColour	*/
-	set startColour(startColour) {
-		this.element.startColour.value = startColour;
+	/** @param {string} fillColour	*/
+	set fillColour(fillColour) {
+		this.element.fillColour.value = fillColour;
 	}
 
 

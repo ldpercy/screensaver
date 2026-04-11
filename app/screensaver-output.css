@@ -56,8 +56,11 @@
 
 
 #screensaver-group {
-	--start-colour: orange;
-	--opacity: 0.5;
+	--fill-colour: orange;
+	--fill-opacity: 0.7;
+	--stroke-colour: red;
+	--stroke-opacity: 0.7;
+
 	--degrees:0;
 
 
@@ -71,8 +74,9 @@
 
 	* {
 		mix-blend-mode: var(--blend-mode);
-		stroke: lch(from var(--start-colour) l c calc(h + var(--degrees)) / 1) ;
-		fill: lch(from var(--start-colour) l c calc(h + var(--degrees)) / var(--fill-opacity)) ;
+		fill:	lch(from var(--fill-colour)		l c calc(h + var(--degrees)) / var(--fill-opacity)) ;
+		stroke:	lch(from var(--stroke-colour)	l c calc(h + var(--degrees)) / var(--stroke-opacity)) ;
+
 	}
 
 
@@ -80,23 +84,6 @@
 		fill-rule: evenodd; /* fill-rule: nonzero  */
 	}
 
-
-	&.stroke-dash {
-		stroke-dasharray: var(--stroke-dasharray);
-	}
-
-
-	&.ant-crawl {
-
-		/* transition: none; */
-		transition: stroke-dashoffset 0s;
-
-		animation-name: ant-crawl;
-		animation-duration: 1s;
-		animation-timing-function: linear;
-		animation-iteration-count: infinite;
-		animation-direction: normal;
-	}
 }
 
 

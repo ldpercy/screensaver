@@ -145,7 +145,7 @@ class LineScreensaver extends Screensaver {
 
 
 	//
-	//	Acessors
+	//	Accessors
 	//
 
 

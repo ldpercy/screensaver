@@ -1,7 +1,7 @@
 export const defaultStyle = {
 	style : {
 		colourScheme	: 'dark',
-		startColour		: 'orange',
+		fillColour		: 'orange',
 		fillOpacity		: '0.5',
 		fullRule		: 'evenodd',
 		strokeWidth		: '1rem',
@@ -43,7 +43,7 @@ export const disco = {
 	style : {
 		//colourScheme	: 'disco',
 		colourScheme	: 'dark',
-		startColour		: 'forestgreen',
+		fillColour		: 'forestgreen',
 		fillOpacity		: '0.2',
 		fullRule		: 'evenodd',
 		strokeWidth		: '7ex',
