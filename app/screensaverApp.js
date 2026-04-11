@@ -21,7 +21,7 @@ class ScreensaverApp extends HTMLApp {
 
 	defaultScreensaver = 'polygon';
 	currentModule = undefined;
-	#playState = 'paused';
+	#playState = 'playing';
 
 
 	documentDOMContentLoaded() {
@@ -55,6 +55,8 @@ class ScreensaverApp extends HTMLApp {
 	async loadScreensaver(name) {
 		console.log('loadScreensaver', name);
 
+		const previousPlayState = this.playState;
+
 		// unload the previous module if necessary
 		if (this.currentModule) {
 			this.currentModule.instance.pause();
@@ -75,7 +77,7 @@ class ScreensaverApp extends HTMLApp {
 			document.getElementById('form-screensaver-settings').innerHTML = this.currentModule.instance.getForm();
 
 			this.currentModule.instance.init();
-			this.playState = 'playing';
+			this.playState = previousPlayState;
 		// }
 		// catch (error) {
 		// 	console.error(`Error for '${name}'`, error);

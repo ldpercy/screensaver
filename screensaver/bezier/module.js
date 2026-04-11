@@ -22,8 +22,8 @@ class BezierScreensaver extends Screensaver {
 
 	elementMap = {
 		lineType			: 'setting-lineType',
-		lineCount			: 'setting-lineCount',
-		lineSegments		: 'setting-lineSegments',
+		pathCount			: 'setting-pathCount',
+		pathSections		: 'setting-pathSections',
 		output				: 'screensaver-output',
 		svg					: 'screensaver-svg',
 	};
@@ -83,11 +83,11 @@ class BezierScreensaver extends Screensaver {
 
 		let linepoints = '';
 
-		for (let i = 1; i <= this.lineSegments; i++) {
+		for (let i = 1; i <= this.pathSections; i++) {
 			linepoints += ` ${this.quadraticPoint()}`
 		}
 
-		while (ssg.childElementCount > this.lineCount)
+		while (ssg.childElementCount > this.pathCount)
 		{
 			ssg.lastElementChild.remove();
 		}
@@ -155,11 +155,11 @@ class BezierScreensaver extends Screensaver {
 
 
 
-			<label for="setting-lineCount">line count</label>
-			<input id="setting-lineCount" type="number" name="lineCount" title="line count" min="1" value="1" max="10"/>
+			<label for="setting-pathCount">path count</label>
+			<input id="setting-pathCount" type="number" name="pathCount" title="path count" min="1" value="2" max="10"/>
 
-			<label for="setting-lineSegments">line segments</label>
-			<input id="setting-lineSegments" type="number" name="lineSegments" title="line segments" min="1" value="1" max="10"/>
+			<label for="setting-pathSections">path sections</label>
+			<input id="setting-pathSections" type="number" name="pathSections" title="path sections" min="1" value="2" max="10"/>
 		`;
 		return result;
 	}
@@ -182,23 +182,23 @@ class BezierScreensaver extends Screensaver {
 
 
 	/**	@returns {number}	*/
-	get lineCount() {
-		return parseInt(this.element.lineCount.value);
+	get pathCount() {
+		return parseInt(this.element.pathCount.value);
 	}
 
-	/**	@param {number} lineCount	*/
-	set lineCount(lineCount) {
-		this.element.lineCount.value = Math.round(lineCount);
+	/**	@param {number} pathCount	*/
+	set pathCount(pathCount) {
+		this.element.pathCount.value = Math.round(pathCount);
 	}
 
 	/**	@returns {number}	*/
-	get lineSegments() {
-		return parseInt(this.element.lineSegments.value);
+	get pathSections() {
+		return parseInt(this.element.pathSections.value);
 	}
 
-	/**	@param {number} lineSegments	*/
-	set lineSegments(lineSegments) {
-		this.element.lineSegments.value = Math.round(lineSegments);
+	/**	@param {number} pathSections	*/
+	set pathSections(pathSections) {
+		this.element.pathSections.value = Math.round(pathSections);
 	}
 
 
