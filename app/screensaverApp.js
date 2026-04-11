@@ -19,7 +19,7 @@ class ScreensaverApp extends HTMLApp {
 		`color: light-dark(hsl(from ${this.projectColour} h s 30), hsl(from ${this.projectColour} h s 70));`,
 	];
 
-	defaultScreensaver = 'bezier';
+	defaultScreensaver = 'polygon';
 	currentModule = undefined;
 	#playState = 'paused';
 

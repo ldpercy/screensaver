@@ -213,10 +213,6 @@ class UserInterface {
 
 
 
-
-	/*
-	this method is not receiving class 'this', it's receiving
-	*/
 	showAppInfoDialog() {
 		// console.debug(this);
 		screensaverApp.playState = 'paused';

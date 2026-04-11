@@ -91,20 +91,28 @@
 						type="string"
 						name="strokeWidth"
 						title="stroke-width"
-						value="2em"
+						value="1rem"
 					>
 
 					<label for="input-strokeLinejoin">stroke-linejoin</label>
-					<select id="input-strokeLinejoin" name="strokeLinejoin">
+					<select id="input-strokeLinejoin" name="strokeLinejoin" size="3">
 						<option value="miter" selected>miter</option>
 						<option value="round">round</option>
 						<option value="bevel">bevel</option>
 						<option value="arcs">arcs (unsupported)</option>
 						<option value="miter-clip">miter-clip (unsupported)</option>
 					</select>
+					<label for="input-strokeLinecap">stroke-linecap</label>
+					<select id="input-strokeLinecap" name="strokeLinecap" size="3">
+						<option selected>butt</option>
+						<option>round</option>
+						<option>square</option>
+					</select>
 
-
-					<label><h4>stroke-dash</h4></label>
+					<label for="input-strokeDash">
+						<input type="checkbox" name="strokeDash" id="input-strokeDash">
+						<h4>stroke-dash</h4>
+					</label>
 
 					<label for="input-antCrawl">
 						<input type="checkbox" name="antCrawl" id="input-antCrawl">
@@ -117,15 +125,10 @@
 						type="string"
 						name="strokeDasharray"
 						title="stroke-dasharray"
-						value="1ex 10ex"
+						value="1rem 4rem"
 					>
 
-					<label for="input-strokeLinecap">stroke-linecap</label>
-					<select id="input-strokeLinecap" name="strokeLinecap">
-						<option selected>butt</option>
-						<option>round</option>
-						<option>square</option>
-					</select>
+
 
 				</div>
 			</details>

@@ -22,10 +22,14 @@
 		details { margin-top:1em; }
 		details>div {	display: grid; 	}
 		summary>h3 { display:inline-block;}
-
-
 	}
-	label { margin-top: 1ex; }
+
+	label {
+		margin-top: 1ex;
+		h1,h2,h3,h4,h5 {
+			display:inline-block;
+		}
+	}
 
 	input, option { text-align: center; padding:1pt; }
 
