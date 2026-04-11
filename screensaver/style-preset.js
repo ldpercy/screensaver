@@ -6,7 +6,7 @@ export const defaultStyle = {
 		fullRule		: 'evenodd',
 		strokeWidth		: '1rem',
 		strokeDasharray	: '1rem 4rem',
-		dashAnimate		: false,
+		dashAnimation		: false,
 		grid			: true,
 	},
 }
@@ -52,7 +52,7 @@ export const disco = {
 		strokeLinejoin	: 'miter',
 		strokeLinecap	: 'butt',
 
-		dashAnimate		: true,
+		dashAnimation		: true,
 		grid			: false,
 	},
 

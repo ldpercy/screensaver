@@ -36,9 +36,9 @@ class ScreensaverOutput {
 		this.element.output.dataset.strokeDash = strokeDash;
 	}
 
-	/** @param {boolean} dashAnimate	*/
-	set dashAnimate(dashAnimate) {
-		this.element.output.dataset.dashAnimate = dashAnimate;
+	/** @param {string} dashAnimation	*/
+	set dashAnimation(dashAnimation) {
+		this.element.output.dataset.dashAnimation = dashAnimation;
 	}
 
 

@@ -35,7 +35,7 @@ class StylePanel {
 		strokeLinejoin	: 'input-strokeLinejoin',
 		strokeLinecap	: 'input-strokeLinecap',
 		strokeDash		: 'input-strokeDash',
-		dashAnimate		: 'input-dashAnimate',
+		dashAnimation		: 'input-dashAnimation',
 		blendMode		: 'input-blendMode',
 		output			: 'screensaver-output',
 	};
@@ -115,9 +115,9 @@ class StylePanel {
 			listener: (event)=> { this.strokeDash = event.target.checked }
 		},
 		{
-			query: '#input-dashAnimate',
+			query: '#input-dashAnimation',
 			type: 'change',
-			listener: (event)=> { this.dashAnimate = event.target.checked }
+			listener: (event)=> { this.dashAnimation = event.target.value; }
 		},
 		// page
 		{
@@ -342,12 +342,12 @@ class StylePanel {
 	}
 
 
-	/** @param {boolean} dashAnimate	*/
-	set dashAnimate(dashAnimate) {
-		this.element.dashAnimate.checked = dashAnimate;
-		output.dashAnimate = dashAnimate;
+	/** @param {string} dashAnimation	*/
+	set dashAnimation(dashAnimation) {
+		//console.log(dashAnimation);
+		this.element.dashAnimation.value = dashAnimation;
+		output.dashAnimation = dashAnimation;
 	}
-
 
 
 	/** @returns {string}	*/

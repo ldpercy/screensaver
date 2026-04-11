@@ -45,7 +45,7 @@ html {
 html {
 	--scheme-colour: black;
 	--html-background: var(--scheme-colour);
-	--accent-colour: hsl(from var(--project-colour) h s 80 );
+	--accent-colour: hsl(from var(--project-colour) h s 85 );
 
 	color-scheme: dark;
 	background-color: var(--html-background);
@@ -67,7 +67,7 @@ html[data-colourscheme=light] {
 html[data-colourscheme=dark] {
 	color-scheme: dark;
 	--scheme-colour: black;
-	--accent-colour: hsl(from var(--project-colour) h s 80 );
+	--accent-colour: hsl(from var(--project-colour) h s 85 );
 }
 
 
@@ -75,7 +75,7 @@ html[data-colourscheme=midnightblue] {
 	color-scheme: dark;
 	--scheme-colour: midnightblue;
 	--html-background: hsl(from var(--scheme-colour) h s 10 );
-	--accent-colour: hsl(from var(--project-colour) h s 80 );
+	--accent-colour: hsl(from var(--project-colour) h s 85 );
 }
 
 

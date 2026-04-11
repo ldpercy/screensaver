@@ -91,11 +91,15 @@
 	stroke-dasharray: var(--stroke-dasharray);
 }
 
+/*
+**	dash animations
+*/
 
-[data-dash-animate=true] #screensaver-group {
+
+[data-dash-animation=linear] #screensaver-group {
 	transition: stroke-dashoffset 0s;
 
-	animation-name: ant-crawl;
+	animation-name: full-dashoffset;
 	animation-duration: 1s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
@@ -103,15 +107,39 @@
 }
 
 
-@keyframes ant-crawl {
+[data-dash-animation=pulse] #screensaver-group {
+	transition: stroke-dashoffset 0s;
+	animation-name: full-dashoffset;
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+
+[data-dash-animation=alternate] #screensaver-group {
+	transition: stroke-dashoffset 0s;
+	animation-name: full-dashoffset;
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+
+
+@keyframes full-dashoffset {
 	from {
 		stroke-dashoffset: 0px;
 	}
-
 	to {
 		stroke-dashoffset: var(--to-stroke-dashoffset);
 	}
 }
+
+
+
+
+
 
 
 
