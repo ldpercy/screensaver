@@ -114,9 +114,9 @@
 						<h4>stroke-dash</h4>
 					</label>
 
-					<label for="input-antCrawl">
-						<input type="checkbox" name="antCrawl" id="input-antCrawl">
-						dash & animate
+					<label for="input-dashAnimate">
+						<input type="checkbox" name="dashAnimate" id="input-dashAnimate">
+						dash animate
 					</label>
 
 					<label for="input-strokeDasharray">stroke-dasharray</label>
@@ -169,7 +169,11 @@
 
 	</div>
 
-	<output id="screensaver-output">
+	<output
+		id="screensaver-output"
+		data-stroke-dash="false"
+		data-dash-animate="false"
+	>
 		<svg id="screensaver-svg" class="svg-screensaver" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" >
 
 			<title>screensaver</title>

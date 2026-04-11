@@ -1,7 +1,6 @@
 import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 import { screensaverApp } from "./screensaverApp.js";
-
-//import * as polygon from "../screensaver/polygon/module.js";
+import { output } from "./screensaver-output.js";
 import * as stylePreset from "../screensaver/style-preset.js";
 
 
@@ -33,7 +32,8 @@ class UserInterface {
 		strokeDasharray	: 'input-strokeDasharray',
 		strokeLinejoin	: 'input-strokeLinejoin',
 		strokeLinecap	: 'input-strokeLinecap',
-		antCrawl		: 'input-antCrawl',
+		strokeDash		: 'input-strokeDash',
+		dashAnimate		: 'input-dashAnimate',
 		blendMode		: 'input-blendMode',
 		output			: 'screensaver-output',
 		appInfoDialog	: 'dialog-appInfo',
@@ -114,9 +114,14 @@ class UserInterface {
 			listener: (event)=> { this.strokeLinecap = event.target.value }
 		},
 		{
-			query: '#input-antCrawl',
+			query: '#input-strokeDash',
 			type: 'change',
-			listener: (event)=> { this.antCrawl = event.target.checked }
+			listener: (event)=> { this.strokeDash = event.target.checked }
+		},
+		{
+			query: '#input-dashAnimate',
+			type: 'change',
+			listener: (event)=> { this.dashAnimate = event.target.checked }
 		},
 		{
 			query: '#input-blendMode',
@@ -437,18 +442,23 @@ class UserInterface {
 
 
 
-	/** @param {boolean} antCrawl	*/
-	set antCrawl(antCrawl) {
+	/** @returns {boolean}	*/
+	get strokeDash() {
+		return this.element.strokeDash.checked;
+	}
 
-		if (antCrawl) {
-			document.getElementById('screensaver-group').classList.add('ant-crawl');
-			this.element.antCrawl.checked = true;
-		}
-		else {
-			document.getElementById('screensaver-group').classList.remove('ant-crawl');
-			this.element.checked = false;
-		}
+	/** @param {boolean} strokeDash	*/
+	set strokeDash(strokeDash) {
+		//this.element.output.style.setProperty('--stroke-dash', strokeDash);
+		this.element.strokeDash.checked = strokeDash;
+		output.strokeDash = strokeDash;
+	}
 
+
+	/** @param {boolean} dashAnimate	*/
+	set dashAnimate(dashAnimate) {
+		this.element.dashAnimate.checked = dashAnimate;
+		output.dashAnimate = dashAnimate;
 	}
 
 
