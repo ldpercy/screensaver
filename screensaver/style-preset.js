@@ -6,7 +6,7 @@ export const defaultStyle = {
 		fullRule		: 'evenodd',
 		strokeWidth		: '1rem',
 		strokeDasharray	: '1rem 4rem',
-		dashAnimation		: false,
+		dashAnimation	: 'none',
 		grid			: true,
 	},
 }
@@ -37,6 +37,13 @@ export const peachpuff = {
 	}
 }
 
+export const forestgreen = {
+	style : {
+		colourScheme	: 'forestgreen',
+	}
+}
+
+
 
 export const disco = {
 
@@ -52,7 +59,8 @@ export const disco = {
 		strokeLinejoin	: 'miter',
 		strokeLinecap	: 'butt',
 
-		dashAnimation		: true,
+		strokeDash		: true,
+		dashAnimation	: 'linear',
 		grid			: false,
 	},
 
