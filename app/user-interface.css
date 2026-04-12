@@ -26,6 +26,10 @@
 	display: grid;
 	border:1px solid silver;
 	background-color:#7777;
+
+	/* background-color: lab( from var(--html-background) calc(sign(l - 70) * 50) 0 0 / 0.5); */
+
+
 	border-radius: 1ex;
 	padding:1ex;
 	margin: 1ex;
@@ -75,6 +79,20 @@
 }/* ui-panel */
 
 
+#button-playPause::after {
+	content: '[' attr(data-play-state) ']';
+	font-weight:bold;
+}
+
+
+#button-playPause[data-play-state=playing] {
+	/* background-color: hsl( from lime h 10 50 / 1); */
+	outline: 1px solid lime;
+}
+#button-playPause[data-play-state=paused] {
+	/* background-color: hsl( from orange h 10 50 / 1 ); */
+	outline: 1px solid orange;
+}
 
 #select-screensaver {
 	height: 7rem;

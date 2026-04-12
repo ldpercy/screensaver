@@ -98,6 +98,7 @@ class ScreensaverApp extends HTMLApp {
 			this.currentModule.instance.pause();
 			this.#playState = 'paused';
 		}
+		appPanel.playState = this.#playState;
 	}
 
 	get playState()	{

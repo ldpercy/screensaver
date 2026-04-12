@@ -19,10 +19,11 @@ class AppPanel {
 	 * Note to self: like this typechecking on elements is totally sidestepped - need to find typesafe ways of doing this
 	 */
 	elementMap = {
+		playPauseButton		: 'button-playPause',
 		screensaverSelect	: 'select-screensaver',
-		saveLink		: 'link-save',
-		output			: 'screensaver-output',
-		appInfoDialog	: 'dialog-appInfo',
+		saveLink			: 'link-save',
+		output				: 'screensaver-output',
+		appInfoDialog		: 'dialog-appInfo',
 	};
 
 
@@ -119,11 +120,6 @@ class AppPanel {
 	}
 
 
-
-
-
-
-
 	showAppInfoDialog() {
 		// console.debug(this);
 		screensaverApp.playState = 'paused';
@@ -173,11 +169,6 @@ class AppPanel {
 
 
 
-
-
-
-
-
 	//
 	//	Screensaver accessors
 	//
@@ -202,6 +193,11 @@ class AppPanel {
 
 	}/* set selectedScreensaver */
 
+
+	/** @param {string} state*/
+	set playState(state) {
+		this.element.playPauseButton.dataset.playState = state;
+	}
 
 
 }/* AppPanel */
