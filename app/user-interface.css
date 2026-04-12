@@ -108,10 +108,14 @@
 #button-playPause[data-play-state=playing] {
 	/* background-color: hsl( from lime h 10 50 / 1); */
 	outline: 2px solid lime;
+	/* border:1px solid lime; */
+	filter: drop-shadow(0px 0px 3px lime);
 }
 #button-playPause[data-play-state=paused] {
 	/* background-color: hsl( from orange h 10 50 / 1 ); */
 	outline: 2px solid orange;
+	/* border:1px solid orange; */
+	filter: drop-shadow(0px 0px 3px orange);
 }
 
 #select-screensaver {

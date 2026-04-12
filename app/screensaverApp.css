@@ -48,8 +48,8 @@ html {
 	--html-background: var(--scheme-colour);
 	--accent-colour: hsl(from var(--project-colour) h s 85 );
 
-	color-scheme: dark;
 	background-color: var(--html-background);
+	color-scheme: dark;
 
 	body {
 		color: lab( from var(--scheme-colour) calc(sign(l - 70) * -100) 0 0 / 1);

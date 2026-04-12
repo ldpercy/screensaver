@@ -1,5 +1,5 @@
 import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
-import { randomColourHex } from  "../[html-common]/module/colour.js";
+import * as colour from  "../[html-common]/module/colour.js";
 import { screensaverApp } from "./screensaverApp.js";
 import { output } from "./screensaver-output.js";
 import * as stylePreset from "../screensaver/style-preset.js";
@@ -67,7 +67,7 @@ class StylePanel {
 		{
 			query: '#button-pageColourRandom',
 			type: 'click',
-			listener: ()=> { this.pageColour = randomColourHex(); }
+			listener: ()=> { this.pageColour = colour.randomColourHex(); }
 		},
 		// fill
 		{
@@ -78,7 +78,7 @@ class StylePanel {
 		{
 			query: '#button-fillColourRandom',
 			type: 'click',
-			listener: ()=> { this.fillColour = randomColourHex(); }
+			listener: ()=> { this.fillColour = colour.randomColourHex(); }
 		},
 		{
 			query: '#input-fillOpacity',
@@ -95,7 +95,7 @@ class StylePanel {
 		{
 			query: '#button-strokeColourRandom',
 			type: 'click',
-			listener: ()=> { this.strokeColour = randomColourHex(); }
+			listener: ()=> { this.strokeColour = colour.randomColourHex(); }
 		},
 		{
 			query: '#input-strokeOpacity',
@@ -232,6 +232,16 @@ class StylePanel {
 
 	/** @param {string} pageColour	*/
 	set pageColour(pageColour) {
+
+
+
+		const colourObj = new colour.colourRGBA();
+		colourObj.fromHexString(pageColour);
+
+		const avg = (colourObj.r + colourObj.g + colourObj.b) / 3;
+		console.log(pageColour, avg);
+
+		this.colourScheme = (avg > 127) ? 'light' : 'dark';
 
 		document.documentElement.style.setProperty('--html-background', pageColour);
 		this.element.pageColour.value = pageColour;
