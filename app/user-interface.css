@@ -25,9 +25,12 @@
 
 	display: grid;
 	border:1px solid silver;
-	background-color:#7777;
 
-	/* background-color: lab( from var(--html-background) calc(sign(l - 70) * 50) 0 0 / 0.5); */
+
+	/* background-color:#7777; */
+	/* hsl( from var(--row-colour)    h s clamp(20,l,80) / var(--border-alpha)) */
+
+	background-color: hsl( from var(--html-background) h s clamp(30,l,80) / 0.5);
 
 
 	border-radius: 1ex;
