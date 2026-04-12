@@ -46,7 +46,7 @@
 
 
 	details {
-		margin:1em 0em;
+		margin:1ex 0em;
 		summary {
 			cursor:pointer;
 			border-bottom: 1px solid transparent;
@@ -107,11 +107,11 @@
 
 #button-playPause[data-play-state=playing] {
 	/* background-color: hsl( from lime h 10 50 / 1); */
-	outline: 1px solid lime;
+	outline: 2px solid lime;
 }
 #button-playPause[data-play-state=paused] {
 	/* background-color: hsl( from orange h 10 50 / 1 ); */
-	outline: 1px solid orange;
+	outline: 2px solid orange;
 }
 
 #select-screensaver {

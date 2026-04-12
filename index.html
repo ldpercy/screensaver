@@ -42,6 +42,8 @@
 
 	</div>
 
+
+
 	<div class="panel-group group-right">
 
 
@@ -58,38 +60,52 @@
 				<option>forestgreen</option>
 			</select>
 
+			<details open>
+				<summary><h3>page</h3></summary>
+				<div>
+					<label for="input-pageColour" class="colourWithRandom">
+						colour
+						<div>
+						<input type="color" name="pageColour" id="input-pageColour" value="#00ffff">
+						<button type="button" name="pageColourRandom" id="button-pageColourRandom">🎲</button>
+						</div>
+					</label>
 
-			<h3>page</h3>
+					<label for="input-blendMode">blend mode</label>
+					<select id="input-blendMode" name="blend mode" size="4">
+						<option>normal</option>
+						<option>multiply</option>
+						<option>screen</option>
+						<option>overlay</option>
+						<option>darken</option>
+						<option>lighten</option>
+						<option>color-dodge</option>
+						<option>color-burn</option>
+						<option>hard-light</option>
+						<option>soft-light</option>
+						<option>difference</option>
+						<option>exclusion</option>
+						<option>hue</option>
+						<option>saturation</option>
+						<option>color</option>
+						<option>luminosity</option>
+						<option>plus-darker</option>
+						<option>plus-lighter</option>
+					</select>
 
-			<label for="input-blendMode">blend mode</label>
-			<select id="input-blendMode" name="blend mode" size="4">
-				<option>normal</option>
-				<option>multiply</option>
-				<option>screen</option>
-				<option>overlay</option>
-				<option>darken</option>
-				<option>lighten</option>
-				<option>color-dodge</option>
-				<option>color-burn</option>
-				<option>hard-light</option>
-				<option>soft-light</option>
-				<option>difference</option>
-				<option>exclusion</option>
-				<option>hue</option>
-				<option>saturation</option>
-				<option>color</option>
-				<option>luminosity</option>
-				<option>plus-darker</option>
-				<option>plus-lighter</option>
-			</select>
+					<!--
+					<label for="input-showGrid">
+						<input type="checkbox" name="showGrid" id="input-showGrid">
+						grid
+					</label>
+					-->
+					<input type="hidden" name="showGrid" id="input-showGrid" value="">
 
-			<!--
-			<label for="input-showGrid">
-				<input type="checkbox" name="showGrid" id="input-showGrid">
-				grid
-			</label>
-			-->
-			<input type="hidden" name="showGrid" id="input-showGrid" value="">
+				</div>
+			</details><!-- page -->
+
+
+
 
 
 			<details open>
@@ -99,7 +115,7 @@
 						colour
 						<div>
 						<input type="color" name="fillColour" id="input-fillColour" value="#00ffff">
-						<button type="button" name="randomFillColour" id="button-fillColourRandom">🎲</button>
+						<button type="button" name="fillColourRandom" id="button-fillColourRandom">🎲</button>
 						</div>
 					</label>
 
@@ -124,7 +140,7 @@
 						colour
 						<div>
 						<input type="color" name="strokeColour" id="input-strokeColour" value="#ffa500">
-						<button type="button" name="randomFillColour" id="button-strokeColourRandom">🎲</button>
+						<button type="button" name="fillColourRandom" id="button-strokeColourRandom">🎲</button>
 						</div>
 					</label>
 

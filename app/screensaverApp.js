@@ -22,7 +22,7 @@ class ScreensaverApp extends HTMLApp {
 
 	defaultScreensaver = 'bezier';
 	currentModule = undefined;
-	#playState = 'playing';
+	#playState = 'paused';
 
 
 	documentDOMContentLoaded() {

@@ -24,6 +24,9 @@ class StylePanel {
 	 */
 	elementMap = {
 		ssg				: 'screensaver-group',
+
+		pageColour		: 'input-pageColour',
+
 		fillColour		: 'input-fillColour',
 		fillOpacity		: 'input-fillOpacity',
 
@@ -35,7 +38,7 @@ class StylePanel {
 		strokeLinejoin	: 'input-strokeLinejoin',
 		strokeLinecap	: 'input-strokeLinecap',
 		strokeDash		: 'input-strokeDash',
-		dashAnimation		: 'input-dashAnimation',
+		dashAnimation	: 'input-dashAnimation',
 		blendMode		: 'input-blendMode',
 		output			: 'screensaver-output',
 	};
@@ -54,6 +57,17 @@ class StylePanel {
 			query: '#form-style',
 			type: 'change',
 			listener: this.styleChangeListener
+		},
+		// page
+		{
+			query: '#input-pageColour',
+			type: 'change',
+			listener: (event)=> { this.pageColour = event.target.value; }
+		},
+		{
+			query: '#button-pageColourRandom',
+			type: 'click',
+			listener: ()=> { this.pageColour = randomColourHex(); }
 		},
 		// fill
 		{
@@ -206,11 +220,23 @@ class StylePanel {
 
 
 
-
-
 	//
 	//	Style setting accessors
 	//
+
+
+	/** @returns {string}	*/
+	get pageColour() {
+		return this.element.fillColour.value;
+	}
+
+	/** @param {string} pageColour	*/
+	set pageColour(pageColour) {
+
+		document.documentElement.style.setProperty('--html-background', pageColour);
+		this.element.pageColour.value = pageColour;
+	}
+
 
 	// /** @returns {string}	*/
 	// get colourScheme() {
@@ -221,8 +247,6 @@ class StylePanel {
 	set colourScheme(colourScheme) {
 		screensaverApp.setColourScheme(colourScheme);
 	}
-
-
 
 	/** @returns {string}	*/
 	get fillColour() {
