@@ -19,12 +19,15 @@
 
 
 .ui-panel {
+
+	--border-colour: #aaa;
+
 	font-family:sans-serif;
 
 	min-width: 14rem;
 
 	display: grid;
-	border:1px solid silver;
+	border:1px solid var(--border-colour);
 
 
 	/* background-color:#7777; */
@@ -41,9 +44,21 @@
 	:nth-child(1) { margin-top:0em; }
 
 
-	details { margin-top:1em; }
+
+	details {
+		margin:1em 0em;
+		summary {
+			cursor:pointer;
+			border-bottom: 1px solid transparent;
+			margin-bottom: 0.5ex;
+		}
+		summary:hover {
+			border-bottom: 1px solid var(--border-colour);
+		}
+	}
+
 	details>div {	display: grid; 	}
-	summary>h3 { display:inline-block;}
+	summary>h3 { display:inline-block; margin: 0ex 0ex 0.1ex;}
 
 
 	label {
@@ -80,6 +95,8 @@
 	hr { width:100%;  } /* border:1px dotted silver inset; */
 
 }/* ui-panel */
+
+
 
 
 #button-playPause::after {
