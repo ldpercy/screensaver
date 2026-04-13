@@ -87,8 +87,8 @@ class CircleScreensaver extends Screensaver {
 		const newY = output.randomY();
 		const newR = maths.getRandomIntInclusive(10,1000);
 
-		const degrees = index * (360 / this.elementCount);
-		element.style.setProperty('--degrees', `${Math.round(degrees)}`);
+		element.style.setProperty('--sibling-index', `${index+1}`);
+		element.style.setProperty('--sibling-count', `${this.elementCount}`);
 
 		element.setAttribute('cx', `${newX}`);
 		element.setAttribute('cy', `${newY}`);

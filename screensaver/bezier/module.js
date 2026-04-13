@@ -82,13 +82,11 @@ class BezierScreensaver extends Screensaver {
 	 * @param {number} index
 	 */
 	updateElement(index) {
-
 		const element = /** @type {SVGElement} */ (ssg.children[index]);
 		//console.log(element);
 		element.setAttribute('d', this.newPathString(this.pathSections));
-
-		const degrees = index * (360 / this.elementCount);
-		element.style.setProperty('--degrees', `${Math.round(degrees)}`);
+		element.style.setProperty('--sibling-index', `${index+1}`);
+		element.style.setProperty('--sibling-count', `${this.elementCount}`);
 	}
 
 

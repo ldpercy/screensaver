@@ -64,34 +64,35 @@
 
 	--degrees:0;
 
-
 	stroke-width: var(--stroke-width);
 	stroke-linejoin: var(--stroke-linejoin);
 	stroke-linecap: var(--stroke-linecap);
 
 	stroke-miterlimit: 20;
 
-
-
 	* {
 		mix-blend-mode: var(--blend-mode);
 		/* transition: mix-blend-mode 1s linear;  not working for me */
 
+		/*
 		fill:	lch(from var(--fill-colour)		l c calc(h + var(--degrees)) / var(--fill-opacity)) ;
 		stroke:	lch(from var(--stroke-colour)	l c calc(h + var(--degrees)) / var(--stroke-opacity)) ;
+ 		*/
+		/* --sibling-index : sibling-index();
+		--sibling-count : sibling-count(); */
 
+		--deg : calc(360 * var(--sibling-index)  / var(--sibling-count));
 
-		/* sibling-index() & sibling-count() */
-
+		fill:	lch(from var(--fill-colour)		l c calc(h + var(--deg)) / var(--fill-opacity) );
+		stroke:	lch(from var(--stroke-colour)	l c calc(h + var(--deg)) / var(--stroke-opacity) );
 
 	}
-
 
 	&.evenodd path {
 		fill-rule: evenodd; /* fill-rule: nonzero  */
 	}
 
-}
+}/* screensaver-group */
 
 
 

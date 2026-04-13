@@ -75,21 +75,22 @@ class RectScreensaver extends Screensaver {
 
 		const element = /** @type {SVGElement} */ (ssg.children[index]);
 
-		const newX = output.randomX();
-		const newY = output.randomY();
-		const newWidth = maths.getRandomIntInclusive(10,1000);
-		const newHeight = maths.getRandomIntInclusive(10,1000);
+		const x = output.randomX();
+		const y = output.randomY();
+		const width = maths.getRandomIntInclusive(10,1000);
+		const height = maths.getRandomIntInclusive(10,1000);
 		const rotate = maths.getRandomIntInclusive(-360,360);
 
-		const degrees = index * (360 / this.elementCount);
-		element.style.setProperty('--degrees', `${Math.round(degrees)}`);
+		element.style.setProperty('--sibling-index', `${index+1}`);
+		element.style.setProperty('--sibling-count', `${this.elementCount}`);
 
-		element.setAttribute('x', `${newX}`);
-		element.setAttribute('y', `${newY}`);
-		element.setAttribute('width', `${newWidth}`);
-		element.setAttribute('height', `${newHeight}`);
+		element.setAttribute('x', `${x}`);
+		element.setAttribute('y', `${y}`);
+		element.setAttribute('width', `${width}`);
+		element.setAttribute('height', `${height}`);
 
-		element.style.setProperty('rotate', `${rotate}deg`);
+		//element.style.setProperty('rotate', `${rotate}deg`);
+		element.setAttribute('transform',`rotate(${rotate},${x},${y})`);
 	}
 
 
