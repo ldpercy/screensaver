@@ -239,7 +239,7 @@ class StylePanel {
 		colourObj.fromHexString(pageColour);
 
 		const avg = (colourObj.r + colourObj.g + colourObj.b) / 3;
-		console.log(pageColour, avg);
+		//console.log(pageColour, avg);
 
 		this.colourScheme = (avg > 127) ? 'light' : 'dark';
 
