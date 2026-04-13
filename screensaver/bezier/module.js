@@ -1,6 +1,6 @@
 import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 import { Screensaver } from "../screensaver.js";
-import * as maths from "../../[html-common]/module/Maths.js";
+import { output } from "../../app/screensaver-output.js";
 
 
 
@@ -11,10 +11,6 @@ import * as maths from "../../[html-common]/module/Maths.js";
 const ssg = document.getElementById('screensaver-group');
 
 const intervalTime	= 1000;
-const xMin			= -2400;
-const xMax			= +2400;
-const yMin			= -1200;
-const yMax			= +1200;
 
 
 class BezierScreensaver extends Screensaver {
@@ -91,7 +87,7 @@ class BezierScreensaver extends Screensaver {
 	/** @param {number} pathSections */
 	newPathString(pathSections) {
 		let result = '';
-		const startPoint = this.randomPoint();
+		const startPoint = output.randomPoint();
 		let linepoints = '';
 
 		for (let i = 1; i <= pathSections; i++) {
@@ -99,13 +95,13 @@ class BezierScreensaver extends Screensaver {
 		}
 
 		if (this.lineType === "quadraticClosed") {
-			result = `M ${startPoint} Q  ${linepoints} ${this.randomPoint()} ${startPoint} z`;
+			result = `M ${startPoint} Q  ${linepoints} ${output.randomPoint()} ${startPoint} z`;
 		}
 		else if (this.lineType === "smoothQuadraticOpen") {
 			result = `M ${startPoint} T  ${linepoints}`;
 		}
 		else if (this.lineType === "smoothQuadraticClosed") {
-			result = `M ${startPoint} T  ${linepoints} ${this.randomPoint()} ${startPoint} z`;
+			result = `M ${startPoint} T  ${linepoints} ${output.randomPoint()} ${startPoint} z`;
 		}
 		else {
 			result = `M ${startPoint} Q  ${linepoints}`;
@@ -115,18 +111,10 @@ class BezierScreensaver extends Screensaver {
 	}
 
 
-	/** @return {string}  */
-	randomPoint() {
-		return `${maths.getRandomIntInclusive(xMin,xMax)},${maths.getRandomIntInclusive(yMin,yMax)}`;
-	}
-
-	randomPointConservative() {
-		return `${maths.getRandomIntInclusive(xMin/2,xMax/2)},${maths.getRandomIntInclusive(yMin/2,yMax/2)}`;
-	}
 
 	/** @return {string}  */
 	pointPair() {
-		return `${this.randomPointConservative()} ${this.randomPoint()}`;
+		return `${output.randomPointConservative()} ${output.randomPoint()}`;
 	}
 
 

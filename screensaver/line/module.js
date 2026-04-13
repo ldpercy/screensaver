@@ -1,7 +1,6 @@
 import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 import { Screensaver } from "../screensaver.js";
-import * as maths from "../../[html-common]/module/Maths.js";
-
+import { output } from "../../app/screensaver-output.js";
 
 
 console.log('line module');	// this only runs the _first_ time the module is loaded - not sure what the stipulations around that are though, whether it's possible to unload etc
@@ -11,10 +10,7 @@ console.log('line module');	// this only runs the _first_ time the module is loa
 const ssg = document.getElementById('screensaver-group');
 
 const intervalTime	= 1000;
-const xMin			= -2400;
-const xMax			= +2400;
-const yMin			= -1200;
-const yMax			= +1200;
+
 
 
 class LineScreensaver extends Screensaver {
@@ -90,11 +86,11 @@ class LineScreensaver extends Screensaver {
 
 	/** @param {number} pathSections */
 	newPathString(pathSections) {
-		const startPoint = this.randomPoint();
+		const startPoint = output.randomPoint();
 		let linepoints = '';
 
 		for (let i = 1; i <= pathSections; i++) {
-			linepoints += ` ${this.randomPoint()}`
+			linepoints += ` ${output.randomPoint()}`
 		}
 
 		const result = `M ${startPoint} ${linepoints}`;
@@ -102,10 +98,7 @@ class LineScreensaver extends Screensaver {
 	}
 
 
-	/** @return {string}  */
-	randomPoint() {
-		return `${maths.getRandomIntInclusive(xMin,xMax)},${maths.getRandomIntInclusive(yMin,yMax)}`;
-	}
+
 
 
 	settingChange() {

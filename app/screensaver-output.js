@@ -4,11 +4,17 @@
 
 import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 import { screensaverApp } from "./screensaverApp.js";
-
+import * as maths from "../[html-common]/module/Maths.js";
 
 
 
 class ScreensaverOutput {
+
+
+	xMin	= -2400;
+	xMax	= +2400;
+	yMin	= -1200;
+	yMax	= +1200;
 
 
 	element = {};
@@ -24,6 +30,17 @@ class ScreensaverOutput {
 		this.element = HTMLApp.buildElementMap(document, this.elementMap)
 		//HTMLApp.addEventListeners(this.eventListeners, this);
 		//this.keyboardHandler = HTMLApp.newKeyboardHandler(this.keyFunctionMap,this);
+	}
+
+
+	/** @return {string}  */
+	randomPoint() {
+		return `${maths.getRandomIntInclusive(this.xMin, this.xMax)},${maths.getRandomIntInclusive(this.yMin, this.yMax)}`;
+	}
+
+
+	randomPointConservative() {
+		return `${maths.getRandomIntInclusive(this.xMin/2, this.xMax/2)},${maths.getRandomIntInclusive(this.yMin/2, this.yMax/2)}`;
 	}
 
 
