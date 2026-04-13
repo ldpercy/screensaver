@@ -1,6 +1,7 @@
 export const defaultStyle = {
 	style : {
 		colourScheme	: 'dark',
+		pageColour		: '#0a0a0a',
 		fillColour		: '#ffa500',
 		fillOpacity		: '0.5',
 		fullRule		: 'evenodd',
@@ -62,11 +63,11 @@ export const disco = {
 		pageColour		: '#0e0a01',
 		blendMode		: 'screen',
 		colourScheme	: 'dark',
-		fillColour		: '#00ffff',
+		fillColour		: '#ffe4b5',	// moccasin	#ffe4b5
 		fillOpacity		: '0.8',
 		fullRule		: 'evenodd',
 
-		strokeColour	: '#dc143c',
+		strokeColour	: '#daa520',	// goldenrod	#daa520
 		strokeWidth		: '2cm',
 		strokeDasharray	: '1mm 2cm',
 

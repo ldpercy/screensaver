@@ -48,9 +48,7 @@ html {
 
 html {
 
-
-
-	--scheme-colour: black;
+	--scheme-colour: #0a0a0a;
 	--html-background: var(--scheme-colour);
 	--accent-colour: hsl(from var(--project-colour) h s 85 );
 
@@ -83,7 +81,7 @@ html[data-colourscheme=light] {
 
 html[data-colourscheme=dark] {
 	color-scheme: dark;
-	--scheme-colour: black;
+	--scheme-colour: #0a0a0a;
 	--accent-colour: hsl(from var(--project-colour) h s 85 );
 }
 

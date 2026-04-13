@@ -76,8 +76,14 @@
 	* {
 		mix-blend-mode: var(--blend-mode);
 		/* transition: mix-blend-mode 1s linear;  not working for me */
+
 		fill:	lch(from var(--fill-colour)		l c calc(h + var(--degrees)) / var(--fill-opacity)) ;
 		stroke:	lch(from var(--stroke-colour)	l c calc(h + var(--degrees)) / var(--stroke-opacity)) ;
+
+
+		/* sibling-index() & sibling-count() */
+
+
 	}
 
 

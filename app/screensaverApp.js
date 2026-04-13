@@ -22,7 +22,7 @@ class ScreensaverApp extends HTMLApp {
 
 	defaultScreensaver = 'line';
 	currentModule = undefined;
-	#playState = 'paused';
+	#playState = 'playing';
 
 
 	documentDOMContentLoaded() {
