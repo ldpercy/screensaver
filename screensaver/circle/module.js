@@ -1,6 +1,7 @@
+import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 import { Screensaver } from "../screensaver.js";
 import * as maths from "../../[html-common]/module/Maths.js";
-
+import { output } from "../../app/screensaver-output.js";
 
 
 console.log('circle module');	// this only runs the _first_ time the module is loaded - not sure what the stipulations around that are though, whether it's possible to unload etc
@@ -13,24 +14,31 @@ const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
 
 class CircleScreensaver extends Screensaver {
 
+	currentIndex = 0;
+
 	constructor() {
 		super();
 		console.log('CircleScreensaver constructor');
 	}/* constructor */
 
 
+	elementMap = {
+		elementCount		: 'module-elementCount',
+	};
+
+
+
 	init() {
-		console.log('CircleScreensaver init');
-		//ssg.innerHTML = '<circle cx="30" cy="40" r="500"></circle>';
-		this.moveCircle();
-		ssg.appendChild(c);
+		//console.log('CircleScreensaver init');
+		this.element = HTMLApp.buildElementMap(document, this.elementMap);
+		this.update();
 	}
 
 
 
 	play() {
 		this.intervalId = setInterval(
-			()=> { this.moveCircle() },
+			()=> { this.update() },
 			1000
 		);
 		//console.log('intervalId',this.intervalId);
@@ -45,15 +53,41 @@ class CircleScreensaver extends Screensaver {
 
 
 
-	moveCircle() {
+	updateCircle(circleElement) {
+		//console.log('circleElement',circleElement);
 
-		const newX = maths.getRandomIntInclusive(-100,100);
-		const newY = maths.getRandomIntInclusive(-100,100);
+		const newX = output.randomX();
+		const newY = output.randomY();
 		const newR = maths.getRandomIntInclusive(10,1000);
 
-		c.setAttribute('cx', `${newX}vw`);
-		c.setAttribute('cy', `${newY}vh`);
-		c.setAttribute('r', `${newR}`);
+		circleElement.setAttribute('cx', `${newX}`);
+		circleElement.setAttribute('cy', `${newY}`);
+		circleElement.setAttribute('r', `${newR}`);
+	}
+
+	update() {
+
+		while (ssg.childElementCount > this.elementCount)
+		{
+			ssg.lastElementChild.remove();
+		}
+		while (ssg.childElementCount < this.elementCount)
+		{
+			ssg.appendChild(this.newElement());
+		}
+
+		this.currentIndex = (this.currentIndex + 1) % this.elementCount;
+
+		this.updateCircle(ssg.children[this.currentIndex]);
+
+	}/* update */
+
+
+
+	newElement() {
+		const result = 	document.createElementNS('http://www.w3.org/2000/svg','circle');
+		this.updateCircle(result);
+		return result;
 	}
 
 
@@ -64,10 +98,17 @@ class CircleScreensaver extends Screensaver {
 
 	getForm() {
 		const result = `
-			<label for="module-shadowCopies">shadow copies</label>
-			<input id="module-shadowCopies" type="number" name="shadowCopies" title="shadow copies" min="1" value="1" max="10"/>
+			<label for="module-elementCount">element count</label>
+			<input id="module-elementCount" type="number" name="elementCount" title="element count" min="1" value="3" max="10"/>
 		`;
 		return result;
+	}
+
+
+
+	/**	@returns {number}	*/
+	get elementCount() {
+		return parseInt(this.element.elementCount.value);
 	}
 
 

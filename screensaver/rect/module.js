@@ -1,7 +1,7 @@
-
+import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 import { Screensaver } from "../screensaver.js";
 import * as maths from "../../[html-common]/module/Maths.js";
-
+import { output } from "../../app/screensaver-output.js";
 
 
 console.log('rect module');	// this only runs the _first_ time the module is loaded - not sure what the stipulations around that are though, whether it's possible to unload etc
@@ -13,25 +13,30 @@ const r = document.createElementNS('http://www.w3.org/2000/svg','rect');
 
 class RectScreensaver extends Screensaver {
 
+	currentIndex = 0;
 
 	constructor() {
 		super();
 		console.log('RectScreensaver constructor');
 	}
 
+	elementMap = {
+		elementCount		: 'module-elementCount',
+	};
+
 	init() {
-		console.log('RectScreensaver init');
+		//console.log('RectScreensaver init');
 		//document.getElementById('screensaver-group').innerHTML = '<rect x="-400" y="-300" width="600" height="500"></rect>';
-		this.moveRect();
-		ssg.appendChild(r);
+		this.element = HTMLApp.buildElementMap(document, this.elementMap);
+		this.update();
 	}
 
 
 
 	play() {
 		this.intervalId = setInterval(
-			()=> { this.moveRect() },
-			2000
+			()=> { this.update() },
+			1000
 		);
 		//console.log(this.intervalId);
 	}
@@ -44,24 +49,62 @@ class RectScreensaver extends Screensaver {
 	}
 
 
+	update() {
 
-	moveRect() {
+		while (ssg.childElementCount > this.elementCount)
+		{
+			ssg.lastElementChild.remove();
+		}
+		while (ssg.childElementCount < this.elementCount)
+		{
+			ssg.appendChild(this.newElement());
+		}
 
-		const newX = maths.getRandomIntInclusive(-100,100);
-		const newY = maths.getRandomIntInclusive(-100,100);
+		this.currentIndex = (this.currentIndex + 1) % this.elementCount;
+
+		this.updateRect(ssg.children[this.currentIndex]);
+
+	}/* update */
+
+
+	updateRect(rectElement) {
+
+		const newX = output.randomX();
+		const newY = output.randomY();
 		const newWidth = maths.getRandomIntInclusive(10,1000);
 		const newHeight = maths.getRandomIntInclusive(10,1000);
-		const rotate = maths.getRandomIntInclusive(0,360);
+		const rotate = maths.getRandomIntInclusive(-360,360);
 
-		r.setAttribute('x', `${newX}vw`);
-		r.setAttribute('y', `${newY}vh`);
-		r.setAttribute('width', `${newWidth}px`);
-		r.setAttribute('height', `${newHeight}px`);
+		rectElement.setAttribute('x', `${newX}`);
+		rectElement.setAttribute('y', `${newY}`);
+		rectElement.setAttribute('width', `${newWidth}`);
+		rectElement.setAttribute('height', `${newHeight}`);
 
-		r.setAttribute('style', `rotate:${rotate}deg`);
+		rectElement.setAttribute('style', `rotate:${rotate}deg`);
 	}
 
 
+	newElement() {
+		const result = 	document.createElementNS('http://www.w3.org/2000/svg','rect');
+		this.updateRect(result);
+		return result;
+	}
+
+
+	getForm() {
+		const result = `
+			<label for="module-elementCount">element count</label>
+			<input id="module-elementCount" type="number" name="elementCount" title="element count" min="1" value="3" max="10"/>
+		`;
+		return result;
+	}
+
+
+
+	/**	@returns {number}	*/
+	get elementCount() {
+		return parseInt(this.element.elementCount.value);
+	}
 
 
 }/* RectScreensaver */

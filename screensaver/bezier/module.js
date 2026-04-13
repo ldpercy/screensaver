@@ -20,7 +20,7 @@ class BezierScreensaver extends Screensaver {
 
 	elementMap = {
 		lineType			: 'setting-lineType',
-		pathCount			: 'setting-pathCount',
+		elementCount		: 'setting-elementCount',
 		pathSections		: 'setting-pathSections',
 		output				: 'screensaver-output',
 		svg					: 'screensaver-svg',
@@ -62,16 +62,16 @@ class BezierScreensaver extends Screensaver {
 
 	update() {
 
-		while (ssg.childElementCount > this.pathCount)
+		while (ssg.childElementCount > this.elementCount)
 		{
 			ssg.lastElementChild.remove();
 		}
-		while (ssg.childElementCount < this.pathCount)
+		while (ssg.childElementCount < this.elementCount)
 		{
 			ssg.appendChild(this.newElement());
 		}
 
-		this.currentChild = (this.currentChild + 1) % this.pathCount;
+		this.currentChild = (this.currentChild + 1) % this.elementCount;
 
 		ssg.children[this.currentChild].setAttribute('d', this.newPathString(this.pathSections));
 
@@ -139,8 +139,8 @@ class BezierScreensaver extends Screensaver {
 
 
 
-			<label for="setting-pathCount">path count</label>
-			<input id="setting-pathCount" type="number" name="pathCount" title="path count" min="1" value="2" max="10"/>
+			<label for="setting-elementCount">element count</label>
+			<input id="setting-elementCount" type="number" name="elementCount" title="path count" min="1" value="2" max="10"/>
 
 			<label for="setting-pathSections">path sections</label>
 			<input id="setting-pathSections" type="number" name="pathSections" title="path sections" min="1" value="2" max="10"/>
@@ -166,13 +166,13 @@ class BezierScreensaver extends Screensaver {
 
 
 	/**	@returns {number}	*/
-	get pathCount() {
-		return parseInt(this.element.pathCount.value);
+	get elementCount() {
+		return parseInt(this.element.elementCount.value);
 	}
 
-	/**	@param {number} pathCount	*/
-	set pathCount(pathCount) {
-		this.element.pathCount.value = Math.round(pathCount);
+	/**	@param {number} elementCount	*/
+	set elementCount(elementCount) {
+		this.element.elementCount.value = Math.round(elementCount);
 	}
 
 	/**	@returns {number}	*/

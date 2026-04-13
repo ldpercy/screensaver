@@ -11,10 +11,11 @@ import * as maths from "../[html-common]/module/Maths.js";
 class ScreensaverOutput {
 
 
-	xMin	= -2400;
-	xMax	= +2400;
-	yMin	= -1200;
-	yMax	= +1200;
+	xMin	= -1800;
+	xMax	= +1800;
+	yMin	= -900;
+	yMax	= +900;
+	// these are just rough starting vals until until I can figure out the geometry of the viewing area
 
 
 	element = {};
@@ -32,10 +33,19 @@ class ScreensaverOutput {
 		//this.keyboardHandler = HTMLApp.newKeyboardHandler(this.keyFunctionMap,this);
 	}
 
+	/** @return {number}  */
+	randomX() {
+		return maths.getRandomIntInclusive(this.xMin, this.xMax);
+	}
+
+	/** @return {number}  */
+	randomY() {
+		return maths.getRandomIntInclusive(this.yMin, this.yMax);
+	}
 
 	/** @return {string}  */
 	randomPoint() {
-		return `${maths.getRandomIntInclusive(this.xMin, this.xMax)},${maths.getRandomIntInclusive(this.yMin, this.yMax)}`;
+		return `${this.randomX()},${this.randomY()}`;
 	}
 
 
