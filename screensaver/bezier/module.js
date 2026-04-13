@@ -15,7 +15,7 @@ const intervalTime	= 1000;
 
 class BezierScreensaver extends Screensaver {
 
-	currentChild = 0;
+	currentIndex = 0;
 
 
 	elementMap = {
@@ -59,7 +59,6 @@ class BezierScreensaver extends Screensaver {
 	}
 
 
-
 	update() {
 
 		while (ssg.childElementCount > this.elementCount)
@@ -68,21 +67,39 @@ class BezierScreensaver extends Screensaver {
 		}
 		while (ssg.childElementCount < this.elementCount)
 		{
-			ssg.appendChild(this.newElement());
+			ssg.appendChild(document.createElementNS('http://www.w3.org/2000/svg','path'));
+			this.updateElement(ssg.childElementCount-1);
 		}
 
-		this.currentChild = (this.currentChild + 1) % this.elementCount;
+		this.currentIndex = (this.currentIndex + 1) % this.elementCount;
 
-		ssg.children[this.currentChild].setAttribute('d', this.newPathString(this.pathSections));
+		this.updateElement(this.currentIndex);
 
 	}/* update */
 
 
-	newElement() {
-		const result = 	document.createElementNS('http://www.w3.org/2000/svg','path');
-		result.setAttribute('d', this.newPathString(this.pathSections));
-		return result;
+	/**
+	 * @param {number} index
+	 */
+	updateElement(index) {
+
+		const element = /** @type {SVGElement} */ (ssg.children[index]);
+		//console.log(element);
+		element.setAttribute('d', this.newPathString(this.pathSections));
+
+		const degrees = index * (360 / this.elementCount);
+		element.style.setProperty('--degrees', `${Math.round(degrees)}`);
 	}
+
+
+
+
+
+	// newElement() {
+	// 	const result = 	document.createElementNS('http://www.w3.org/2000/svg','path');
+	// 	result.setAttribute('d', this.newPathString(this.pathSections));
+	// 	return result;
+	// }
 
 	/** @param {number} pathSections */
 	newPathString(pathSections) {

@@ -15,7 +15,7 @@ const intervalTime	= 1000;
 
 class LineScreensaver extends Screensaver {
 
-	currentChild = 0;
+	currentIndex = 0;
 
 
 	elementMap = {
@@ -68,21 +68,29 @@ class LineScreensaver extends Screensaver {
 		}
 		while (ssg.childElementCount < this.elementCount)
 		{
-			ssg.appendChild(this.newElement());
+			ssg.appendChild(document.createElementNS('http://www.w3.org/2000/svg','path'));
+			this.updateElement(ssg.childElementCount-1);
 		}
 
-		this.currentChild = (this.currentChild + 1) % this.elementCount;
-
-		ssg.children[this.currentChild].setAttribute('d', this.newPathString(this.pathSections));
+		this.currentIndex = (this.currentIndex + 1) % this.elementCount;
+		this.updateElement(this.currentIndex);
 
 	}/* update */
 
 
-	newElement() {
-		const result = 	document.createElementNS('http://www.w3.org/2000/svg','path');
-		result.setAttribute('d', this.newPathString(this.pathSections));
-		return result;
+
+	/**
+	 * @param {number} index
+	 */
+	updateElement(index) {
+		const element = /** @type {SVGElement} */ (ssg.children[index]);
+
+		element.setAttribute('d', this.newPathString(this.pathSections));
+		const degrees = index * (360 / this.elementCount);
+		element.style.setProperty('--degrees', `${Math.round(degrees)}`);
 	}
+
+
 
 	/** @param {number} pathSections */
 	newPathString(pathSections) {

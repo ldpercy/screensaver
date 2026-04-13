@@ -57,20 +57,23 @@ class RectScreensaver extends Screensaver {
 		}
 		while (ssg.childElementCount < this.elementCount)
 		{
-			ssg.appendChild(this.newElement());
+			ssg.appendChild(document.createElementNS('http://www.w3.org/2000/svg','rect'));
+			this.updateElement(ssg.childElementCount-1);
 		}
 
 		this.currentIndex = (this.currentIndex + 1) % this.elementCount;
 
-		this.updateRect(/** @type {SVGElement} */ (ssg.children[this.currentIndex]), this.currentIndex);
+		this.updateElement(this.currentIndex);
 
 	}/* update */
 
+
 	/**
-	 * @param {SVGElement} rectElement
 	 * @param {number} index
 	 */
-	updateRect(rectElement, index) {
+	updateElement(index) {
+
+		const element = /** @type {SVGElement} */ (ssg.children[index]);
 
 		const newX = output.randomX();
 		const newY = output.randomY();
@@ -79,22 +82,16 @@ class RectScreensaver extends Screensaver {
 		const rotate = maths.getRandomIntInclusive(-360,360);
 
 		const degrees = index * (360 / this.elementCount);
-		rectElement.style.setProperty('--degrees', `${Math.round(degrees)}`);
+		element.style.setProperty('--degrees', `${Math.round(degrees)}`);
 
-		rectElement.setAttribute('x', `${newX}`);
-		rectElement.setAttribute('y', `${newY}`);
-		rectElement.setAttribute('width', `${newWidth}`);
-		rectElement.setAttribute('height', `${newHeight}`);
+		element.setAttribute('x', `${newX}`);
+		element.setAttribute('y', `${newY}`);
+		element.setAttribute('width', `${newWidth}`);
+		element.setAttribute('height', `${newHeight}`);
 
-		rectElement.style.setProperty('rotate', `${rotate}deg`);
+		element.style.setProperty('rotate', `${rotate}deg`);
 	}
 
-
-	newElement() {
-		const result = 	document.createElementNS('http://www.w3.org/2000/svg','rect');
-		this.updateRect(result, ssg.childElementCount||0);
-		return result;
-	}
 
 
 	getForm() {

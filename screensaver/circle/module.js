@@ -55,24 +55,7 @@ class CircleScreensaver extends Screensaver {
 
 
 
-	/**
-	 * @param {SVGElement} circleElement
-	 * @param {number} index
-	 */
-	updateCircle(circleElement, index) {
-		//console.log('circleElement',circleElement);
 
-		const newX = output.randomX();
-		const newY = output.randomY();
-		const newR = maths.getRandomIntInclusive(10,1000);
-
-		const degrees = index * (360 / this.elementCount);
-		circleElement.style.setProperty('--degrees', `${Math.round(degrees)}`);
-
-		circleElement.setAttribute('cx', `${newX}`);
-		circleElement.setAttribute('cy', `${newY}`);
-		circleElement.setAttribute('r', `${newR}`);
-	}
 
 	update() {
 
@@ -82,27 +65,36 @@ class CircleScreensaver extends Screensaver {
 		}
 		while (ssg.childElementCount < this.elementCount)
 		{
-			ssg.appendChild(this.newElement());
+			ssg.appendChild(document.createElementNS('http://www.w3.org/2000/svg','circle'));
+			this.updateElement(ssg.childElementCount-1);
 		}
 
 		this.currentIndex = (this.currentIndex + 1) % this.elementCount;
-
-		this.updateCircle( /** @type {SVGElement} */ (ssg.children[this.currentIndex]), this.currentIndex);
-
-
-		const degrees = this.currentIndex * (360 / this.elementCount);
-		ssg.children[this.currentIndex].setAttribute('style', `--degrees:${Math.round(degrees)}`);
-
+		this.updateElement(this.currentIndex);
 
 	}/* update */
 
 
 
-	newElement() {
-		const result = 	document.createElementNS('http://www.w3.org/2000/svg','circle');
-		this.updateCircle(result, ssg.childElementCount||0);
-		return result;
+	/**
+	 * @param {number} index
+	 */
+	updateElement(index) {
+
+		const element = /** @type {SVGElement} */ (ssg.children[index]);
+
+		const newX = output.randomX();
+		const newY = output.randomY();
+		const newR = maths.getRandomIntInclusive(10,1000);
+
+		const degrees = index * (360 / this.elementCount);
+		element.style.setProperty('--degrees', `${Math.round(degrees)}`);
+
+		element.setAttribute('cx', `${newX}`);
+		element.setAttribute('cy', `${newY}`);
+		element.setAttribute('r', `${newR}`);
 	}
+
 
 
 	unload() {
