@@ -121,7 +121,11 @@
 #select-screensaver {
 	height: 7rem;
 
-	option { text-align:left; }
+	option {
+		text-align: left;
+		transition: all var(--transition-time-ui) ease allow-discrete;
+		interpolate-size: allow-keywords;
+	}
 
 	option[selected] {
 		font-size: 1.5rem;

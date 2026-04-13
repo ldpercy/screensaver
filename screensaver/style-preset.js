@@ -1,7 +1,7 @@
 export const defaultStyle = {
 	style : {
 		colourScheme	: 'dark',
-		fillColour		: 'orange',
+		fillColour		: '#ffa500',
 		fillOpacity		: '0.5',
 		fullRule		: 'evenodd',
 		strokeWidth		: '1rem',
@@ -27,37 +27,51 @@ export const dark = {
 
 export const midnightblue = {
 	style : {
-		colourScheme	: 'midnightblue',
+		pageColour		: 'midnightblue',
+		colourScheme	: 'dark',
 	}
 }
 
 export const peachpuff = {
 	style : {
-		colourScheme	: 'peachpuff',
+		pageColour		: 'peachpuff',
+		colourScheme	: 'light',
 	}
 }
 
 export const forestgreen = {
 	style : {
-		colourScheme	: 'forestgreen',
+		pageColour		: 'forestgreen',
+		colourScheme	: 'dark',
 	}
 }
+
+export const rebeccapurple = {
+	style : {
+		pageColour		: 'rebeccapurple',
+		colourScheme	: 'dark',
+	}
+}
+
 
 
 
 export const disco = {
 
 	style : {
-		//colourScheme	: 'disco',
+		pageColour		: '#0e0a01',
+		blendMode		: 'screen',
 		colourScheme	: 'dark',
-		fillColour		: 'forestgreen',
-		fillOpacity		: '0.2',
+		fillColour		: '#00ffff',
+		fillOpacity		: '0.8',
 		fullRule		: 'evenodd',
-		strokeWidth		: '7ex',
-		strokeDasharray	: '4px 4em',
 
-		strokeLinejoin	: 'miter',
-		strokeLinecap	: 'butt',
+		strokeColour	: '#dc143c',
+		strokeWidth		: '2cm',
+		strokeDasharray	: '1mm 2cm',
+
+		strokeLinejoin	: 'round',
+		strokeLinecap	: 'round',
 
 		strokeDash		: true,
 		dashAnimation	: 'linear',
