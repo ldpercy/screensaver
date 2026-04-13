@@ -7,7 +7,9 @@ import { output } from "../../app/screensaver-output.js";
 console.log('circle module');	// this only runs the _first_ time the module is loaded - not sure what the stipulations around that are though, whether it's possible to unload etc
 
 
+/** @type {HTMLElement} */
 const ssg = document.getElementById('screensaver-group');
+
 const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
 
 
@@ -53,12 +55,19 @@ class CircleScreensaver extends Screensaver {
 
 
 
-	updateCircle(circleElement) {
+	/**
+	 * @param {SVGElement} circleElement
+	 * @param {number} index
+	 */
+	updateCircle(circleElement, index) {
 		//console.log('circleElement',circleElement);
 
 		const newX = output.randomX();
 		const newY = output.randomY();
 		const newR = maths.getRandomIntInclusive(10,1000);
+
+		const degrees = index * (360 / this.elementCount);
+		circleElement.style.setProperty('--degrees', `${Math.round(degrees)}`);
 
 		circleElement.setAttribute('cx', `${newX}`);
 		circleElement.setAttribute('cy', `${newY}`);
@@ -78,7 +87,12 @@ class CircleScreensaver extends Screensaver {
 
 		this.currentIndex = (this.currentIndex + 1) % this.elementCount;
 
-		this.updateCircle(ssg.children[this.currentIndex]);
+		this.updateCircle( /** @type {SVGElement} */ (ssg.children[this.currentIndex]), this.currentIndex);
+
+
+		const degrees = this.currentIndex * (360 / this.elementCount);
+		ssg.children[this.currentIndex].setAttribute('style', `--degrees:${Math.round(degrees)}`);
+
 
 	}/* update */
 
@@ -86,7 +100,7 @@ class CircleScreensaver extends Screensaver {
 
 	newElement() {
 		const result = 	document.createElementNS('http://www.w3.org/2000/svg','circle');
-		this.updateCircle(result);
+		this.updateCircle(result, ssg.childElementCount||0);
 		return result;
 	}
 
