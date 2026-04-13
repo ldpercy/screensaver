@@ -134,6 +134,16 @@
 }
 
 
+[data-dash-animation=mechanical] #screensaver-group {
+	transition: stroke-dashoffset 0s;
+	animation-name: full-dashoffset;
+	animation-duration: 1s;
+	animation-timing-function: cubic-bezier(1,0,0,1);
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+
+
 
 @keyframes full-dashoffset {
 	from {

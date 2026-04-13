@@ -27,6 +27,34 @@ export const dark = {
 	}
 }
 
+
+export const disco = {
+
+	style : {
+		pageColour		: '#0e0a01',
+		blendMode		: 'screen',
+		colourScheme	: 'dark',
+		fillColour		: '#ffe4b5',	// moccasin	#ffe4b5
+		fillOpacity		: '0.8',
+		fullRule		: 'evenodd',
+
+		strokeColour	: '#daa520',	// goldenrod	#daa520
+		strokeWidth		: '2cm',
+		strokeDasharray	: '1mm 2cm',
+
+		strokeLinejoin	: 'round',
+		strokeLinecap	: 'round',
+
+		strokeDash		: true,
+		dashAnimation	: 'linear',
+		grid			: false,
+	},
+
+};
+
+
+
+
 export const midnightblue = {
 	style : {
 		colourScheme	: 'dark',
@@ -100,27 +128,26 @@ export const darkmagenta = {
 
 
 
-export const disco = {
-
+export const machine = {
 	style : {
-		pageColour		: '#0e0a01',
-		blendMode		: 'screen',
 		colourScheme	: 'dark',
-		fillColour		: '#ffe4b5',	// moccasin	#ffe4b5
-		fillOpacity		: '0.8',
-		fullRule		: 'evenodd',
+		blendMode		: 'multiply',
+		pageColour		: '#202020',	//
+		fillColour		: '#4682b4',	// steelblue	#4682b4
+		strokeColour	: '#696969',	// dimgrey	#696969
 
-		strokeColour	: '#daa520',	// goldenrod	#daa520
+		fillOpacity		: '1.0',
+
 		strokeWidth		: '2cm',
-		strokeDasharray	: '1mm 2cm',
-
-		strokeLinejoin	: 'round',
-		strokeLinecap	: 'round',
-
+		strokeLinejoin	: 'bevel',
+		strokeLinecap	: 'butt',
 		strokeDash		: true,
-		dashAnimation	: 'linear',
-		grid			: false,
-	},
 
-};
+		strokeOpacity	: '0.9',
+
+		strokeDasharray	: '2cm 2cm',
+		dashAnimation	: 'mechanical',
+	}
+}
+
 
