@@ -1,7 +1,7 @@
 Task
 ====
 
-
+* Option to auto pause all/most animations when the page loses focus (document.visibilityState / document.visibilityChange)
 * Add global settings for interval and transition timing
 * Seeded random numbers
 * Separate fill/stroke animations for different elements

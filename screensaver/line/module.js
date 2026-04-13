@@ -19,7 +19,7 @@ const yMax			= +1200;
 
 class LineScreensaver extends Screensaver {
 
-
+	currentChild = 0;
 
 
 	elementMap = {
@@ -33,16 +33,15 @@ class LineScreensaver extends Screensaver {
 
 	constructor() {
 		super();
-		console.log('LineScreensaver constructor');
+		//console.log('LineScreensaver constructor');
 	}
 
 
 
 
 	init() {
-		console.log('LineScreensaver init');
+		//console.log('LineScreensaver init');
 		this.element = HTMLApp.buildElementMap(document, this.elementMap);
-		//document.getElementById('screensaver-group').innerHTML = '<line x="-400" y="-300" width="600" height="500"></line>';
 		this.update();
 	}
 
@@ -67,54 +66,46 @@ class LineScreensaver extends Screensaver {
 
 	update() {
 
-		let d = '';
-
-		const newElement = document.createElementNS('http://www.w3.org/2000/svg','path');
-
-		if (ssg.hasChildNodes()) {
-			newElement.setAttribute('d', ssg.lastElementChild.getAttribute('d'));
-		}
-
-		//ssg.appendChild(newElement);
-		ssg.prepend(newElement);
-		//ssg.prepend(newElement);
-
-		//console.log(newElement);
-
-		const startPoint = this.randomPoint();
-
-		let linepoints = '';
-
-		for (let i = 1; i <= this.pathSections; i++) {
-			linepoints += ` ${this.randomPoint()}`
-		}
-
 		while (ssg.childElementCount > this.pathCount)
 		{
 			ssg.lastElementChild.remove();
 		}
+		while (ssg.childElementCount < this.pathCount)
+		{
+			ssg.appendChild(this.newElement());
+		}
 
-		d = `M ${startPoint} ${linepoints}`;
+		this.currentChild = (this.currentChild + 1) % this.pathCount;
 
-		ssg.lastElementChild.setAttribute('d', d);
-
-
-		// trying to get the viewport in svg units:
-		//console.log('output.getBoundingClientRect', this.element.output.getBoundingClientRect());
-		//console.log('output.getBBox', this.element.output.getBBox());
-		//console.log('svg.getBoundingClientRect', this.element.svg.getBoundingClientRect());
-		//console.log('svg.getBBox', this.element.svg.getBBox());
+		ssg.children[this.currentChild].setAttribute('d', this.newPathString(this.pathSections));
 
 	}/* update */
+
+
+	newElement() {
+		const result = 	document.createElementNS('http://www.w3.org/2000/svg','path');
+		result.setAttribute('d', this.newPathString(this.pathSections));
+		return result;
+	}
+
+	/** @param {number} pathSections */
+	newPathString(pathSections) {
+		const startPoint = this.randomPoint();
+		let linepoints = '';
+
+		for (let i = 1; i <= pathSections; i++) {
+			linepoints += ` ${this.randomPoint()}`
+		}
+
+		const result = `M ${startPoint} ${linepoints}`;
+		return result;
+	}
 
 
 	/** @return {string}  */
 	randomPoint() {
 		return `${maths.getRandomIntInclusive(xMin,xMax)},${maths.getRandomIntInclusive(yMin,yMax)}`;
 	}
-
-
-
 
 
 	settingChange() {

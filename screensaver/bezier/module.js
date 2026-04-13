@@ -19,6 +19,8 @@ const yMax			= +1200;
 
 class BezierScreensaver extends Screensaver {
 
+	currentChild = 0;
+
 
 	elementMap = {
 		lineType			: 'setting-lineType',
@@ -31,16 +33,15 @@ class BezierScreensaver extends Screensaver {
 
 	constructor() {
 		super();
-		console.log('BezierScreensaver constructor');
+		//console.log('BezierScreensaver constructor');
 	}
 
 
 
 
 	init() {
-		console.log('BezierScreensaver init');
+		//console.log('BezierScreensaver init');
 		this.element = HTMLApp.buildElementMap(document, this.elementMap);
-
 		this.update();
 	}
 
@@ -65,58 +66,53 @@ class BezierScreensaver extends Screensaver {
 
 	update() {
 
-		let d = '';
-
-		const newElement = document.createElementNS('http://www.w3.org/2000/svg','path');
-
-		if (ssg.hasChildNodes()) {
-			newElement.setAttribute('d', ssg.lastElementChild.getAttribute('d'));
-		}
-
-		//ssg.appendChild(newElement);
-		ssg.prepend(newElement);
-		//ssg.prepend(newElement);
-
-		//console.log(newElement);
-
-		const startPoint = this.randomPoint();
-
-		let linepoints = '';
-
-		for (let i = 1; i <= this.pathSections; i++) {
-			linepoints += ` ${this.quadraticPoint()}`
-		}
-
 		while (ssg.childElementCount > this.pathCount)
 		{
 			ssg.lastElementChild.remove();
 		}
-
-
-
-		if (this.lineType === "quadraticClosed") {
-			d = `M ${startPoint} Q  ${linepoints} ${this.randomPoint()} ${startPoint} z`;
-		}
-		else if (this.lineType === "smoothQuadraticOpen") {
-			d = `M ${startPoint} T  ${linepoints}`;
-		}
-		else if (this.lineType === "smoothQuadraticClosed") {
-			d = `M ${startPoint} T  ${linepoints} ${this.randomPoint()} ${startPoint} z`;
-		}
-		else {
-			d = `M ${startPoint} Q  ${linepoints}`;
+		while (ssg.childElementCount < this.pathCount)
+		{
+			ssg.appendChild(this.newElement());
 		}
 
-		ssg.lastElementChild.setAttribute('d', d);
+		this.currentChild = (this.currentChild + 1) % this.pathCount;
 
-
-		// trying to get the viewport in svg units:
-		//console.log('output.getBoundingClientRect', this.element.output.getBoundingClientRect());
-		//console.log('output.getBBox', this.element.output.getBBox());
-		//console.log('svg.getBoundingClientRect', this.element.svg.getBoundingClientRect());
-		//console.log('svg.getBBox', this.element.svg.getBBox());
+		ssg.children[this.currentChild].setAttribute('d', this.newPathString(this.pathSections));
 
 	}/* update */
+
+
+	newElement() {
+		const result = 	document.createElementNS('http://www.w3.org/2000/svg','path');
+		result.setAttribute('d', this.newPathString(this.pathSections));
+		return result;
+	}
+
+	/** @param {number} pathSections */
+	newPathString(pathSections) {
+		let result = '';
+		const startPoint = this.randomPoint();
+		let linepoints = '';
+
+		for (let i = 1; i <= pathSections; i++) {
+			linepoints += ` ${this.pointPair()}`
+		}
+
+		if (this.lineType === "quadraticClosed") {
+			result = `M ${startPoint} Q  ${linepoints} ${this.randomPoint()} ${startPoint} z`;
+		}
+		else if (this.lineType === "smoothQuadraticOpen") {
+			result = `M ${startPoint} T  ${linepoints}`;
+		}
+		else if (this.lineType === "smoothQuadraticClosed") {
+			result = `M ${startPoint} T  ${linepoints} ${this.randomPoint()} ${startPoint} z`;
+		}
+		else {
+			result = `M ${startPoint} Q  ${linepoints}`;
+		}
+
+		return result;
+	}
 
 
 	/** @return {string}  */
@@ -129,7 +125,7 @@ class BezierScreensaver extends Screensaver {
 	}
 
 	/** @return {string}  */
-	quadraticPoint() {
+	pointPair() {
 		return `${this.randomPointConservative()} ${this.randomPoint()}`;
 	}
 
