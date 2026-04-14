@@ -26,7 +26,9 @@ class FoldoutScreensaver extends Screensaver {
 
 
 	elementMap = {
+		//settings			: 'form-moduleSettings',
 		elementCount		: 'module-elementCount',
+		headSize			: 'module-headSize',
 		segments			: 'module-segments',
 		output				: 'screensaver-output',
 		svg					: 'screensaver-svg',
@@ -57,6 +59,8 @@ class FoldoutScreensaver extends Screensaver {
 	init() {
 		//console.log('FoldoutScreensaver init');
 		this.element = HTMLApp.buildElementMap(document, this.elementMap);
+
+		this.form = document.forms['moduleSettings'];
 
 		this.update();
 	}
@@ -89,6 +93,15 @@ class FoldoutScreensaver extends Screensaver {
 	addSegment() {
 			ssg.appendChild(document.createElementNS('http://www.w3.org/2000/svg','path'));
 			this.updateElement(ssg.childElementCount-1);
+
+
+			let pathString = '';
+
+
+			for (let i = 1; i <= this.headSize; i++) {
+				pathString += ` ${output.randomPoint()}`
+			}
+
 	}
 
 
@@ -97,6 +110,9 @@ class FoldoutScreensaver extends Screensaver {
 	 */
 	updateElement(index) {
 		const element = /** @type {SVGElement} */ (ssg.children[index]);
+
+
+
 
 		element.setAttribute('d', this.newPathString(2));
 		element.style.setProperty('--sibling-index', `${index+1}`);
@@ -135,8 +151,12 @@ class FoldoutScreensaver extends Screensaver {
 			<input id="module-elementCount" type="number" name="elementCount" title="path count" min="1" value="1" max="10"/>
 			-->
 
+
+			<label for="module-headSize">head size</label>
+			<input id="module-headSize" type="number" name="headSize" title="headSize" min="1" value="1" max="5"/>
+
 			<label for="module-segments">segments</label>
-			<input id="module-segments" type="number" name="segments" title="segments" min="2" value="4" max="20"/>
+			<input id="module-segments" type="number" name="segments" title="segments" min="1" value="4" max="10"/>
 		`;
 		return result;
 	}
@@ -147,35 +167,37 @@ class FoldoutScreensaver extends Screensaver {
 	//
 
 
-	/**	@returns {string}	*/
-	get lineType() {
-		return this.element.lineType.value;
-	}
-
-	/**	@param {number} lineType	*/
-	set lineType(lineType) {
-		this.element.lineType.value = lineType;
-	}
-
-
 	/**	@returns {number}	*/
 	get elementCount() {
-		return parseInt(this.element.elementCount.value);
+		return parseInt(this.form.elementCount.value);
 	}
 
 	/**	@param {number} elementCount	*/
 	set elementCount(elementCount) {
-		this.element.elementCount.value = Math.round(elementCount);
+		this.form.elementCount.value = Math.round(elementCount);
 	}
+
+
+	/**	@returns {number}	*/
+	get headSize() {
+		return this.element.headSize.value;
+	}
+
+	/**	@param {number} headSize	*/
+	set headSize(headSize) {
+		this.form.headSize.value = Math.round(headSize);
+	}
+
+
 
 	/**	@returns {number}	*/
 	get segments() {
-		return parseInt(this.element.segments.value);
+		return parseInt(this.form.segments.value);
 	}
 
 	/**	@param {number} segments	*/
 	set segments(segments) {
-		this.element.segments.value = Math.round(segments);
+		this.form.segments.value = Math.round(segments);
 	}
 
 

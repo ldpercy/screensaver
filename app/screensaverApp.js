@@ -74,7 +74,7 @@ class ScreensaverApp extends HTMLApp {
 
 			//console.log('screensaverModule',screensaverModule);
 
-			document.getElementById('form-screensaver-settings').innerHTML = this.currentModule.instance.getForm();
+			document.getElementById('form-moduleSettings').innerHTML = this.currentModule.instance.getForm();
 
 			this.currentModule.instance.init();
 			this.playState = previousPlayState;

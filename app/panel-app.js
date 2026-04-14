@@ -57,7 +57,7 @@ class AppPanel {
 		// 	listener: (event)=> { this.loadScreensaverPreset(event.target.value) }
 		// },
 		{
-			query: '#form-screensaver-settings',
+			query: '#form-moduleSettings',
 			type: 'change',
 			listener: this.settingChangeListener
 		},
