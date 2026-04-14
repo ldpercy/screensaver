@@ -1,5 +1,5 @@
 import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
-import { Screensaver } from "../screensaver.js";
+import { ScreensaverBase } from "../screensaver-base.js";
 import { output } from "../../app/screensaver-output.js";
 
 
@@ -13,7 +13,7 @@ const ssg = document.getElementById('screensaver-group');
 const intervalTime	= 1000;
 
 
-class BezierScreensaver extends Screensaver {
+class BezierScreensaver extends ScreensaverBase {
 
 	currentIndex = 0;
 

@@ -1,5 +1,5 @@
 import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
-import { Screensaver } from "../screensaver.js";
+import { ScreensaverBase } from "../screensaver-base.js";
 import { output } from "../../app/screensaver-output.js";
 
 
@@ -13,15 +13,15 @@ const intervalTime	= 1000;
 
 
 
-class LineScreensaver extends Screensaver {
+class LineScreensaver extends ScreensaverBase {
 
 	currentIndex = 0;
 
 
 	elementMap = {
-		lineType			: 'setting-lineType',
-		elementCount		: 'setting-elementCount',
-		pathSections		: 'setting-pathSections',
+		// lineType			: 'setting-lineType',
+		// elementCount		: 'setting-elementCount',
+		// pathSections		: 'setting-pathSections',
 		output				: 'screensaver-output',
 		svg					: 'screensaver-svg',
 	};
@@ -33,11 +33,10 @@ class LineScreensaver extends Screensaver {
 	}
 
 
-
-
 	init() {
 		//console.log('LineScreensaver init');
 		this.element = HTMLApp.buildElementMap(document, this.elementMap);
+		super.init();
 		this.update();
 	}
 
@@ -64,7 +63,7 @@ class LineScreensaver extends Screensaver {
 
 		while (ssg.childElementCount > this.elementCount)
 		{
-			ssg.lastElementChild.remove();
+			ssg.firstElementChild.remove();
 		}
 		while (ssg.childElementCount < this.elementCount)
 		{
@@ -74,6 +73,8 @@ class LineScreensaver extends Screensaver {
 
 		this.currentIndex = (this.currentIndex + 1) % this.elementCount;
 		this.updateElement(this.currentIndex);
+
+		this.updateSiblingIndices(ssg);
 
 	}/* update */
 
@@ -86,7 +87,7 @@ class LineScreensaver extends Screensaver {
 		const element = /** @type {SVGElement} */ (ssg.children[index]);
 
 		element.setAttribute('d', this.newPathString(this.pathSections));
-		element.style.setProperty('--sibling-index', `${index+1}`);
+		//element.style.setProperty('--sibling-index', `${index+1}`);
 		element.style.setProperty('--sibling-count', `${this.elementCount}`);
 	}
 
@@ -143,33 +144,33 @@ class LineScreensaver extends Screensaver {
 
 	/**	@returns {string}	*/
 	get lineType() {
-		return this.element.lineType.value;
+		return this.form.lineType.value;
 	}
 
 	/**	@param {number} lineType	*/
 	set lineType(lineType) {
-		this.element.lineType.value = lineType;
+		this.form.lineType.value = lineType;
 	}
 
 
 	/**	@returns {number}	*/
 	get elementCount() {
-		return parseInt(this.element.elementCount.value);
+		return parseInt(this.form.elementCount.value);
 	}
 
 	/**	@param {number} elementCount	*/
 	set elementCount(elementCount) {
-		this.element.elementCount.value = Math.round(elementCount);
+		this.form.elementCount.value = Math.round(elementCount);
 	}
 
 	/**	@returns {number}	*/
 	get pathSections() {
-		return parseInt(this.element.pathSections.value);
+		return parseInt(this.form.pathSections.value);
 	}
 
 	/**	@param {number} pathSections	*/
 	set pathSections(pathSections) {
-		this.element.pathSections.value = Math.round(pathSections);
+		this.form.pathSections.value = Math.round(pathSections);
 	}
 
 

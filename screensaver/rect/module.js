@@ -1,5 +1,5 @@
 import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
-import { Screensaver } from "../screensaver.js";
+import { ScreensaverBase } from "../screensaver-base.js";
 import * as maths from "../../[html-common]/module/Maths.js";
 import { output } from "../../app/screensaver-output.js";
 
@@ -11,7 +11,7 @@ console.log('rect module');	// this only runs the _first_ time the module is loa
 const ssg = document.getElementById('screensaver-group');
 const r = document.createElementNS('http://www.w3.org/2000/svg','rect');
 
-class RectScreensaver extends Screensaver {
+class RectScreensaver extends ScreensaverBase {
 
 	currentIndex = 0;
 

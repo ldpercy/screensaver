@@ -1,6 +1,6 @@
 import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 import * as planarSpace from "../../[html-common]/module/PlanarSpace.js";
-import { Screensaver } from "../screensaver.js";
+import { ScreensaverBase } from "../screensaver-base.js";
 import { output } from "../../app/screensaver-output.js";
 
 
@@ -14,7 +14,7 @@ const intervalTime	= 1000;
 
 
 
-class FoldoutScreensaver extends Screensaver {
+class FoldoutScreensaver extends ScreensaverBase {
 
 	currentIndex = 0;
 

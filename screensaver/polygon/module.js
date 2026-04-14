@@ -1,5 +1,5 @@
 import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
-import { Screensaver } from "../screensaver.js";
+import { ScreensaverBase } from "../screensaver-base.js";
 import * as geometry from "../../app/geometry.module.js";
 
 
@@ -10,7 +10,7 @@ import * as polygonPreset from "./polygon-preset.js";
 
 
 
-class PolygonScreensaver extends Screensaver {
+class PolygonScreensaver extends ScreensaverBase {
 
 	constructor() {
 		super();
