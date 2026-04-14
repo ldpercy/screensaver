@@ -1,6 +1,5 @@
 import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 import { Screensaver } from "../screensaver.js";
-import { Maths } from "../../app/maths.module.js";
 import * as geometry from "../../app/geometry.module.js";
 
 
@@ -101,7 +100,7 @@ class PolygonScreensaver extends Screensaver {
 		let path = '';
 		let x = 0, y = 0;
 
-		const mainAngle = Maths.TAU / sides;
+		const mainAngle = (2 * Math.PI) / sides;
 
 		const startAngle = mainAngle/startDivision;
 
