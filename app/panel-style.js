@@ -145,12 +145,12 @@ class StylePanel {
 
 
 
-
+	/** @param {string} presetName */
 	loadStylePreset(presetName) {
 
 		const preset  = stylePreset[presetName];
 
-		//console.log('loadPreset', presetName, preset );
+		console.log('loadPreset', presetName, preset );
 
 		if (preset) {
 			for (let key in preset.polygon) {

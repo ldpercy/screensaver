@@ -13,8 +13,8 @@ class ScreensaverOutput {
 
 	xMin	= -1800;
 	xMax	= +1800;
-	yMin	= -900;
-	yMax	= +900;
+	yMin	= -1200;
+	yMax	= +1200;
 	// these are just rough starting vals until until I can figure out the geometry of the viewing area
 
 

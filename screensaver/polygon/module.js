@@ -137,7 +137,7 @@ class PolygonScreensaver extends Screensaver {
 			}// for i
 
 			if (copyPaths === 'separate') {
-				result += `<path d="${path} z" style="--degrees:${degrees}"/>`;
+				result += `<path d="${path} z" style="--degrees:${degrees};--sibling-index:${c+1};--sibling-count:${copies}; "/>`;
 				lastPoint = new geometry.Point(0,0);
 				path = '';
 			}

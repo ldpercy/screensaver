@@ -1,17 +1,20 @@
+
 export const defaultStyle = {
 	style : {
 		colourScheme	: 'dark',
 		blendMode		: 'normal',
 		pageColour		: '#0a0a0a',
 		fillColour		: '#ffa500',
-		fillOpacity		: '0.5',
+		strokeColour	: '#00ffff',
+		fillOpacity		: '0.7',
 		fullRule		: 'evenodd',
-		strokeWidth		: '1rem',
-		strokeDasharray	: '1rem 4rem',
+
+		strokeWidth		: '5mm',
+		strokeDasharray	: '5cm 5cm',
 		dashAnimation	: 'none',
 		grid			: false,
 	},
-}
+};
 
 
 
@@ -19,13 +22,14 @@ export const light = {
 	style : {
 		colourScheme	: 'light',
 	}
-}
+};
+
 
 export const dark = {
 	style : {
 		colourScheme	: 'dark',
 	}
-}
+};
 
 
 export const disco = {
@@ -72,7 +76,8 @@ export const midnightblue = {
 
 
 	}
-}
+};
+
 
 export const peachpuff = {
 	style : {
@@ -82,6 +87,9 @@ export const peachpuff = {
 		fillColour		: '#ffdab9',	// peachpuff	#ffdab9
 		strokeColour	: '#7cfc00',	// lawngreen	#7cfc00
 
+		fillOpacity		: '0.8',
+		strokeOpacity	: '0.9',
+
 		strokeLinejoin	: 'round',
 		strokeLinecap	: 'round',
 		strokeWidth		: '1cm',
@@ -89,7 +97,8 @@ export const peachpuff = {
 		strokeDasharray	: '1mm 7cm',
 		dashAnimation	: 'none',
 	}
-}
+};
+
 
 export const forestgreen = {
 	style : {
@@ -106,7 +115,8 @@ export const forestgreen = {
 		strokeDasharray	: '2cm 2cm 2mm 2cm',
 		dashAnimation	: 'alternate',
 	}
-}
+};
+
 
 export const darkmagenta = {
 	style : {
@@ -123,9 +133,7 @@ export const darkmagenta = {
 		strokeDasharray	: '1ex 13rem',
 		dashAnimation	: 'pulse',
 	}
-}
-
-
+};
 
 
 export const machine = {
@@ -148,6 +156,6 @@ export const machine = {
 		strokeDasharray	: '2cm 2cm',
 		dashAnimation	: 'mechanical',
 	}
-}
+};
 
 
