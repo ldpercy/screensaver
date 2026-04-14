@@ -72,7 +72,7 @@ export const midnightblue = {
 		strokeWidth		: '1mm',
 		strokeDash		: true,
 		strokeDasharray	: '1mm 9mm',
-		dashAnimation	: 'none',
+		dashAnimation	: 'ease',
 
 
 	}
@@ -95,7 +95,7 @@ export const peachpuff = {
 		strokeWidth		: '1cm',
 		strokeDash		: true,
 		strokeDasharray	: '1mm 7cm',
-		dashAnimation	: 'none',
+		dashAnimation	: 'steps',
 	}
 };
 

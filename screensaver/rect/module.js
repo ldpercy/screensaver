@@ -98,7 +98,7 @@ class RectScreensaver extends Screensaver {
 	getForm() {
 		const result = `
 			<label for="module-elementCount">element count</label>
-			<input id="module-elementCount" type="number" name="elementCount" title="element count" min="1" value="3" max="10"/>
+			<input id="module-elementCount" type="number" name="elementCount" title="element count" min="1" value="5" max="10"/>
 		`;
 		return result;
 	}

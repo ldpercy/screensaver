@@ -127,7 +127,7 @@ class LineScreensaver extends Screensaver {
 			-->
 
 			<label for="setting-elementCount">element count</label>
-			<input id="setting-elementCount" type="number" name="elementCount" title="path count" min="1" value="2" max="10"/>
+			<input id="setting-elementCount" type="number" name="elementCount" title="path count" min="1" value="3" max="10"/>
 
 			<label for="setting-pathSections">line sections</label>
 			<input id="setting-pathSections" type="number" name="pathSections" title="line sections" min="1" value="2" max="10"/>

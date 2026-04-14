@@ -7,9 +7,9 @@
 
 #screensaver-output {
 
-	--stroke-dasharray: 1ex 10ex;
-	--to-stroke-dashoffset: 11ex;
-	--stroke-width: 2em;
+	--stroke-dasharray: 5cm 5cm;
+	--to-stroke-dashoffset: 10cm;
+	--stroke-width: 5mm;
 	--stroke-linejoin: miter;
 	--stroke-linecap: butt;
 	--blend-mode: normal;
@@ -70,8 +70,10 @@
 
 	stroke-miterlimit: 20;
 
+	mix-blend-mode: var(--blend-mode);
+
 	* {
-		mix-blend-mode: var(--blend-mode);
+
 		/* transition: mix-blend-mode 1s linear;  not working for me */
 
 		/*
@@ -116,6 +118,28 @@
 }
 
 
+[data-dash-animation=ease] #screensaver-group {
+	transition: stroke-dashoffset 0s;
+
+	animation-name: full-dashoffset;
+	animation-duration: 1.4s;
+	animation-timing-function: ease;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+
+
+[data-dash-animation=steps] #screensaver-group {
+	transition: stroke-dashoffset 0s;
+
+	animation-name: full-dashoffset;
+	animation-duration: 1s;
+	animation-timing-function: steps(10);
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+
+
 [data-dash-animation=pulse] #screensaver-group {
 	transition: stroke-dashoffset 0s;
 	animation-name: full-dashoffset;
@@ -128,7 +152,7 @@
 [data-dash-animation=alternate] #screensaver-group {
 	transition: stroke-dashoffset 0s;
 	animation-name: full-dashoffset;
-	animation-duration: 1s;
+	animation-duration: 2s;
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
@@ -138,7 +162,7 @@
 [data-dash-animation=mechanical] #screensaver-group {
 	transition: stroke-dashoffset 0s;
 	animation-name: full-dashoffset;
-	animation-duration: 1s;
+	animation-duration: 0.8s;
 	animation-timing-function: cubic-bezier(1,0,0,1);
 	animation-iteration-count: infinite;
 	animation-direction: normal;
