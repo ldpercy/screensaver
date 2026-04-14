@@ -5,6 +5,11 @@
 import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 import { screensaverApp } from "./screensaverApp.js";
 import * as maths from "../[html-common]/module/Maths.js";
+import * as planarSpace from "../[html-common]/module/PlanarSpace.js";
+
+
+
+export const outputSpace = new planarSpace.Space();
 
 
 
@@ -51,6 +56,11 @@ class ScreensaverOutput {
 
 	randomPointConservative() {
 		return `${maths.getRandomIntInclusive(this.xMin/2, this.xMax/2)},${maths.getRandomIntInclusive(this.yMin/2, this.yMax/2)}`;
+	}
+
+	/** @returns {planarSpace.CartesianCoordinates} */
+	randomCartesian() {
+		return outputSpace.newCartesianCoordinates(this.randomX(), this.randomY());
 	}
 
 

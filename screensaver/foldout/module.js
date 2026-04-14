@@ -18,17 +18,16 @@ class FoldoutScreensaver extends ScreensaverBase {
 
 	currentIndex = 0;
 
-	space = new planarSpace.Space();
 
-	/** @type {Array<planarSpace.Point>} */
-	head = [];
+	/** @type {Array<planarSpace.CartesianCoordinates>} */
+	headSegment = [];
 
 
 
 	elementMap = {
 		//settings			: 'form-moduleSettings',
 		elementCount		: 'module-elementCount',
-		headSize			: 'module-headSize',
+		headPoints			: 'module-headPoints',
 		segments			: 'module-segments',
 		output				: 'screensaver-output',
 		svg					: 'screensaver-svg',
@@ -39,6 +38,14 @@ class FoldoutScreensaver extends ScreensaverBase {
 		super();
 		//console.log('FoldoutScreensaver constructor');
 	}
+
+	init() {
+		//console.log('FoldoutScreensaver init');
+		this.element = HTMLApp.buildElementMap(document, this.elementMap);
+		super.init();
+		this.update();
+	}
+
 
 	play() {
 		this.intervalId = setInterval(
@@ -56,84 +63,83 @@ class FoldoutScreensaver extends ScreensaverBase {
 	}
 
 
-	init() {
-		//console.log('FoldoutScreensaver init');
-		this.element = HTMLApp.buildElementMap(document, this.elementMap);
-
-		this.form = document.forms['moduleSettings'];
-
-		this.update();
-	}
-
-
-
-
-
-
 
 	update() {
 
-		while (ssg.childElementCount > this.segments)
+		while (ssg.childElementCount >= this.segments)
 		{
-			//ssg.lastElementChild.remove();
 			ssg.firstElementChild.remove();
 		}
 		while (ssg.childElementCount < this.segments)
 		{
-			this.addSegment();
+			this.headSegment = this.addSegment(this.headSegment, this.headPoints, this.copyPoints);
 		}
 
-		//this.currentIndex = (this.currentIndex + 1) % this.segments;
-		this.updateElement(this.currentIndex);
-
+		this.updateSiblingIndices(ssg);
 	}/* update */
 
 
+	/**
+	 * @param {Array<planarSpace.CartesianCoordinates>} segment
+	 * @param {number}	length
+	 * @param {number}	retainPoints
+	 * @returns {Array<planarSpace.CartesianCoordinates>}
+	*/
+	addSegment(segment, length, retainPoints) {
+		//console.debug(arguments);
 
-	addSegment() {
-			ssg.appendChild(document.createElementNS('http://www.w3.org/2000/svg','path'));
-			this.updateElement(ssg.childElementCount-1);
+		const newElement = document.createElementNS('http://www.w3.org/2000/svg','path');
+
+		ssg.appendChild(newElement);
+		// let pathString = '';
+
+		newElement.style.setProperty('--sibling-count', `${this.segments}`);
+
+		const newSegment = this.newSegment(segment, length, retainPoints)
+		//console.log(newSegment);
+
+		newElement.setAttribute('d', this.getSegmentPath(newSegment));
+
+		return newSegment;
+	}
 
 
-			let pathString = '';
+	/** @param {Array<planarSpace.CartesianCoordinates>} segment */
+	getSegmentPath(segment) {
+		//const startPoint = output.randomCartesian();
 
+		let pathpoints = segment.reduce(
+			(str, point) =>
+			{
+				return str + ` ${point.x},${point.y}`;
+			},
+			''
+		);
 
-			for (let i = 1; i <= this.headSize; i++) {
-				pathString += ` ${output.randomPoint()}`
-			}
+		//console.log('pathpoints',pathpoints);
 
+		const result = `M ${pathpoints} z`;
+		return result;
 	}
 
 
 	/**
-	 * @param {number} index
+	 * @param {Array<planarSpace.CartesianCoordinates>} segment
+	 * @param {number}	length
+	 * @param {number}	retainPoints
+	 * @returns {Array<planarSpace.CartesianCoordinates>}
 	 */
-	updateElement(index) {
-		const element = /** @type {SVGElement} */ (ssg.children[index]);
+	newSegment(segment, length, retainPoints) {
+		// need to check if this is pass-by-value or a mutation
 
+		let result = segment.slice(-retainPoints);
 
-
-
-		element.setAttribute('d', this.newPathString(2));
-		element.style.setProperty('--sibling-index', `${index+1}`);
-		element.style.setProperty('--sibling-count', `${this.segments}`);
-	}
-
-
-
-	/** @param {number} segments */
-	newPathString(segments) {
-		const startPoint = output.randomPoint();
-		let linepoints = '';
-
-		for (let i = 1; i <= segments; i++) {
-			linepoints += ` ${output.randomPoint()}`
+		while (result.length < length) {
+			result.push(output.randomCartesian());
 		}
-
-		const result = `M ${startPoint} ${linepoints}`;
+		//console.log('newSegment', result);
 		return result;
 	}
-
 
 
 
@@ -144,6 +150,12 @@ class FoldoutScreensaver extends ScreensaverBase {
 
 
 
+
+	//
+	//	form & accessors
+	//
+
+
 	getForm() {
 		const result = `
 			<!--
@@ -152,19 +164,19 @@ class FoldoutScreensaver extends ScreensaverBase {
 			-->
 
 
-			<label for="module-headSize">head size</label>
-			<input id="module-headSize" type="number" name="headSize" title="headSize" min="1" value="1" max="5"/>
-
 			<label for="module-segments">segments</label>
 			<input id="module-segments" type="number" name="segments" title="segments" min="1" value="4" max="10"/>
+
+
+			<label for="module-headPoints">head points</label>
+			<input id="module-headPoints" type="number" name="headPoints" title="head points" min="2" value="3" max="5"/>
+
+			<label for="module-copyPoints">copy points</label>
+			<input id="module-copyPoints" type="number" name="copyPoints" title="copy points" min="1" value="2" max="4"/>
+
 		`;
 		return result;
 	}
-
-
-	//
-	//	Accessors
-	//
 
 
 	/**	@returns {number}	*/
@@ -179,13 +191,13 @@ class FoldoutScreensaver extends ScreensaverBase {
 
 
 	/**	@returns {number}	*/
-	get headSize() {
-		return this.element.headSize.value;
+	get headPoints() {
+		return parseInt(this.element.headPoints.value);
 	}
 
-	/**	@param {number} headSize	*/
-	set headSize(headSize) {
-		this.form.headSize.value = Math.round(headSize);
+	/**	@param {number} headPoints	*/
+	set headPoints(headPoints) {
+		this.form.headPoints.value = Math.round(headPoints);
 	}
 
 
@@ -198,6 +210,17 @@ class FoldoutScreensaver extends ScreensaverBase {
 	/**	@param {number} segments	*/
 	set segments(segments) {
 		this.form.segments.value = Math.round(segments);
+	}
+
+
+	/**	@returns {number}	*/
+	get copyPoints() {
+		return parseInt(this.form.copyPoints.value);
+	}
+
+	/**	@param {number} copyPoints	*/
+	set copyPoints(copyPoints) {
+		this.form.copyPoints.value = Math.round(copyPoints);
 	}
 
 
