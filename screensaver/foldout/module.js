@@ -7,6 +7,10 @@ import { output } from "../../app/screensaver-output.js";
 //console.log('foldout module');	// this only runs the _first_ time the module is loaded - not sure what the stipulations around that are though, whether it's possible to unload etc
 
 
+/**
+ * @typedef {Array<planarSpace.CartesianCoordinates>} Segment
+ */
+
 
 const ssg = document.getElementById('screensaver-group');
 
@@ -19,7 +23,7 @@ class FoldoutScreensaver extends ScreensaverBase {
 	currentIndex = 0;
 
 
-	/** @type {Array<planarSpace.CartesianCoordinates>} */
+	/** @type Segment */
 	headSegment = [];
 
 
@@ -77,24 +81,25 @@ class FoldoutScreensaver extends ScreensaverBase {
 	}/* update */
 
 
+
 	/**
-	 * @param {Array<planarSpace.CartesianCoordinates>} segment
-	 * @param {number}	length
+	 * @param {Segment} sourceSegment
 	 * @param {number}	retainPoints
-	 * @returns {Array<planarSpace.CartesianCoordinates>}
+	 * @param {number}	pointCount
+	 * @returns {Segment}
 	*/
-	addSegment(segment, length, retainPoints) {
+	addSegment(sourceSegment, pointCount, retainPoints) {
 		//console.debug(arguments);
 
 		const previousHead = ssg.lastElementChild;
 		//console.debug(previousHead);
 
 		const newElement = document.createElementNS('http://www.w3.org/2000/svg','path');
-		newElement.setAttribute('d', this.getSegmentPath(segment));
+		newElement.setAttribute('d', this.getSegmentPath(sourceSegment));
 		ssg.appendChild(newElement);
 		// let pathString = '';
 
-		const newSegment = this.newSegment(segment, length, retainPoints);
+		const newSegment = this.newSegment(sourceSegment, retainPoints, pointCount);
 
 		// > Note: If the given child is a reference to an existing node in the document, appendChild() moves it from its current position to the new position.
 		if (previousHead) {
@@ -107,7 +112,7 @@ class FoldoutScreensaver extends ScreensaverBase {
 	}
 
 
-	/** @param {Array<planarSpace.CartesianCoordinates>} segment */
+	/** @param {Segment} segment */
 	getSegmentPath(segment) {
 		//const startPoint = output.randomCartesian();
 
@@ -127,17 +132,16 @@ class FoldoutScreensaver extends ScreensaverBase {
 
 
 	/**
-	 * @param {Array<planarSpace.CartesianCoordinates>} segment
-	 * @param {number}	length
+	 * @param {Segment} sourceSegment
 	 * @param {number}	retainPoints
-	 * @returns {Array<planarSpace.CartesianCoordinates>}
+	 * @param {number}	pointCount
+	 * @returns {Segment}
 	 */
-	newSegment(segment, length, retainPoints) {
-		// need to check if this is pass-by-value or a mutation
+	newSegment(sourceSegment, retainPoints, pointCount) {
 
-		let result = segment.slice(-retainPoints);
+		let result = sourceSegment.slice(-retainPoints);
 
-		while (result.length < length) {
+		while (result.length < pointCount) {
 			result.push(output.randomCartesian());
 		}
 		//console.log('newSegment', result);
