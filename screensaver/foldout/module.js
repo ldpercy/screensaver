@@ -68,48 +68,39 @@ class FoldoutScreensaver extends ScreensaverBase {
 
 	update() {
 
-		while (ssg.childElementCount >= this.segmentCount)
+		let newElement;
+		let newPath;
+		let newSegment;
+		let previousHead;
+
+		while (ssg.childElementCount >= this.elementCount)
 		{
 			ssg.firstElementChild.remove();
 		}
-		while (ssg.childElementCount < this.segmentCount)
+		while (ssg.childElementCount < this.elementCount)
 		{
-			this.headSegment = this.addSegment(this.headSegment, this.headPoints, this.copyPoints);
+
+			previousHead = ssg.lastElementChild;
+			newElement = document.createElementNS('http://www.w3.org/2000/svg','path');
+			ssg.appendChild(newElement);
+
+			newSegment = this.newSegment(this.headSegment, this.retainPoints, this.headPoints);
+			newPath = this.getSegmentPath(newSegment);
+
+			newElement.setAttribute('d', newPath);
+
+			//this.headSegment = this.newElement(this.headSegment, this.headPoints, this.retainPoints);
+
+			if (previousHead) {
+				ssg.appendChild(previousHead);
+				previousHead.setAttribute('d', newPath);
+			}
+			this.headSegment = newSegment;
+
 		}
 
 		this.updateSiblingIndices(ssg);
 	}/* update */
-
-
-
-	/**
-	 * @param {Segment} sourceSegment
-	 * @param {number}	retainPoints
-	 * @param {number}	pointCount
-	 * @returns {Segment}
-	*/
-	addSegment(sourceSegment, pointCount, retainPoints) {
-		//console.debug(arguments);
-
-		const previousHead = ssg.lastElementChild;
-		//console.debug(previousHead);
-
-		const newElement = document.createElementNS('http://www.w3.org/2000/svg','path');
-		newElement.setAttribute('d', this.getSegmentPath(sourceSegment));
-		ssg.appendChild(newElement);
-		// let pathString = '';
-
-		const newSegment = this.newSegment(sourceSegment, retainPoints, pointCount);
-
-		// > Note: If the given child is a reference to an existing node in the document, appendChild() moves it from its current position to the new position.
-		if (previousHead) {
-			ssg.appendChild(previousHead);
-			previousHead.setAttribute('d', this.getSegmentPath(newSegment));
-		}
-		//console.log(newSegment);
-
-		return newSegment;
-	}
 
 
 	/** @param {Segment} segment */
@@ -144,7 +135,7 @@ class FoldoutScreensaver extends ScreensaverBase {
 		while (result.length < pointCount) {
 			result.push(output.randomCartesian());
 		}
-		//console.log('newSegment', result);
+		console.log('newSegment', result);
 		return result;
 	}
 
@@ -171,30 +162,21 @@ class FoldoutScreensaver extends ScreensaverBase {
 			-->
 
 
-			<label for="module-segmentCount">segment count</label>
-			<input id="module-segmentCount" type="number" name="segmentCount" title="segment count" min="1" value="4" max="10"/>
+			<label for="module-elementCount">element count</label>
+			<input id="module-elementCount" type="number" name="elementCount" title="element count" min="1" value="4" max="10"/>
 
 
 			<label for="module-headPoints">head points</label>
 			<input id="module-headPoints" type="number" name="headPoints" title="head points" min="2" value="3" max="5"/>
 
-			<label for="module-copyPoints">copy points</label>
-			<input id="module-copyPoints" type="number" name="copyPoints" title="copy points" min="1" value="2" max="4"/>
+			<label for="module-retainPoints">retain points</label>
+			<input id="module-retainPoints" type="number" name="retainPoints" title="retain points" min="1" value="2" max="4"/>
 
 		`;
 		return result;
 	}
 
 
-	/**	@returns {number}	*/
-	get elementCount() {
-		return parseInt(this.form.elementCount.value);
-	}
-
-	/**	@param {number} elementCount	*/
-	set elementCount(elementCount) {
-		this.form.elementCount.value = Math.round(elementCount);
-	}
 
 
 	/**	@returns {number}	*/
@@ -210,24 +192,24 @@ class FoldoutScreensaver extends ScreensaverBase {
 
 
 	/**	@returns {number}	*/
-	get segmentCount() {
-		return parseInt(this.form.segmentCount.value);
+	get elementCount() {
+		return parseInt(this.form.elementCount.value);
 	}
 
-	/**	@param {number} segmentCount	*/
-	set segmentCount(segmentCount) {
-		this.form.segmentCount.value = Math.round(segmentCount);
+	/**	@param {number} elementCount	*/
+	set elementCount(elementCount) {
+		this.form.elementCount.value = Math.round(elementCount);
 	}
 
 
 	/**	@returns {number}	*/
-	get copyPoints() {
-		return parseInt(this.form.copyPoints.value);
+	get retainPoints() {
+		return parseInt(this.form.retainPoints.value);
 	}
 
-	/**	@param {number} copyPoints	*/
-	set copyPoints(copyPoints) {
-		this.form.copyPoints.value = Math.round(copyPoints);
+	/**	@param {number} retainPoints	*/
+	set retainPoints(retainPoints) {
+		this.form.retainPoints.value = Math.round(retainPoints);
 	}
 
 
