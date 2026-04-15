@@ -120,6 +120,7 @@
 
 #select-screensaver {
 	height: 7rem;
+	margin:1em 0em;
 
 	option {
 		text-align: left;

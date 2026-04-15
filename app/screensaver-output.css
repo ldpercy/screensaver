@@ -70,9 +70,11 @@
 
 	stroke-miterlimit: 20;
 
-	mix-blend-mode: var(--blend-mode);
+
+	mix-blend-mode: var(--blend-mode);		/* still unsure where exactly this needs to be applied; ff and chr render some modes differently */
 
 	* {
+		mix-blend-mode: var(--blend-mode);
 
 		/* transition: mix-blend-mode 1s linear;  not working for me */
 

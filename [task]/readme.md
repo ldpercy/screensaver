@@ -10,6 +10,7 @@ Bugs
 Todo
 ----
 
+* [ff] if selected, dash animations still run even if stroke-dash is off - need to add this to pause
 * Savers that include style setting presets
 * Option to auto pause all/most animations when the page loses focus (document.visibilityState / document.visibilityChange)
 * Add global settings for interval and transition timing

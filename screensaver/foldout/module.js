@@ -27,8 +27,6 @@ class FoldoutScreensaver extends ScreensaverBase {
 	elementMap = {
 		//settings			: 'form-moduleSettings',
 		elementCount		: 'module-elementCount',
-		headPoints			: 'module-headPoints',
-		segments			: 'module-segments',
 		output				: 'screensaver-output',
 		svg					: 'screensaver-svg',
 	};
@@ -66,11 +64,11 @@ class FoldoutScreensaver extends ScreensaverBase {
 
 	update() {
 
-		while (ssg.childElementCount >= this.segments)
+		while (ssg.childElementCount >= this.segmentCount)
 		{
 			ssg.firstElementChild.remove();
 		}
-		while (ssg.childElementCount < this.segments)
+		while (ssg.childElementCount < this.segmentCount)
 		{
 			this.headSegment = this.addSegment(this.headSegment, this.headPoints, this.copyPoints);
 		}
@@ -88,17 +86,22 @@ class FoldoutScreensaver extends ScreensaverBase {
 	addSegment(segment, length, retainPoints) {
 		//console.debug(arguments);
 
-		const newElement = document.createElementNS('http://www.w3.org/2000/svg','path');
+		const previousHead = ssg.lastElementChild;
+		//console.debug(previousHead);
 
+		const newElement = document.createElementNS('http://www.w3.org/2000/svg','path');
+		newElement.setAttribute('d', this.getSegmentPath(segment));
 		ssg.appendChild(newElement);
 		// let pathString = '';
 
-		newElement.style.setProperty('--sibling-count', `${this.segments}`);
+		const newSegment = this.newSegment(segment, length, retainPoints);
 
-		const newSegment = this.newSegment(segment, length, retainPoints)
+		// > Note: If the given child is a reference to an existing node in the document, appendChild() moves it from its current position to the new position.
+		if (previousHead) {
+			ssg.appendChild(previousHead);
+			previousHead.setAttribute('d', this.getSegmentPath(newSegment));
+		}
 		//console.log(newSegment);
-
-		newElement.setAttribute('d', this.getSegmentPath(newSegment));
 
 		return newSegment;
 	}
@@ -164,8 +167,8 @@ class FoldoutScreensaver extends ScreensaverBase {
 			-->
 
 
-			<label for="module-segments">segments</label>
-			<input id="module-segments" type="number" name="segments" title="segments" min="1" value="4" max="10"/>
+			<label for="module-segmentCount">segment count</label>
+			<input id="module-segmentCount" type="number" name="segmentCount" title="segment count" min="1" value="4" max="10"/>
 
 
 			<label for="module-headPoints">head points</label>
@@ -192,7 +195,7 @@ class FoldoutScreensaver extends ScreensaverBase {
 
 	/**	@returns {number}	*/
 	get headPoints() {
-		return parseInt(this.element.headPoints.value);
+		return parseInt(this.form.headPoints.value);
 	}
 
 	/**	@param {number} headPoints	*/
@@ -203,13 +206,13 @@ class FoldoutScreensaver extends ScreensaverBase {
 
 
 	/**	@returns {number}	*/
-	get segments() {
-		return parseInt(this.form.segments.value);
+	get segmentCount() {
+		return parseInt(this.form.segmentCount.value);
 	}
 
-	/**	@param {number} segments	*/
-	set segments(segments) {
-		this.form.segments.value = Math.round(segments);
+	/**	@param {number} segmentCount	*/
+	set segmentCount(segmentCount) {
+		this.form.segmentCount.value = Math.round(segmentCount);
 	}
 
 
