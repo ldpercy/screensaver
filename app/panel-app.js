@@ -85,6 +85,7 @@ class AppPanel {
 	keyFunctionMap = {
 		'?'	: this.showAppInfoDialog,		// 'this' binding now being handled by the newKeyboardHandler from htmlApp
 		' ' : this.playPauseHandler,
+		'.' : this.stepForwardHandler,
 	};
 
 
@@ -117,6 +118,11 @@ class AppPanel {
 
 	playPauseHandler() {
 		screensaverApp.togglePlayState();
+	}
+
+	stepForwardHandler() {
+		//this.playState = 'paused';
+		screensaverApp.stepForward();
 	}
 
 

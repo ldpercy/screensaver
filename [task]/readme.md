@@ -21,7 +21,6 @@ Todo
 * 3d warps and rotates for the main screeensaver drawing area, even multiiple drawing areas
 * Colour-cycling for elements
 * Option to hide the ui forms while playing
-* Add step-through animation button
 * Save playing/paused animation state in storage so it persists between reloads
 * Add some sort of settings export to save as presets
 * Figure out a way to close bezier curves smoothly
@@ -50,6 +49,7 @@ In progress
 
 Done
 ----
+* Added kbd `.` to step though one update at a time
 * Fixed the dumb code in the line movers
 * Add state indication to the play/pause button
 * Add stroke colour and opacity settings

@@ -114,7 +114,10 @@ class ScreensaverApp extends HTMLApp {
 		}
 	}
 
-
+	stepForward() {
+		this.playState = 'paused';
+		this.currentModule.instance.update();
+	}
 
 	settingChange() {
 		this.currentModule.instance.settingChange();
