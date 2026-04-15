@@ -72,6 +72,7 @@ class CircleScreensaver extends ScreensaverBase {
 		this.currentIndex = (this.currentIndex + 1) % this.elementCount;
 		this.updateElement(this.currentIndex);
 
+		this.updateSiblingIndices(ssg);
 	}/* update */
 
 
@@ -86,9 +87,6 @@ class CircleScreensaver extends ScreensaverBase {
 		const newX = output.randomX();
 		const newY = output.randomY();
 		const newR = maths.getRandomIntInclusive(10,1000);
-
-		element.style.setProperty('--sibling-index', `${index+1}`);
-		element.style.setProperty('--sibling-count', `${this.elementCount}`);
 
 		element.setAttribute('cx', `${newX}`);
 		element.setAttribute('cy', `${newY}`);

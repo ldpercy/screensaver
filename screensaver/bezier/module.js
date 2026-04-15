@@ -75,6 +75,8 @@ class BezierScreensaver extends ScreensaverBase {
 
 		this.updateElement(this.currentIndex);
 
+		this.updateSiblingIndices(ssg);
+
 	}/* update */
 
 
@@ -85,8 +87,6 @@ class BezierScreensaver extends ScreensaverBase {
 		const element = /** @type {SVGElement} */ (ssg.children[index]);
 		//console.log(element);
 		element.setAttribute('d', this.newPathString(this.pathSections));
-		element.style.setProperty('--sibling-index', `${index+1}`);
-		element.style.setProperty('--sibling-count', `${this.elementCount}`);
 	}
 
 

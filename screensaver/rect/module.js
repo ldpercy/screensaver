@@ -65,6 +65,8 @@ class RectScreensaver extends ScreensaverBase {
 
 		this.updateElement(this.currentIndex);
 
+		this.updateSiblingIndices(ssg);
+
 	}/* update */
 
 
@@ -80,9 +82,6 @@ class RectScreensaver extends ScreensaverBase {
 		const width = maths.getRandomIntInclusive(10,1000);
 		const height = maths.getRandomIntInclusive(10,1000);
 		const rotate = maths.getRandomIntInclusive(-360,360);
-
-		element.style.setProperty('--sibling-index', `${index+1}`);
-		element.style.setProperty('--sibling-count', `${this.elementCount}`);
 
 		element.setAttribute('x', `${x}`);
 		element.setAttribute('y', `${y}`);

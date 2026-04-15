@@ -87,8 +87,6 @@ class LineScreensaver extends ScreensaverBase {
 		const element = /** @type {SVGElement} */ (ssg.children[index]);
 
 		element.setAttribute('d', this.newPathString(this.pathSections));
-		//element.style.setProperty('--sibling-index', `${index+1}`);
-		element.style.setProperty('--sibling-count', `${this.elementCount}`);
 	}
 
 
