@@ -11,7 +11,7 @@ import { stylePanel } from "./panel-style.js";
 
 class ScreensaverApp extends HTMLApp {
 
-	appVersion = 'v0.1.0';
+	appVersion = 'v0.2.0';
 	projectColour = 'midnightblue';
 	appInfo = [`%c
 		Screensaver ${this.appVersion} by ldpercy
@@ -22,7 +22,7 @@ class ScreensaverApp extends HTMLApp {
 
 	defaultScreensaver = 'foldout';
 	currentModule = undefined;
-	#playState = 'paused';
+	#playState = 'playing';
 
 
 	documentDOMContentLoaded() {
