@@ -20,13 +20,29 @@ class ScreensaverApp extends HTMLApp {
 		`color: light-dark(hsl(from ${this.projectColour} h s 30), hsl(from ${this.projectColour} h s 70));`,
 	];
 
-	defaultScreensaver = 'foldout';
+	/** @type {string} */
+	defaultScreensaver = 'bezier';
+	/** @type {string} */
+	#playState = 'paused';
+	/** @type {module} */			// no idea if this is correct type here, but it's working for now
 	currentModule = undefined;
-	#playState = 'playing';
+
+
+
+
+	/** @type {array} */
+	eventListeners = [
+		{
+			element: document,
+			type: 'visibilitychange',
+			listener: () => { this.visibilitychangeListener(); }
+		},
+	];
 
 
 	documentDOMContentLoaded() {
 		super.documentDOMContentLoaded();
+		HTMLApp.addEventListeners(this.eventListeners, this);
 		this.setColourScheme(localStorage.screensaver_colourScheme || 'dark');
 
 		this.init();
@@ -71,8 +87,7 @@ class ScreensaverApp extends HTMLApp {
 		//try {
 			// this will overwrite the theme binding each time, might need to improve?
 			this.currentModule = await import(moduleUrl);
-
-			//console.log('screensaverModule',screensaverModule);
+			//console.debug(this.currentModule);
 
 			document.getElementById('form-moduleSettings').innerHTML = this.currentModule.instance.getForm();
 
@@ -122,6 +137,17 @@ class ScreensaverApp extends HTMLApp {
 	settingChange() {
 		this.currentModule.instance.settingChange();
 	}
+
+
+	visibilitychangeListener() {
+		//console.debug('visibilitychangeListener', arguments);
+		//console.debug('document.visibilityState', document.visibilityState);
+		// if (document.visibilityState === 'hidden')
+		// {
+		// 	this.saveSettings();
+		// }
+	}
+
 
 
 
