@@ -23,7 +23,7 @@ class BezierScreensaver extends ScreensaverBase {
 	elementMap = {
 		lineType			: 'setting-lineType',
 		elementCount		: 'setting-elementCount',
-		pathSections		: 'setting-pathSections',
+		sectionCount		: 'setting-sectionCount',
 		output				: 'screensaver-output',
 		svg					: 'screensaver-svg',
 	};
@@ -93,7 +93,7 @@ class BezierScreensaver extends ScreensaverBase {
 	updateElement(index) {
 		const element = /** @type {SVGElement} */ (ssg.children[index]);
 		//console.log(element);
-		element.setAttribute('d', this.newPathString(form.pathSections));
+		element.setAttribute('d', this.newPathString(form.sectionCount));
 	}
 
 
@@ -102,17 +102,17 @@ class BezierScreensaver extends ScreensaverBase {
 
 	// newElement() {
 	// 	const result = 	document.createElementNS('http://www.w3.org/2000/svg','path');
-	// 	result.setAttribute('d', this.newPathString(this.pathSections));
+	// 	result.setAttribute('d', this.newPathString(this.sectionCount));
 	// 	return result;
 	// }
 
-	/** @param {number} pathSections */
-	newPathString(pathSections) {
+	/** @param {number} sectionCount */
+	newPathString(sectionCount) {
 		let result = '';
 		const startPoint = output.randomPoint();
 		let linepoints = '';
 
-		for (let i = 1; i <= pathSections; i++) {
+		for (let i = 1; i <= sectionCount; i++) {
 			linepoints += ` ${this.pointPair()}`
 		}
 
@@ -129,7 +129,7 @@ class BezierScreensaver extends ScreensaverBase {
 				result = `M ${startPoint} T  ${linepoints}`;
 				break;
 			case "smoothQuadraticClosed":
-				result = `M ${startPoint} T  ${linepoints} ${output.randomPoint()} ${startPoint} z`;
+				result = this.smoothQuadraticClosed(sectionCount); //`M ${startPoint} T  ${linepoints} ${output.randomPoint()} ${startPoint} z`;
 				break;
 			default:
 				break;
@@ -138,16 +138,41 @@ class BezierScreensaver extends ScreensaverBase {
 		return result;
 	}
 
-	/**  */
-	quadraticOpen(sections) {
+	/**
+	 * @param {number} sectionCount
+	 * @returns {string}
+	 */
+	smoothQuadraticClosed(sectionCount) {
+		let sectionPoints = '';
+		const startPoint = output.randomCartesian();
+		const firstControlPoint = output.randomCartesian();
+		const lastControlPoint = output.randomCartesian(); // this needs to change
 
+		// the last control point here needs to be collinear with the end/start and the first control point
+
+		for (let i = 1; i < sectionCount; i++) {
+			sectionPoints += ` ${this.pointPair()}`
+		}
+
+
+
+		const lastPair = `${output.randomPoint()} ${startPoint}`;
+
+		const result = `M ${startPoint.x},${startPoint.y} T  ${sectionPoints}  ${lastPair} z`;
+		return result;
 	}
+
+
+
+
 
 
 	/** @return {string}  */
 	pointPair() {
-		return `${output.randomPointConservative()} ${output.randomPoint()}`;
+		return `${output.randomPoint()} ${output.randomPointConservative()}`;
 	}
+
+
 
 
 	settingChange() {

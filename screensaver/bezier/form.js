@@ -17,9 +17,9 @@ class BezierForm extends FormBase {
 		const result = `
 			<label for="setting-lineType">type</label>
 			<select id="setting-lineType" name="lineType" title="line type" size="7">
-				<option value="quadraticOpen">quadratic - open</option>
+				<option value="quadraticOpen" selected>quadratic - open</option>
 				<option value="quadraticClosed">quadratic - closed</option>
-				<option value="smoothQuadraticOpen" selected>smooth quadratic - open</option>
+				<option value="smoothQuadraticOpen">smooth quadratic - open</option>
 				<option value="smoothQuadraticClosed">smooth quadratic - closed</option>
 
 				<!-- <option>cubic</option> -->
@@ -29,8 +29,8 @@ class BezierForm extends FormBase {
 			<label for="setting-elementCount">element count</label>
 			<input id="setting-elementCount" type="number" name="elementCount" title="path count" min="1" value="2" max="10"/>
 
-			<label for="setting-pathSections">path sections</label>
-			<input id="setting-pathSections" type="number" name="pathSections" title="path sections" min="1" value="2" max="10"/>
+			<label for="setting-sectionCount">section count</label>
+			<input id="setting-sectionCount" type="number" name="sectionCount" title="section count" min="1" value="2" max="10"/>
 		`;
 		return result;
 	}
@@ -63,13 +63,13 @@ class BezierForm extends FormBase {
 	}
 
 	/**	@returns {number}	*/
-	get pathSections() {
-		return parseInt(this.element.pathSections.value);
+	get sectionCount() {
+		return parseInt(this.element.sectionCount.value);
 	}
 
-	/**	@param {number} pathSections	*/
-	set pathSections(pathSections) {
-		this.element.pathSections.value = Math.round(pathSections);
+	/**	@param {number} sectionCount	*/
+	set sectionCount(sectionCount) {
+		this.element.sectionCount.value = Math.round(sectionCount);
 	}
 
 }

@@ -11,12 +11,13 @@ Bugs
 Todo
 ----
 
+* `bezier` show control points and lines
 * `css` Style overrides with custom stylesheets
 * `ff` if selected, dash animations still run even if stroke-dash is off - need to add this to pause
 * `module` screen savers that include style setting presets
 * `app` Option to auto pause all/most animations when the page loses focus (document.visibilityState / document.visibilityChange)
 * `app` Add global settings for interval and transition timing
-* `maths` Seeded random numbers
+* `maths/js` Seeded random numbers
 * Separate fill/stroke animations for different elements
 * `layout` Move grid out of main svg screensaver element
 * Have random point selection reactive to the bounding boxes of already-present elements
