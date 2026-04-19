@@ -2,7 +2,7 @@
 export class ScreensaverBase {
 
 	constructor(){
-		console.log('Screensaver constructor')
+		//console.log('Screensaver constructor')
 	}
 
 	init() {
@@ -19,7 +19,6 @@ export class ScreensaverBase {
 		//send signal to screensaver that it's parameters have changed
 	}
 
-
 	/** @returns {string} */
 	getForm() {
 		return '';
@@ -35,7 +34,26 @@ export class ScreensaverBase {
 		}
 	}
 
+}/* ScreensaverBase */
 
 
 
-}/* Screensaver */
+export class FormBase {
+
+
+	constructor(){
+		//console.log('Screensaver constructor')
+	}
+
+	init() {
+		this.element = document.forms['moduleSettings'];
+	}
+
+	/** @returns {string} */
+	getForm() {
+		return '';
+	}
+
+
+}/* FormBase */
+

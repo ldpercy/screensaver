@@ -135,7 +135,7 @@ class FoldoutScreensaver extends ScreensaverBase {
 		while (result.length < pointCount) {
 			result.push(output.randomCartesian());
 		}
-		console.log('newSegment', result);
+		//console.log('newSegment', result);
 		return result;
 	}
 

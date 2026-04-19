@@ -1,6 +1,8 @@
 import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 import { ScreensaverBase } from "../screensaver-base.js";
 import { output } from "../../app/screensaver-output.js";
+import { form  } from './form.js';
+
 
 
 
@@ -33,11 +35,16 @@ class BezierScreensaver extends ScreensaverBase {
 	}
 
 
+	getForm() {
+		return form.html;
+	}
 
 
 	init() {
 		//console.log('BezierScreensaver init');
+		super.init();
 		this.element = HTMLApp.buildElementMap(document, this.elementMap);
+		form.init();
 		this.update();
 	}
 
@@ -61,17 +68,17 @@ class BezierScreensaver extends ScreensaverBase {
 
 	update() {
 
-		while (ssg.childElementCount > this.elementCount)
+		while (ssg.childElementCount > form.elementCount)
 		{
 			ssg.lastElementChild.remove();
 		}
-		while (ssg.childElementCount < this.elementCount)
+		while (ssg.childElementCount < form.elementCount)
 		{
 			ssg.appendChild(document.createElementNS('http://www.w3.org/2000/svg','path'));
 			this.updateElement(ssg.childElementCount-1);
 		}
 
-		this.currentIndex = (this.currentIndex + 1) % this.elementCount;
+		this.currentIndex = (this.currentIndex + 1) % form.elementCount;
 
 		this.updateElement(this.currentIndex);
 
@@ -86,7 +93,7 @@ class BezierScreensaver extends ScreensaverBase {
 	updateElement(index) {
 		const element = /** @type {SVGElement} */ (ssg.children[index]);
 		//console.log(element);
-		element.setAttribute('d', this.newPathString(this.pathSections));
+		element.setAttribute('d', this.newPathString(form.pathSections));
 	}
 
 
@@ -109,22 +116,32 @@ class BezierScreensaver extends ScreensaverBase {
 			linepoints += ` ${this.pointPair()}`
 		}
 
-		if (this.lineType === "quadraticClosed") {
-			result = `M ${startPoint} Q  ${linepoints} ${output.randomPoint()} ${startPoint} z`;
-		}
-		else if (this.lineType === "smoothQuadraticOpen") {
-			result = `M ${startPoint} T  ${linepoints}`;
-		}
-		else if (this.lineType === "smoothQuadraticClosed") {
-			result = `M ${startPoint} T  ${linepoints} ${output.randomPoint()} ${startPoint} z`;
-		}
-		else {
-			result = `M ${startPoint} Q  ${linepoints}`;
+		console.log(form.lineType);
+
+		switch (form.lineType) {
+			case "quadraticOpen":
+				result = `M ${startPoint} Q  ${linepoints}`;
+				break;
+			case "quadraticClosed":
+				result = `M ${startPoint} Q  ${linepoints} ${output.randomPoint()} ${startPoint} z`;
+				break;
+			case "smoothQuadraticOpen":
+				result = `M ${startPoint} T  ${linepoints}`;
+				break;
+			case "smoothQuadraticClosed":
+				result = `M ${startPoint} T  ${linepoints} ${output.randomPoint()} ${startPoint} z`;
+				break;
+			default:
+				break;
 		}
 
 		return result;
 	}
 
+	/**  */
+	quadraticOpen(sections) {
+
+	}
 
 
 	/** @return {string}  */
@@ -136,70 +153,6 @@ class BezierScreensaver extends ScreensaverBase {
 	settingChange() {
 		this.update();
 	}
-
-
-
-	getForm() {
-		const result = `
-			<label for="setting-lineType">type</label>
-			<select id="setting-lineType" name="lineType" title="line type" size="7">
-				<option value="quadraticOpen">quadratic - open</option>
-				<option value="quadraticClosed">quadratic - closed</option>
-				<option value="smoothQuadraticOpen" selected>smooth quadratic - open</option>
-				<option value="smoothQuadraticClosed">smooth quadratic - closed</option>
-
-				<!-- <option>cubic</option> -->
-			</select>
-
-
-
-
-			<label for="setting-elementCount">element count</label>
-			<input id="setting-elementCount" type="number" name="elementCount" title="path count" min="1" value="2" max="10"/>
-
-			<label for="setting-pathSections">path sections</label>
-			<input id="setting-pathSections" type="number" name="pathSections" title="path sections" min="1" value="2" max="10"/>
-		`;
-		return result;
-	}
-
-
-	//
-	//	Accessors
-	//
-
-
-	/**	@returns {string}	*/
-	get lineType() {
-		return this.element.lineType.value;
-	}
-
-	/**	@param {number} lineType	*/
-	set lineType(lineType) {
-		this.element.lineType.value = lineType;
-	}
-
-
-	/**	@returns {number}	*/
-	get elementCount() {
-		return parseInt(this.element.elementCount.value);
-	}
-
-	/**	@param {number} elementCount	*/
-	set elementCount(elementCount) {
-		this.element.elementCount.value = Math.round(elementCount);
-	}
-
-	/**	@returns {number}	*/
-	get pathSections() {
-		return parseInt(this.element.pathSections.value);
-	}
-
-	/**	@param {number} pathSections	*/
-	set pathSections(pathSections) {
-		this.element.pathSections.value = Math.round(pathSections);
-	}
-
 
 
 }/* BezierScreensaver */
