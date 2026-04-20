@@ -32,19 +32,20 @@ export const dark = {
 };
 
 
-export const disco = {
+export const goldenrod = {
 
 	style : {
-		pageColour		: '#0e0a01',
-		blendMode		: 'screen',
+		pageColour		: '#b8860b',	// darkgoldenrod	#b8860b
+		blendMode		: 'hard-light',
 		colourScheme	: 'dark',
-		fillColour		: '#ffe4b5',	// moccasin	#ffe4b5
+		fillColour		: '#daa520',	// goldenrod	#daa520
 		fillOpacity		: '0.8',
 		fullRule		: 'evenodd',
 
-		strokeColour	: '#daa520',	// goldenrod	#daa520
-		strokeWidth		: '2cm',
-		strokeDasharray	: '1mm 2cm',
+		strokeColour	: '#00ff7f',	// springgreen	#00ff7f
+		strokeOpacity	: '0.9',
+		strokeWidth		: '24mm',
+		strokeDasharray	: '1mm 23mm',
 
 		strokeLinejoin	: 'round',
 		strokeLinecap	: 'round',
