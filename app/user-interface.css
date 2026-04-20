@@ -118,6 +118,10 @@
 	filter: drop-shadow(0px 0px 3px orange);
 }
 
+option[selected] {
+	font-weight:bold;
+}
+
 #select-screensaver {
 	height: 7rem;
 	margin:1em 0em;
@@ -134,6 +138,9 @@
 		text-align:center;
 	}
 }
+
+
+
 
 
 #dialog-appInfo {

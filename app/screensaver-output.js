@@ -14,22 +14,9 @@ export const outputSpace = new planarSpace.Space();
 let xMin, xMax, yMin, yMax;
 
 
-const testing = true;
-if (testing) {
-	xMin	= -180;
-	xMax	= +180;
-	yMin	= -120;
-	yMax	= +120;
-}
-else {
-	xMin	= -1800;
-	xMax	= +1800;
-	yMin	= -1200;
-	yMax	= +1200;
-}
+const testing = false;
 
 class ScreensaverOutput {
-
 
 
 	// these are just rough starting vals until until I can figure out the geometry of the viewing area
@@ -48,6 +35,20 @@ class ScreensaverOutput {
 		this.element = HTMLApp.buildElementMap(document, this.elementMap)
 		//HTMLApp.addEventListeners(this.eventListeners, this);
 		//this.keyboardHandler = HTMLApp.newKeyboardHandler(this.keyFunctionMap,this);
+
+		if (testing) {
+			xMin	= -240;
+			xMax	= +240;
+			yMin	= -240;
+			yMax	= +240;
+		}
+		else {
+			xMin	= -1800;
+			xMax	= +1800;
+			yMin	= -1200;
+			yMax	= +1200;
+		}
+
 	}
 
 	/** @return {number}  */

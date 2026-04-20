@@ -5,12 +5,14 @@ Task
 
 Bugs
 ----
-* There's some sort of bug in color-scheme switching in chr - some elements are updating but not others; not sure what's causing it yet
+* `chrome` There's some sort of bug in color-scheme switching in chr - some elements are updating but not others; not sure what's causing it yet
+* `firefox` sometimes movements aren't animating in firefox - adding more elements actually sometimes helps, it might discard an animation it can't compute in time???
 
 
 Todo
 ----
 
+* `app` get testing mode going properly
 * `bezier` show control points and lines
 * `css` Style overrides with custom stylesheets
 * `ff` if selected, dash animations still run even if stroke-dash is off - need to add this to pause
@@ -33,7 +35,6 @@ Todo
 * `svg` Need to figure out the size of the current view port (?terminology) to use for random inputs (nb using vw and vh units kinda works but sometimes doesn't animate/transition)
 * Figure out how to abstract movement styles
 * Movement based on fixed space/grid or the viewport space
-* some movements aren't animating in firefox
 * `module` html-only screensavers (non-svg), & hybrid html>svg / svg>html
 * `app` shared/common properties between screensavers
 

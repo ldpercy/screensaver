@@ -205,12 +205,7 @@ class StylePanel {
 			document.getElementById('screensaver-group').classList.remove('evenodd');
 		}
 
-		if ( document.forms['form-style']['input-showGrid'].checked) {
-			document.getElementById('group-grid').style.display = '';
-		}
-		else {
-			document.getElementById('group-grid').style.display = 'none';
-		}
+
 
 		// this.setStrokeDasharray();
 		// this.setStrokeWidth();
@@ -221,8 +216,24 @@ class StylePanel {
 
 
 	//
-	//	Style setting accessors
+	//	Page settings
 	//
+
+	/** @param {boolean} pageGrid	*/
+	set pageGrid(pageGrid) {
+		if ( pageGrid) {
+			document.getElementById('group-grid').style.display = '';
+		}
+		else {
+			document.getElementById('group-grid').style.display = 'none';
+		}
+		this.element.pageGrid.value = pageGrid;
+	}
+
+	/** @returns {string}	*/
+	get pageGrid() {
+		return this.element.pageGrid.value;
+	}
 
 
 	/** @returns {string}	*/
@@ -258,6 +269,11 @@ class StylePanel {
 		screensaverApp.setColourScheme(colourScheme);
 	}
 
+
+	//
+	//	Fill settings
+	//
+
 	/** @returns {string}	*/
 	get fillColour() {
 		return this.element.fillColour.value;
@@ -281,7 +297,9 @@ class StylePanel {
 		this.element.ssg.style.setProperty('--fill-opacity', fillOpacity);
 	}
 
+	//
 	// stroke
+	//
 
 	/** @returns {string}	*/
 	get strokeColour() {
