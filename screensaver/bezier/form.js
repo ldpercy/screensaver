@@ -9,7 +9,7 @@ class BezierForm extends FormBase {
 
 	init() {
 		super.init();
-		console.debug(this);
+		//console.debug(this);
 	}
 
 
@@ -17,10 +17,12 @@ class BezierForm extends FormBase {
 		const result = `
 			<label for="setting-lineType">type</label>
 			<select id="setting-lineType" name="lineType" title="line type" size="7">
-				<option value="quadraticOpen" selected>quadratic - open</option>
+				<option value="quadraticOpen">quadratic - open</option>
 				<option value="quadraticClosed">quadratic - closed</option>
 				<option value="smoothQuadraticOpen">smooth quadratic - open</option>
 				<option value="smoothQuadraticClosed">smooth quadratic - closed</option>
+
+				<option value="smoothCubicClosed" selected>smooth cubic - closed</option>
 
 				<!-- <option>cubic</option> -->
 			</select>

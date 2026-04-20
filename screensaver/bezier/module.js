@@ -1,8 +1,7 @@
 import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 import { ScreensaverBase } from "../screensaver-base.js";
-import { output } from "../../app/screensaver-output.js";
+import { output, outputSpace } from "../../app/screensaver-output.js";
 import { form  } from './form.js';
-
 
 
 
@@ -116,7 +115,7 @@ class BezierScreensaver extends ScreensaverBase {
 			linepoints += ` ${this.pointPair()}`
 		}
 
-		console.log(form.lineType);
+		//console.log(form.lineType);
 
 		switch (form.lineType) {
 			case "quadraticOpen":
@@ -131,6 +130,9 @@ class BezierScreensaver extends ScreensaverBase {
 			case "smoothQuadraticClosed":
 				result = this.smoothQuadraticClosed(sectionCount); //`M ${startPoint} T  ${linepoints} ${output.randomPoint()} ${startPoint} z`;
 				break;
+			case "smoothCubicClosed":
+				result = this.smoothCubicClosed(sectionCount);
+				break;
 			default:
 				break;
 		}
@@ -138,7 +140,8 @@ class BezierScreensaver extends ScreensaverBase {
 		return result;
 	}
 
-	/**
+	/** smoothQuadraticClosed
+	 * TODO: this one is currently incorrect and needs fixing
 	 * @param {number} sectionCount
 	 * @returns {string}
 	 */
@@ -146,23 +149,61 @@ class BezierScreensaver extends ScreensaverBase {
 		let sectionPoints = '';
 		const startPoint = output.randomCartesian();
 		const firstControlPoint = output.randomCartesian();
-		const lastControlPoint = output.randomCartesian(); // this needs to change
+
+		const lastControlPoint = outputSpace.newCartesianCoordinates();
+
+		lastControlPoint.x = startPoint.x - (firstControlPoint.x - startPoint.x);
+		lastControlPoint.y = startPoint.y - (firstControlPoint.y - startPoint.y);
 
 		// the last control point here needs to be collinear with the end/start and the first control point
 
-		for (let i = 1; i < sectionCount; i++) {
+		for (let i = 0; i < sectionCount; i++) {
 			sectionPoints += ` ${this.pointPair()}`
 		}
 
+		//console.debug('smoothQuadraticClosed');
+		//console.debug('sp',startPoint,'fcp', firstControlPoint, 'lcp',lastControlPoint);
 
+		const lastPair = `${startPoint} ${lastControlPoint}`;
 
-		const lastPair = `${output.randomPoint()} ${startPoint}`;
-
-		const result = `M ${startPoint.x},${startPoint.y} T  ${sectionPoints}  ${lastPair} z`;
+		const result = `M ${startPoint} T  ${sectionPoints}  ${lastPair} z`;
 		return result;
 	}
 
 
+
+	/** smoothCubicClosed
+	 * @param {number} sectionCount
+	 * @returns {string}
+	 */
+	smoothCubicClosed(sectionCount) {
+		let sectionPoints = '';
+		const startPoint = output.randomCartesian();
+		const firstControlPoint = output.randomCartesian();
+
+		const firstCubic = `C ${firstControlPoint} ${output.randomPoint()} ${output.randomPoint()}`;
+
+
+		const lastControlPoint = outputSpace.newCartesianCoordinates();
+
+		lastControlPoint.x = startPoint.x - (firstControlPoint.x - startPoint.x);
+		lastControlPoint.y = startPoint.y - (firstControlPoint.y - startPoint.y);
+
+		// the last control point here needs to be collinear with the end/start and the first control point
+
+		for (let i = 1; i < sectionCount; i++) {
+			sectionPoints += `S ${this.pointPair()}`
+		}
+
+		//console.debug('smooth cubic closed');
+		//console.debug('sp',startPoint,'fcp', firstControlPoint, 'lcp',lastControlPoint);
+
+		const lastPair = `S ${lastControlPoint} ${startPoint} `;
+
+		const result = `M ${startPoint} ${firstCubic} ${sectionPoints} ${lastPair} z`;
+		//console.debug(result);
+		return result;
+	}
 
 
 
@@ -173,6 +214,10 @@ class BezierScreensaver extends ScreensaverBase {
 	}
 
 
+	/** @return {string}  */
+	pointTriple() {
+		return `${output.randomPoint()} ${output.randomPointConservative()}`;
+	}
 
 
 	settingChange() {

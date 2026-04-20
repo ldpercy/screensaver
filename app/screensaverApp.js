@@ -25,7 +25,7 @@ class ScreensaverApp extends HTMLApp {
 	/** @type {string} */
 	defaultScreensaver = 'bezier';
 	/** @type {string} */
-	#playState = 'paused';
+	#playState = 'playing';
 	/** @type {module} */			// no idea if this is correct type here, but it's working for now
 	currentModule = undefined;
 
