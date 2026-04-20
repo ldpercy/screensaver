@@ -11,15 +11,27 @@ import * as planarSpace from "../[html-common]/module/PlanarSpace.js";
 
 export const outputSpace = new planarSpace.Space();
 
+let xMin, xMax, yMin, yMax;
 
 
-class ScreensaverOutput {
-
-
+const testing = true;
+if (testing) {
+	xMin	= -180;
+	xMax	= +180;
+	yMin	= -120;
+	yMax	= +120;
+}
+else {
 	xMin	= -1800;
 	xMax	= +1800;
 	yMin	= -1200;
 	yMax	= +1200;
+}
+
+class ScreensaverOutput {
+
+
+
 	// these are just rough starting vals until until I can figure out the geometry of the viewing area
 
 
@@ -40,12 +52,12 @@ class ScreensaverOutput {
 
 	/** @return {number}  */
 	randomX() {
-		return maths.getRandomIntInclusive(this.xMin, this.xMax);
+		return maths.getRandomIntInclusive(xMin, xMax);
 	}
 
 	/** @return {number}  */
 	randomY() {
-		return maths.getRandomIntInclusive(this.yMin, this.yMax);
+		return maths.getRandomIntInclusive(yMin, yMax);
 	}
 
 	/** @return {string}  */
@@ -55,7 +67,7 @@ class ScreensaverOutput {
 
 
 	randomPointConservative() {
-		return `${maths.getRandomIntInclusive(this.xMin/2, this.xMax/2)},${maths.getRandomIntInclusive(this.yMin/2, this.yMax/2)}`;
+		return `${maths.getRandomIntInclusive(xMin/2, xMax/2)},${maths.getRandomIntInclusive(yMin/2, yMax/2)}`;
 	}
 
 	/** @returns {planarSpace.CartesianCoordinates} */
