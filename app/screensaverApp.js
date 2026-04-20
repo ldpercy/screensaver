@@ -3,7 +3,7 @@
 //
 
 import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
-import { appPanel } from "./panel-app.js";
+import { mainPanel } from "./panel-main.js";
 import { stylePanel } from "./panel-style.js";
 
 
@@ -25,7 +25,7 @@ class ScreensaverApp extends HTMLApp {
 	/** @type {string} */
 	defaultScreensaver = 'bezier';
 	/** @type {string} */
-	#playState = 'playing';
+	#playState = 'paused';
 	/** @type {module} */			// no idea if this is correct type here, but it's working for now
 	currentModule = undefined;
 
@@ -60,7 +60,7 @@ class ScreensaverApp extends HTMLApp {
 		// }
 
 		stylePanel.updateStyle();
-		appPanel.selectedScreensaver = this.defaultScreensaver;
+		mainPanel.selectedScreensaver = this.defaultScreensaver;
 		this.loadScreensaver(this.defaultScreensaver);
 
 	}
@@ -106,7 +106,7 @@ class ScreensaverApp extends HTMLApp {
 
 	/** @param {string} state*/
 	set playState(state) {
-
+		console.debug('set playState', arguments);
 		if (state === 'playing') {
 			this.currentModule.instance.play();
 			this.#playState = 'playing';
@@ -115,8 +115,9 @@ class ScreensaverApp extends HTMLApp {
 			this.currentModule.instance.pause();
 			this.#playState = 'paused';
 		}
-		appPanel.playState = this.#playState;
+		mainPanel.playState = this.#playState;
 	}
+
 
 	get playState()	{
 		return this.#playState;
@@ -143,11 +144,14 @@ class ScreensaverApp extends HTMLApp {
 
 	visibilitychangeListener() {
 		//console.debug('visibilitychangeListener', arguments);
-		//console.debug('document.visibilityState', document.visibilityState);
-		// if (document.visibilityState === 'hidden')
-		// {
-		// 	this.saveSettings();
-		// }
+		console.debug('document.visibilityState', document.visibilityState);
+		if (document.visibilityState === 'hidden')
+		{
+			this.playState = 'paused';
+		}
+		else {
+			this.playState = 'playing';
+		}
 	}
 
 

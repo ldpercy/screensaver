@@ -2,7 +2,7 @@ import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 import { screensaverApp } from "./screensaverApp.js";
 
 
-class AppPanel {
+class MainPanel {
 
 
 	element = {};
@@ -206,9 +206,9 @@ class AppPanel {
 	}
 
 
-}/* AppPanel */
+}/* MainPanel */
 
-export const appPanel = new AppPanel();
+export const mainPanel = new MainPanel();
 
 
 
