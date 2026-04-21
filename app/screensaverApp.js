@@ -26,8 +26,13 @@ class ScreensaverApp extends HTMLApp {
 	defaultScreensaver = 'bezier';
 	/** @type {string} */
 	#playState = 'paused';
+	/** @type {number} */
+	#interval = 1000;
 	/** @type {module} */			// no idea if this is correct type here, but it's working for now
 	currentModule = undefined;
+
+	/** @type {number} */
+	#intervalId = undefined
 
 
 
@@ -106,14 +111,16 @@ class ScreensaverApp extends HTMLApp {
 
 	/** @param {string} state*/
 	set playState(state) {
-		console.debug('set playState', arguments);
+		//console.debug('set playState', arguments);
 		if (state === 'playing') {
-			this.currentModule.instance.play();
+			//this.currentModule.instance.play();
 			this.#playState = 'playing';
+			this.play();
 		}
 		else if (state === 'paused') {
-			this.currentModule.instance.pause();
+			//this.currentModule.instance.pause();
 			this.#playState = 'paused';
+			this.clearInterval();
 		}
 		mainPanel.playState = this.#playState;
 	}
@@ -137,6 +144,29 @@ class ScreensaverApp extends HTMLApp {
 		this.currentModule.instance.update();
 	}
 
+
+
+
+	play() {
+		// this needs to be updated when the main interval changes
+		//  figure out the best way to do that
+
+		this.#intervalId = setInterval(
+			()=> { this.currentModule.instance.update(); },
+			this.mainInterval
+		);
+		console.log('play', this.#intervalId, this.mainInterval);
+	}
+
+
+	clearInterval() {
+		//console.log('pause:', this.intervalId);
+		clearInterval(this.#intervalId);
+		this.#intervalId = undefined;
+	}
+
+
+
 	settingChange() {
 		this.currentModule.instance.settingChange();
 	}
@@ -155,6 +185,25 @@ class ScreensaverApp extends HTMLApp {
 	}
 
 
+
+	//
+	//	accessors
+	//
+
+	/** @param {number} intervalMs  */
+	set mainInterval(intervalMs) {
+
+		// setting the maininterval should clear any current intervals, and if playing resume at the new interval
+		// make it so!
+
+		this.#interval = intervalMs;
+	}
+
+
+	/** @returns {number} */
+	get mainInterval() {
+		return this.#interval;
+	}
 
 
 }/* ScreensaverApp */

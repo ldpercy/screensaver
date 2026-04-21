@@ -13,6 +13,7 @@ class MainPanel {
 		this.element = HTMLApp.buildElementMap(document, this.elementMap)
 		HTMLApp.addEventListeners(this.eventListeners, this);
 		this.keyboardHandler = HTMLApp.newKeyboardHandler(this.keyFunctionMap,this);
+		this.form = document.forms['form-screensaver'];
 	}
 
 	/** @type {object}
@@ -51,11 +52,6 @@ class MainPanel {
 			type: 'close',
 			listener: this.appInfoDialogClose,
 		},
-		// {
-		// 	query: '#input-screensaver-preset',
-		// 	type: 'change',
-		// 	listener: (event)=> { this.loadScreensaverPreset(event.target.value) }
-		// },
 		{
 			query: '#form-moduleSettings',
 			type: 'change',
@@ -77,7 +73,11 @@ class MainPanel {
 			type: 'click',
 			listener: this.showAppInfoDialog,
 		},
-
+		{
+			query: '#input-mainInterval',
+			type: 'change',
+			listener: (event)=> { screensaverApp.mainInterval = event.target.value; }
+		},
 	];
 
 
@@ -195,6 +195,21 @@ class MainPanel {
 	set playState(state) {
 		this.element.playPauseButton.dataset.playState = state;
 	}
+
+
+
+	/**	@returns {number}	*/
+	get mainInterval() {
+		return parseInt(this.form.mainInterval.value);
+	}
+
+	/**	@param {number} mainInterval	*/
+	set mainInterval(mainInterval) {
+		this.form.mainInterval.value = mainInterval;
+	}/* set selectedScreensaver */
+
+
+
 
 
 }/* MainPanel */
