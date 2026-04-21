@@ -11,7 +11,7 @@ import { stylePanel } from "./panel-style.js";
 
 class ScreensaverApp extends HTMLApp {
 
-	appVersion = 'v0.2.0';
+	appVersion = 'v0.🔧🪛';
 	projectColour = 'midnightblue';
 	appInfo = [`%c
 		Screensaver ${this.appVersion} by ldpercy
@@ -144,14 +144,14 @@ class ScreensaverApp extends HTMLApp {
 
 	visibilitychangeListener() {
 		//console.debug('visibilitychangeListener', arguments);
-		console.debug('document.visibilityState', document.visibilityState);
-		if (document.visibilityState === 'hidden')
-		{
-			this.playState = 'paused';
-		}
-		else {
-			this.playState = 'playing';
-		}
+		// console.debug('document.visibilityState', document.visibilityState);
+		// if (document.visibilityState === 'hidden')
+		// {
+		// 	this.playState = 'paused';
+		// }
+		// else {
+		// 	this.playState = 'playing';
+		// }
 	}
 
 
