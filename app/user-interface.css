@@ -118,7 +118,7 @@
 	filter: drop-shadow(0px 0px 3px orange);
 }
 
-option[selected] {
+option:checked {
 	font-weight:bold;
 }
 
@@ -132,7 +132,7 @@ option[selected] {
 		interpolate-size: allow-keywords;
 	}
 
-	option[selected] {
+	option:checked {
 		font-size: 1.5rem;
 		font-weight:bold;
 		text-align:center;

@@ -187,16 +187,7 @@ class MainPanel {
 
 	/**	@param {string} screensaverName	*/
 	set selectedScreensaver(screensaverName) {
-
 		this.element.screensaverSelect.value = screensaverName;
-		// feels like there must be abetter way to do this...:
-		Array.from(this.element.screensaverSelect.options).forEach(element => {
-			element.removeAttribute('selected')
-		});
-		Array.from(this.element.screensaverSelect.selectedOptions).forEach(element => {
-			element.setAttribute('selected',true);
-		});
-
 	}/* set selectedScreensaver */
 
 
