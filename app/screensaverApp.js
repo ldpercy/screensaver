@@ -88,7 +88,7 @@ class ScreensaverApp extends HTMLApp {
 
 		document.getElementById('screensaver-group').innerHTML = '';
 
-		const moduleUrl = `../screensaver/${name}/module.js`;
+		const moduleUrl = `../module/${name}/module.js`;
 
 		// need something like railroad-handling here, but can't remember how to implement the pattern
 		//try {

@@ -2,7 +2,7 @@ import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 import * as colour from  "../[html-common]/module/colour.js";
 import { screensaverApp } from "./screensaverApp.js";
 import { output } from "./screensaver-output.js";
-import * as stylePreset from "../screensaver/style-preset.js";
+import * as stylePreset from "./style-preset.js";
 
 
 
