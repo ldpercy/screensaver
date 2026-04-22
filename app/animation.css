@@ -6,13 +6,38 @@
 #screensaver-output {
 
 	--main-interval: 1000ms;
+
+	/*
+	**	animations
+	*/
+
 	--animation-exponent: 0;
-
 	--animation-multiplier: pow(2, var(--animation-exponent));
-
 	--animation-duration: calc(var(--main-interval)  * var(--animation-multiplier));
 
-}
+
+	/*
+	** transitions
+	*/
+
+	--transition-exponent: 0;
+	--transition-multiplier: pow(2, var(--transition-exponent));
+	--transition-duration: calc(var(--main-interval)  * var(--transition-multiplier));
+
+	transition-timing-function: linear;
+	transition-behavior: allow-discrete;
+
+	svg, svg * {
+		transition-property: fill, stroke, d, x, y, width, height, cx, cy, r, rx, ry, transform, rotate;
+		transition-duration: var(--transition-duration);
+		transition-timing-function: linear;
+		transition-behavior: allow-discrete;
+	}
+
+}/* #screensaver-output */
+
+
+
 
 
 [data-animation=dash-linear] #screensaver-group {

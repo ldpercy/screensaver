@@ -112,7 +112,18 @@
 
 			<details open>
 				<summary><h3>animation</h3></summary>
+
 				<div>
+					<label for="input-transitionExponent" class="zoom" title="transition exponent">transition exponent</label>
+					<input type="range" name="transitionExponent" id="input-transitionExponent" value="0" min="-2" max="2" list="datalist-transitionExponent"/>
+					<datalist id="datalist-transitionExponent">
+						<option value="-2">-2</option>
+						<option value="-1">-1</option>
+						<option value="0">0</option>
+						<option value="1">+1</option>
+						<option value="2">+2</option>
+					</datalist>
+
 					<label for="input-animation">animation</label>
 					<select id="input-animation" name="animation" size="1">
 						<option>none</option>
@@ -129,7 +140,7 @@
 						</optgroup>
 					</select>
 
-					<label for="input-animationExponent" class="zoom" title="animation exponent">exponent</label>
+					<label for="input-animationExponent" class="zoom" title="animation exponent">animation exponent</label>
 					<input type="range" name="animationExponent" id="input-animationExponent" value="0" min="-2" max="2" list="datalist-animationExponent"/>
 					<datalist id="datalist-animationExponent">
 						<option value="-2">-2</option>

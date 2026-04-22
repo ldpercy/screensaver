@@ -77,6 +77,11 @@ class StylePanel {
 		},
 		//animation
 		{
+			query: '#input-transitionExponent',
+			type: 'change',
+			listener: (event)=> { this.transitionExponent = event.target.value }
+		},
+		{
 			query: '#input-animationExponent',
 			type: 'change',
 			listener: (event)=> { this.animationExponent = event.target.value }
@@ -286,11 +291,24 @@ class StylePanel {
 		return this.form.animationExponent.value;
 	}
 
-	/** @param {string} animationExponent	*/
+	/** @param {number} animationExponent	*/
 	set animationExponent(animationExponent) {
 		this.element.output.style.setProperty('--animation-exponent', animationExponent);
 		this.form.animationExponent.value = animationExponent;
 	}
+
+
+	/** @returns {number}	*/
+	get transitionExponent() {
+		return this.form.animationExponent.value;
+	}
+
+	/** @param {number} transitionExponent	*/
+	set transitionExponent(transitionExponent) {
+		this.element.output.style.setProperty('--transition-exponent', transitionExponent);
+		this.form.transitionExponent.value = transitionExponent;
+	}
+
 
 	//
 	//	Fill settings

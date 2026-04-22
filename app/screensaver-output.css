@@ -3,8 +3,6 @@
 */
 
 
-
-
 #screensaver-output {
 
 	--stroke-dasharray: 5cm 5cm;
@@ -14,23 +12,6 @@
 	--stroke-linecap: butt;
 	--blend-mode: normal;
 
-	--transition-duration: 1s;			/*  this will need to be updated centrally by the app  */
-
-
-	transition-duration: var(--transition-duration);
-	transition-timing-function: linear;
-	transition-behavior: allow-discrete;
-
-	/* transition-property: all; */
-
-
-
-	svg, svg * {
-		transition-property: fill, stroke, d, x, y, width, height, cx, cy, r, rx, ry, transform, rotate;
-		transition-duration: 1s;
-		transition-timing-function: linear;
-		transition-behavior: allow-discrete;
-	}
 }
 
 
