@@ -37,6 +37,10 @@
 }/* #screensaver-output */
 
 
+#screensaver-group {
+	animation-duration: var(--animation-duration);
+}
+
 
 
 
@@ -44,7 +48,6 @@
 	transition: stroke-dashoffset 0s;
 
 	animation-name: full-dashoffset;
-	animation-duration: var(--animation-duration);
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-direction: normal;
@@ -55,7 +58,6 @@
 	transition: stroke-dashoffset 0s;
 
 	animation-name: full-dashoffset;
-	animation-duration: var(--animation-duration);
 	animation-timing-function: ease;
 	animation-iteration-count: infinite;
 	animation-direction: normal;
@@ -64,9 +66,7 @@
 
 [data-animation=dash-steps] #screensaver-group {
 	transition: stroke-dashoffset 0s;
-
 	animation-name: full-dashoffset;
-	animation-duration: var(--animation-duration);
 	animation-timing-function: steps(8);
 	animation-iteration-count: infinite;
 	animation-direction: normal;
@@ -76,7 +76,6 @@
 [data-animation=dash-pulse] #screensaver-group {
 	transition: stroke-dashoffset 0s;
 	animation-name: full-dashoffset;
-	animation-duration: var(--animation-duration);
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: infinite;
 	animation-direction: normal;
@@ -85,7 +84,6 @@
 [data-animation=dash-alternate] #screensaver-group {
 	transition: stroke-dashoffset 0s;
 	animation-name: full-dashoffset;
-	animation-duration: var(--animation-duration);
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
@@ -95,7 +93,6 @@
 [data-animation=dash-mechanical] #screensaver-group {
 	transition: stroke-dashoffset 0s;
 	animation-name: full-dashoffset;
-	animation-duration: var(--animation-duration);
 	animation-timing-function: cubic-bezier(1,0,0,1);
 	animation-iteration-count: infinite;
 	animation-direction: normal;
@@ -116,7 +113,14 @@
 [data-animation=stroke-linear] #screensaver-group {
 	/* transition: stroke-dashoffset 0s; */
 	animation-name: stroke-width;
-	animation-duration: var(--animation-duration);
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+
+[data-animation=stroke-alternate] #screensaver-group {
+	/* transition: stroke-dashoffset 0s; */
+	animation-name: stroke-width;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;

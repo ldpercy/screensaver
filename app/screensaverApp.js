@@ -77,7 +77,7 @@ class ScreensaverApp extends HTMLApp {
 	 */
 	async loadScreensaver(name) {
 		console.log('loadScreensaver', name);
-
+		this.clearInterval();
 		const previousPlayState = this.playState;
 
 		// unload the previous module if necessary
