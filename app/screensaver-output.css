@@ -14,7 +14,10 @@
 	--stroke-linecap: butt;
 	--blend-mode: normal;
 
-	transition-duration: 0.5s;
+	--transition-duration: 1s;			/*  this will need to be updated centrally by the app  */
+
+
+	transition-duration: var(--transition-duration);
 	transition-timing-function: linear;
 	transition-behavior: allow-discrete;
 

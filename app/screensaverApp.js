@@ -194,8 +194,9 @@ class ScreensaverApp extends HTMLApp {
 
 		// setting the maininterval should clear any current intervals, and if playing resume at the new interval
 		// make it so!
-
+		this.clearInterval();
 		this.#interval = intervalMs;
+		this.play();
 	}
 
 

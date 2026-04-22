@@ -4,7 +4,7 @@
 
 
 #screensaver-output {
-	--duration: 1s;			/*  this will need to be updated centrally by the app  */
+	--animation-duration: 1s;			/*  this will need to be updated centrally by the app  */
 }
 
 
@@ -12,7 +12,7 @@
 	transition: stroke-dashoffset 0s;
 
 	animation-name: full-dashoffset;
-	animation-duration: var(--duration);
+	animation-duration: var(--animation-duration);
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-direction: normal;
@@ -23,7 +23,7 @@
 	transition: stroke-dashoffset 0s;
 
 	animation-name: full-dashoffset;
-	animation-duration: calc(1.5 * var(--duration));
+	animation-duration: calc(1.5 * var(--animation-duration));
 	animation-timing-function: ease;
 	animation-iteration-count: infinite;
 	animation-direction: normal;
@@ -34,7 +34,7 @@
 	transition: stroke-dashoffset 0s;
 
 	animation-name: full-dashoffset;
-	animation-duration: var(--duration);
+	animation-duration: var(--animation-duration);
 	animation-timing-function: steps(10);
 	animation-iteration-count: infinite;
 	animation-direction: normal;
@@ -44,7 +44,7 @@
 [data-animation=dash-pulse] #screensaver-group {
 	transition: stroke-dashoffset 0s;
 	animation-name: full-dashoffset;
-	animation-duration: var(--duration);
+	animation-duration: var(--animation-duration);
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: infinite;
 	animation-direction: normal;
@@ -53,7 +53,7 @@
 [data-animation=dash-alternate] #screensaver-group {
 	transition: stroke-dashoffset 0s;
 	animation-name: full-dashoffset;
-	animation-duration: calc(2 * var(--duration));
+	animation-duration: calc(2 * var(--animation-duration));
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
@@ -63,7 +63,7 @@
 [data-animation=dash-mechanical] #screensaver-group {
 	transition: stroke-dashoffset 0s;
 	animation-name: full-dashoffset;
-	animation-duration: calc(.75 * var(--duration));
+	animation-duration: calc(.75 * var(--animation-duration));
 	animation-timing-function: cubic-bezier(1,0,0,1);
 	animation-iteration-count: infinite;
 	animation-direction: normal;
@@ -84,7 +84,7 @@
 [data-animation=stroke-linear] #screensaver-group {
 	/* transition: stroke-dashoffset 0s; */
 	animation-name: stroke-width;
-	animation-duration: var(--duration);
+	animation-duration: var(--animation-duration);
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;

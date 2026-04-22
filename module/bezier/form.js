@@ -45,33 +45,33 @@ class BezierForm extends FormBase {
 
 	/**	@returns {string}	*/
 	get lineType() {
-		return this.element.lineType.value;
+		return this.form.lineType.value;
 	}
 
 	/**	@param {number} lineType	*/
 	set lineType(lineType) {
-		this.element.lineType.value = lineType;
+		this.form.lineType.value = lineType;
 	}
 
 
 	/**	@returns {number}	*/
 	get elementCount() {
-		return parseInt(this.element.elementCount.value);
+		return parseInt(this.form.elementCount.value);
 	}
 
 	/**	@param {number} elementCount	*/
 	set elementCount(elementCount) {
-		this.element.elementCount.value = Math.round(elementCount);
+		this.form.elementCount.value = Math.round(elementCount);
 	}
 
 	/**	@returns {number}	*/
 	get sectionCount() {
-		return parseInt(this.element.sectionCount.value);
+		return parseInt(this.form.sectionCount.value);
 	}
 
 	/**	@param {number} sectionCount	*/
 	set sectionCount(sectionCount) {
-		this.element.sectionCount.value = Math.round(sectionCount);
+		this.form.sectionCount.value = Math.round(sectionCount);
 	}
 
 }

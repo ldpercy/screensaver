@@ -11,8 +11,6 @@ import { form  } from './form.js';
 
 const ssg = document.getElementById('screensaver-group');
 
-const intervalTime	= 1000;
-
 
 class BezierScreensaver extends ScreensaverBase {
 

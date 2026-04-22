@@ -20,7 +20,7 @@ export class ScreensaverBase {
 
 	/** @returns {string} */
 	getForm() {
-		return '';
+		return this.form.html;
 	}
 
 	/** @param {SVGElement|HTMLElement} element */
@@ -45,7 +45,7 @@ export class FormBase {
 	}
 
 	init() {
-		this.element = document.forms['moduleSettings'];
+		this.form = document.forms['moduleSettings'];
 	}
 
 	/** @returns {string} */

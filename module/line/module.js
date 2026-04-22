@@ -9,8 +9,6 @@ console.log('line module');	// this only runs the _first_ time the module is loa
 
 const ssg = document.getElementById('screensaver-group');
 
-const intervalTime	= 1000;
-
 
 
 class LineScreensaver extends ScreensaverBase {

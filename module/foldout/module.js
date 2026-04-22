@@ -2,6 +2,7 @@ import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 import * as planarSpace from "../../[html-common]/module/PlanarSpace.js";
 import { ScreensaverBase } from "../screensaver-base.js";
 import { output } from "../../app/screensaver-output.js";
+import { form  } from './form.js';
 
 
 //console.log('foldout module');	// this only runs the _first_ time the module is loaded - not sure what the stipulations around that are though, whether it's possible to unload etc
@@ -13,8 +14,6 @@ import { output } from "../../app/screensaver-output.js";
 
 
 const ssg = document.getElementById('screensaver-group');
-
-const intervalTime	= 1000;
 
 
 
@@ -45,10 +44,13 @@ class FoldoutScreensaver extends ScreensaverBase {
 		//console.log('FoldoutScreensaver init');
 		this.element = HTMLApp.buildElementMap(document, this.elementMap);
 		super.init();
+		form.init();
 		this.update();
 	}
 
-
+	getForm() {
+		return form.html;
+	}
 
 	update() {
 
@@ -57,18 +59,18 @@ class FoldoutScreensaver extends ScreensaverBase {
 		let newSegment;
 		let previousHead;
 
-		while (ssg.childElementCount >= this.elementCount)
+		while (ssg.childElementCount >= form.elementCount)
 		{
 			ssg.firstElementChild.remove();
 		}
-		while (ssg.childElementCount < this.elementCount)
+		while (ssg.childElementCount < form.elementCount)
 		{
 
 			previousHead = ssg.lastElementChild;
 			newElement = document.createElementNS('http://www.w3.org/2000/svg','path');
 			ssg.appendChild(newElement);
 
-			newSegment = this.newSegment(this.headSegment, this.retainPoints, this.headPoints);
+			newSegment = this.newSegment(this.headSegment, form.retainPoints, form.headPoints);
 			newPath = this.getSegmentPath(newSegment);
 
 			newElement.setAttribute('d', newPath);
@@ -125,77 +127,9 @@ class FoldoutScreensaver extends ScreensaverBase {
 
 
 
-
-	settingChange() {
-		this.update();
-	}
-
-
-
-
-	//
-	//	form & accessors
-	//
-
-
-	getForm() {
-		const result = `
-			<!--
-			<label for="module-elementCount">element count</label>
-			<input id="module-elementCount" type="number" name="elementCount" title="path count" min="1" value="1" max="10"/>
-			-->
-
-
-			<label for="module-elementCount">element count</label>
-			<input id="module-elementCount" type="number" name="elementCount" title="element count" min="1" value="4" max="10"/>
-
-
-			<label for="module-headPoints">head points</label>
-			<input id="module-headPoints" type="number" name="headPoints" title="head points" min="2" value="3" max="5"/>
-
-			<label for="module-retainPoints">retain points</label>
-			<input id="module-retainPoints" type="number" name="retainPoints" title="retain points" min="1" value="2" max="4"/>
-
-		`;
-		return result;
-	}
-
-
-
-
-	/**	@returns {number}	*/
-	get headPoints() {
-		return parseInt(this.form.headPoints.value);
-	}
-
-	/**	@param {number} headPoints	*/
-	set headPoints(headPoints) {
-		this.form.headPoints.value = Math.round(headPoints);
-	}
-
-
-
-	/**	@returns {number}	*/
-	get elementCount() {
-		return parseInt(this.form.elementCount.value);
-	}
-
-	/**	@param {number} elementCount	*/
-	set elementCount(elementCount) {
-		this.form.elementCount.value = Math.round(elementCount);
-	}
-
-
-	/**	@returns {number}	*/
-	get retainPoints() {
-		return parseInt(this.form.retainPoints.value);
-	}
-
-	/**	@param {number} retainPoints	*/
-	set retainPoints(retainPoints) {
-		this.form.retainPoints.value = Math.round(retainPoints);
-	}
-
+	// settingChange() {
+	// 	this.update();
+	// }
 
 
 }/* FoldoutScreensaver */
