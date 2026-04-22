@@ -1,0 +1,95 @@
+/*
+**	animation
+*/
+
+
+[data-animation=dash-linear] #screensaver-group {
+	transition: stroke-dashoffset 0s;
+
+	animation-name: full-dashoffset;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+
+
+[data-animation=dash-ease] #screensaver-group {
+	transition: stroke-dashoffset 0s;
+
+	animation-name: full-dashoffset;
+	animation-duration: 1.4s;
+	animation-timing-function: ease;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+
+
+[data-animation=dash-steps] #screensaver-group {
+	transition: stroke-dashoffset 0s;
+
+	animation-name: full-dashoffset;
+	animation-duration: 1s;
+	animation-timing-function: steps(10);
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+
+
+[data-animation=dash-pulse] #screensaver-group {
+	transition: stroke-dashoffset 0s;
+	animation-name: full-dashoffset;
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+
+[data-animation=dash-alternate] #screensaver-group {
+	transition: stroke-dashoffset 0s;
+	animation-name: full-dashoffset;
+	animation-duration: 2s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+
+[data-animation=dash-mechanical] #screensaver-group {
+	transition: stroke-dashoffset 0s;
+	animation-name: full-dashoffset;
+	animation-duration: 0.8s;
+	animation-timing-function: cubic-bezier(1,0,0,1);
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+
+
+
+@keyframes full-dashoffset {
+	from {
+		stroke-dashoffset: 0px;
+	}
+	to {
+		stroke-dashoffset: var(--to-stroke-dashoffset);
+	}
+}
+
+
+
+@keyframes stroke-width {
+	from {
+		stroke-width: 0px;
+	}
+	to {
+		stroke-dashoffset: var(--stroke-width);
+	}
+}
+
+
+
+
+
+
+
+

@@ -108,6 +108,21 @@
 						<option>plus-lighter</option>
 					</select>
 
+
+					<label for="input-animation">animation</label>
+					<select id="input-animation" name="animation" size="4">
+						<option>none</option>
+						<optgroup label="stroke-dash">
+							<option value="dash-linear">		linear		</option>
+							<option value="dash-ease">			ease		</option>
+							<option value="dash-pulse">			pulse		</option>
+							<option value="dash-alternate">		alternate	</option>
+							<option value="dash-steps">			steps		</option>
+							<option value="dash-mechanical">	mechanical	</option>
+						</optgroup>
+					</select>
+
+
 					<!--
 					<label for="input-pageGrid">
 						<input type="checkbox" name="pageGrid" id="input-pageGrid">
@@ -203,18 +218,6 @@
 						value="5cm 5cm"
 					>
 
-					<label for="input-dashAnimation">dash animation</label>
-						<select id="input-dashAnimation" name="dashAnimation" size="1">
-							<option>none</option>
-							<option>linear</option>
-							<option>ease</option>
-							<option>pulse</option>
-							<option>alternate</option>
-							<option>steps</option>
-							<option>mechanical</option>
-						</select>
-
-
 				</div>
 			</details><!-- stroke -->
 
@@ -229,7 +232,7 @@
 	<output
 		id="screensaver-output"
 		data-stroke-dash="false"
-		data-dash-animation="none"
+		data-animation="none"
 		>
 
 		<svg id="screensaver-svg" class="svg-screensaver" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" >

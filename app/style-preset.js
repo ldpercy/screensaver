@@ -11,7 +11,7 @@ export const defaultStyle = {
 
 		strokeWidth		: '5mm',
 		strokeDasharray	: '5cm 5cm',
-		dashAnimation	: 'none',
+		animation		: 'none',
 		grid			: false,
 	},
 };
@@ -51,7 +51,7 @@ export const goldenrod = {
 		strokeLinecap	: 'round',
 
 		strokeDash		: true,
-		dashAnimation	: 'linear',
+		animation		: 'dash-linear',
 		grid			: false,
 	},
 
@@ -73,7 +73,7 @@ export const midnightblue = {
 		strokeWidth		: '1mm',
 		strokeDash		: true,
 		strokeDasharray	: '1mm 9mm',
-		dashAnimation	: 'ease',
+		animation		: 'dash-ease',
 
 
 	}
@@ -96,7 +96,7 @@ export const peachpuff = {
 		strokeWidth		: '1cm',
 		strokeDash		: true,
 		strokeDasharray	: '1mm 7cm',
-		dashAnimation	: 'steps',
+		animation		: 'dash-steps',
 	}
 };
 
@@ -114,7 +114,7 @@ export const forestgreen = {
 		strokeLinecap	: 'round',
 		strokeDash		: true,
 		strokeDasharray	: '2cm 2cm 2mm 2cm',
-		dashAnimation	: 'alternate',
+		animation		: 'dash-alternate',
 	}
 };
 
@@ -132,7 +132,7 @@ export const darkmagenta = {
 		strokeWidth		: '1in',
 		strokeDash		: true,
 		strokeDasharray	: '1ex 13rem',
-		dashAnimation	: 'pulse',
+		animation		: 'dash-pulse',
 	}
 };
 
@@ -155,7 +155,7 @@ export const machine = {
 		strokeOpacity	: '0.9',
 
 		strokeDasharray	: '2cm 2cm',
-		dashAnimation	: 'mechanical',
+		animation		: 'dash-mechanical',
 	}
 };
 

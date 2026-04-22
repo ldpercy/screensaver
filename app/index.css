@@ -4,6 +4,7 @@
 
 @import "./user-interface.css";
 @import "./screensaver-output.css";
+@import "./animation.css";
 
 
 :root {
