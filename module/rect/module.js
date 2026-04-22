@@ -33,21 +33,6 @@ class RectScreensaver extends ScreensaverBase {
 
 
 
-	play() {
-		this.intervalId = setInterval(
-			()=> { this.update() },
-			1000
-		);
-		//console.log(this.intervalId);
-	}
-
-
-	pause() {
-		//console.log('circle stop:', this.intervalId);
-		clearInterval(this.intervalId);
-		this.intervalId = undefined;
-	}
-
 
 	update() {
 

@@ -82,7 +82,6 @@ class ScreensaverApp extends HTMLApp {
 
 		// unload the previous module if necessary
 		if (this.currentModule) {
-			this.currentModule.instance.pause();
 			this.currentModule.instance.unload();
 		}
 

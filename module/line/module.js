@@ -42,23 +42,6 @@ class LineScreensaver extends ScreensaverBase {
 
 
 
-	play() {
-		this.intervalId = setInterval(
-			()=> { this.update() },
-			intervalTime
-		);
-		//console.log(this.intervalId);
-	}
-
-
-	pause() {
-		//console.log('circle pause:', this.intervalId);
-		clearInterval(this.intervalId);
-		this.intervalId = undefined;
-	}
-
-
-
 	update() {
 
 		while (ssg.childElementCount > this.elementCount)

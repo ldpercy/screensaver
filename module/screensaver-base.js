@@ -10,8 +10,7 @@ export class ScreensaverBase {
 		this.form = document.forms['moduleSettings'];
 	}
 
-	play() {}
-	pause() {}
+	update() {}
 	unload() {}
 
 
