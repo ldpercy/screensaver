@@ -147,8 +147,7 @@ class ScreensaverApp extends HTMLApp {
 
 
 	play() {
-		// this needs to be updated when the main interval changes
-		//  figure out the best way to do that
+		this.currentModule.instance.update();
 
 		this.#intervalId = setInterval(
 			()=> { this.currentModule.instance.update(); },
