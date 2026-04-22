@@ -5,7 +5,7 @@
 import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 import { mainPanel } from "./panel-main.js";
 import { stylePanel } from "./panel-style.js";
-
+import { output } from "./screensaver-output.js";
 
 
 
@@ -196,7 +196,10 @@ class ScreensaverApp extends HTMLApp {
 		// make it so!
 		this.clearInterval();
 		this.#interval = intervalMs;
-		this.play();
+		if (this.playState === 'playing') {
+			this.play();
+		}
+		output.mainInterval = intervalMs;
 	}
 
 

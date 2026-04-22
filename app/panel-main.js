@@ -1,5 +1,6 @@
 import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 import { screensaverApp } from "./screensaverApp.js";
+import { output } from "./screensaver-output.js";
 
 
 class MainPanel {
@@ -206,6 +207,7 @@ class MainPanel {
 	/**	@param {number} mainInterval	*/
 	set mainInterval(mainInterval) {
 		this.form.mainInterval.value = mainInterval;
+		output.mainInterval = mainInterval;
 	}/* set selectedScreensaver */
 
 

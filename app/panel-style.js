@@ -17,6 +17,7 @@ class StylePanel {
 		//console.debug('user-interface constructor');
 		this.element = HTMLApp.buildElementMap(document, this.elementMap)
 		HTMLApp.addEventListeners(this.eventListeners, this);
+		this.form = document.forms['form-style'];
 	}
 
 	/** @type {object}
@@ -68,6 +69,17 @@ class StylePanel {
 			query: '#button-pageColourRandom',
 			type: 'click',
 			listener: ()=> { this.pageColour = colour.randomColourHex(); }
+		},
+		{
+			query: '#input-blendMode',
+			type: 'change',
+			listener: (event)=> { this.blendMode = event.target.value }
+		},
+		//animation
+		{
+			query: '#input-animationExponent',
+			type: 'change',
+			listener: (event)=> { this.animationExponent = event.target.value }
 		},
 		// fill
 		{
@@ -133,12 +145,7 @@ class StylePanel {
 			type: 'change',
 			listener: (event)=> { this.animation = event.target.value; }
 		},
-		// page
-		{
-			query: '#input-blendMode',
-			type: 'change',
-			listener: (event)=> { this.blendMode = event.target.value }
-		},
+
 	];
 
 
@@ -269,6 +276,21 @@ class StylePanel {
 		screensaverApp.setColourScheme(colourScheme);
 	}
 
+
+	//
+	//	animation
+	//
+
+	/** @returns {number}	*/
+	get animationExponent() {
+		return this.form.animationExponent.value;
+	}
+
+	/** @param {string} animationExponent	*/
+	set animationExponent(animationExponent) {
+		this.element.output.style.setProperty('--animation-exponent', animationExponent);
+		this.form.animationExponent.value = animationExponent;
+	}
 
 	//
 	//	Fill settings
@@ -412,6 +434,9 @@ class StylePanel {
 		this.element.output.style.setProperty('--blend-mode', blendMode);
 		this.element.blendMode.value = blendMode;
 	}
+
+
+
 
 }/* StylePanel */
 

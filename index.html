@@ -87,7 +87,7 @@
 					</label>
 
 					<label for="input-blendMode">blend mode</label>
-					<select id="input-blendMode" name="blend mode" size="4">
+					<select id="input-blendMode" name="blend mode" size="1">
 						<option>normal</option>
 						<option>multiply</option>
 						<option>screen</option>
@@ -107,10 +107,14 @@
 						<option>plus-darker</option>
 						<option>plus-lighter</option>
 					</select>
+				</div>
+			</details><!-- page -->
 
-
+			<details open>
+				<summary><h3>animation</h3></summary>
+				<div>
 					<label for="input-animation">animation</label>
-					<select id="input-animation" name="animation" size="4">
+					<select id="input-animation" name="animation" size="1">
 						<option>none</option>
 						<optgroup label="stroke-width:">
 							<option value="stroke-linear">		linear		</option>
@@ -125,17 +129,19 @@
 						</optgroup>
 					</select>
 
-
-					<!--
-					<label for="input-pageGrid">
-						<input type="checkbox" name="pageGrid" id="input-pageGrid">
-						grid
-					</label>
-					-->
-					<input type="hidden" name="pageGrid" id="input-pageGrid" ><!-- value="false" -->
+					<label for="input-animationExponent" class="zoom" title="animation exponent">exponent</label>
+					<input type="range" name="animationExponent" id="input-animationExponent" value="0" min="-2" max="2" list="datalist-animationExponent"/>
+					<datalist id="datalist-animationExponent">
+						<option value="-2">-2</option>
+						<option value="-1">-1</option>
+						<option value="0">0</option>
+						<option value="1">+1</option>
+						<option value="2">+2</option>
+					</datalist>
 
 				</div>
-			</details><!-- page -->
+			</details><!-- animation -->
+
 
 
 

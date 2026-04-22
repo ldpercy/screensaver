@@ -92,6 +92,10 @@ class ScreensaverOutput {
 	}
 
 
+	/** @param {number} mainInterval	*/
+	set mainInterval(mainInterval) {
+		this.element.output.style.setProperty('--main-interval', `${mainInterval}ms`);
+	}
 
 
 }/* ScreensaverOutput */
