@@ -97,6 +97,12 @@ class ScreensaverOutput {
 		this.element.output.style.setProperty('--main-interval', `${mainInterval}ms`);
 	}
 
+	/** @param {string} playState	*/
+	set animationPlayState(playState) {
+		this.element.group.style.setProperty('animation-play-state', `${playState}`);
+	}
+
+
 
 }/* ScreensaverOutput */
 

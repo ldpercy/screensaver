@@ -114,11 +114,13 @@ class ScreensaverApp extends HTMLApp {
 		if (state === 'playing') {
 			//this.currentModule.instance.play();
 			this.#playState = 'playing';
+			output.animationPlayState = 'running';
 			this.play();
 		}
 		else if (state === 'paused') {
 			//this.currentModule.instance.pause();
 			this.#playState = 'paused';
+			output.animationPlayState = 'paused';
 			this.clearInterval();
 		}
 		mainPanel.playState = this.#playState;
