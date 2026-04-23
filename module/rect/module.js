@@ -38,7 +38,7 @@ class RectScreensaver extends ScreensaverBase {
 
 		while (ssg.childElementCount > this.elementCount)
 		{
-			ssg.lastElementChild.remove();
+			ssg.firstElementChild.remove();
 		}
 		while (ssg.childElementCount < this.elementCount)
 		{

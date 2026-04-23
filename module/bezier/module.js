@@ -50,7 +50,7 @@ class BezierScreensaver extends ScreensaverBase {
 
 		while (ssg.childElementCount > form.elementCount)
 		{
-			ssg.lastElementChild.remove();
+			ssg.firstElementChild.remove();
 		}
 		while (ssg.childElementCount < form.elementCount)
 		{

@@ -11,11 +11,15 @@ Bugs
 
 Todo
 ----
-
+* `app/main` add beat recorder and or syncer on certain keystrokes
+* `app/main` add BPM input as alternative to interval ms
+* `app/module` element persistence on module change - see if new module can clean up previous one?
+* `app` sync animation start with main update interval start
 * `app` get testing mode going properly
+* `module` add testing module
 * `bezier` show control points and lines
 * `css` Style overrides with custom stylesheets
-* `ff` if selected, dash animations still run even if stroke-dash is off - need to add this to pause
+* `firefox` if selected, dash animations still run even if stroke-dash is off - need to add this to pause
 * `module` screen savers that include style setting presets
 * `maths/js` Seeded random numbers
 * Separate fill/stroke animations for different elements

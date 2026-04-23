@@ -51,7 +51,7 @@ export const goldenrod = {
 		strokeLinecap	: 'round',
 
 		strokeDash		: true,
-		animation		: 'dash-linear',
+		animation		: 'stroke-linear',
 		grid			: false,
 	},
 
