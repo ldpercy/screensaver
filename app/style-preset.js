@@ -32,25 +32,25 @@ export const dark = {
 };
 
 
-export const goldenrod = {
+export const firebrick = {
 
 	style : {
-		pageColour		: '#b8860b',	// darkgoldenrod	#b8860b
-		blendMode		: 'hard-light',
 		colourScheme	: 'dark',
-		fillColour		: '#daa520',	// goldenrod	#daa520
+		pageColour		: '#800000',	// maroon	#800000
+		blendMode		: 'color-dodge',
+
+		fillColour		: '#b22222',	// firebrick	#b22222
 		fillOpacity		: '0.8',
 		fullRule		: 'evenodd',
 
-		strokeColour	: '#00ff7f',	// springgreen	#00ff7f
+		strokeColour	: '#dc143c',	// crimson	#dc143c
 		strokeOpacity	: '0.9',
-		strokeWidth		: '24mm',
-		strokeDasharray	: '1mm 23mm',
-
+		strokeWidth		: '25mm',
+		strokeDasharray	: '10mm 25mm',
 		strokeLinejoin	: 'round',
-		strokeLinecap	: 'round',
-
+		strokeLinecap	: 'square',
 		strokeDash		: true,
+
 		animation		: 'stroke-linear',
 		grid			: false,
 	},
@@ -122,7 +122,7 @@ export const forestgreen = {
 export const darkmagenta = {
 	style : {
 		colourScheme	: 'dark',
-		blendMode		: 'color-dodge',
+		blendMode		: 'difference',
 		pageColour		: '#4b0082',	// indigo	#4b0082
 		fillColour		: '#8b008b',	// darkmagenta	#8b008b
 		strokeColour	: '#dc143c',	// crimson	#dc143c
