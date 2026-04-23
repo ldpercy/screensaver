@@ -17,8 +17,6 @@ Todo
 * `css` Style overrides with custom stylesheets
 * `ff` if selected, dash animations still run even if stroke-dash is off - need to add this to pause
 * `module` screen savers that include style setting presets
-* `app` Option to auto pause all/most animations when the page loses focus (document.visibilityState / document.visibilityChange)
-* `app` Add global settings for interval and transition timing
 * `maths/js` Seeded random numbers
 * Separate fill/stroke animations for different elements
 * `layout` Move grid out of main svg screensaver element
@@ -28,7 +26,6 @@ Todo
 * `ui` Option to hide the ui forms while playing
 * `app` Save playing/paused animation state in storage so it persists between reloads
 * `app` Add some sort of settings export to save as presets
-* `css` Figure out how to manually stop/start key-frame animations
 * `app` Preserve settings on module change, so changing back takes you to the previous state rather than defaults
 * Just about exhausted stroke animation ideas, try other path techniques such as text
 * `app` A base main-loop delay setting
@@ -42,7 +39,8 @@ Todo
 
 In progress
 -----------
-* `bezier` Figure out a way to close bezier curves smoothly
+
+* `bezier` Have a way to smoothly close cubic bezier curves - see if it can be done for quadratics as well
 * `css` styling group elements with sibling-index() & sibling-count() -
   * not in ff yet so have added some properties to simulate
   * Add option to turn on/off the sibling colour divisions
@@ -53,6 +51,9 @@ In progress
 
 Done
 ----
+* `app` Animations are auto paused when the page loses focus (document.visibilityState / document.visibilityChange)
+* `css` Added pause/running for key-frame animations to the main play pause control
+* `app` Centralised the settings for interval and transition timing; added some experimental multipliers for animation and transition
 * Added kbd `.` to step though one update at a time
 * Fixed the dumb code in the line movers
 * Add state indication to the play/pause button

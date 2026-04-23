@@ -175,10 +175,10 @@ class ScreensaverApp extends HTMLApp {
 	visibilitychangeListener() {
 		//console.debug('visibilitychangeListener', arguments);
 		// console.debug('document.visibilityState', document.visibilityState);
-		// if (document.visibilityState === 'hidden')
-		// {
-		// 	this.playState = 'paused';
-		// }
+		if (document.visibilityState === 'hidden')
+		{
+			this.playState = 'paused';
+		}
 		// else {
 		// 	this.playState = 'playing';
 		// }
