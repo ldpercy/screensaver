@@ -4,7 +4,7 @@ import * as maths from "../../[html-common]/module/Maths.js";
 import { output } from "../../app/screensaver-output.js";
 
 
-console.log('circle module');	// this only runs the _first_ time the module is loaded - not sure what the stipulations around that are though, whether it's possible to unload etc
+//console.log('circle module');	// this only runs the _first_ time the module is loaded - not sure what the stipulations around that are though, whether it's possible to unload etc
 
 
 /** @type {HTMLElement} */
@@ -20,7 +20,7 @@ class CircleScreensaver extends ScreensaverBase {
 
 	constructor() {
 		super();
-		console.log('CircleScreensaver constructor');
+		//console.log('CircleScreensaver constructor');
 	}/* constructor */
 
 

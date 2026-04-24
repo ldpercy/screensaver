@@ -25,7 +25,7 @@ class ScreensaverApp extends HTMLApp {
 	/** @type {string} */
 	defaultScreensaver = 'bezier';
 	/** @type {string} */
-	#playState = 'paused';
+	#playState = 'playing';
 	/** @type {number} */
 	#interval = 1000;
 	/** @type {module} */			// no idea if this is correct type here, but it's working for now
@@ -76,7 +76,7 @@ class ScreensaverApp extends HTMLApp {
 	 * @param {string} name
 	 */
 	async loadScreensaver(name) {
-		console.log('loadScreensaver', name);
+		//console.log('loadScreensaver', name);
 		this.clearInterval();
 		const previousPlayState = this.playState;
 
@@ -155,7 +155,7 @@ class ScreensaverApp extends HTMLApp {
 			()=> { this.currentModule.instance.update(); },
 			this.mainInterval
 		);
-		console.log('play', this.#intervalId, this.mainInterval);
+		//console.log('play', this.#intervalId, this.mainInterval);
 	}
 
 

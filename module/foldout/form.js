@@ -9,7 +9,7 @@ class FoldoutForm extends FormBase {
 
 	init() {
 		super.init();
-		console.debug(this);
+		//console.debug(this);
 	}
 
 

@@ -163,7 +163,7 @@ class PolygonScreensaver extends ScreensaverBase {
 
 		const preset  = polygonPreset[presetName];
 
-		console.log('loadPreset', presetName, preset );
+		//console.log('loadPreset', presetName, preset );
 
 		if (preset) {
 			for (let key in preset.polygon) {

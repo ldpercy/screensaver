@@ -4,7 +4,7 @@ import * as maths from "../../[html-common]/module/Maths.js";
 import { output } from "../../app/screensaver-output.js";
 
 
-console.log('rect module');	// this only runs the _first_ time the module is loaded - not sure what the stipulations around that are though, whether it's possible to unload etc
+//console.log('rect module');	// this only runs the _first_ time the module is loaded - not sure what the stipulations around that are though, whether it's possible to unload etc
 
 
 
@@ -17,7 +17,7 @@ class RectScreensaver extends ScreensaverBase {
 
 	constructor() {
 		super();
-		console.log('RectScreensaver constructor');
+		//console.log('RectScreensaver constructor');
 	}
 
 	elementMap = {
