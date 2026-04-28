@@ -4,6 +4,7 @@
 
 
 @import "./[html-common]/style/fullpage/dialog-appInfo.css";
+@import "./[html-common]/style/fullpage/ui-panel.css";
 @import "./app/user-interface.css";
 @import "./app/screensaver-output.css";
 @import "./app/animation.css";

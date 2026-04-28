@@ -20,63 +20,6 @@
 
 .ui-panel {
 
-	--border-colour: #aaa;
-
-	font-family:sans-serif;
-
-	min-width: 14rem;
-
-	display: grid;
-	border:1px solid var(--border-colour);
-
-
-	/* background-color:#7777; */
-	/* hsl( from var(--row-colour)    h s clamp(20,l,80) / var(--border-alpha)) */
-
-	background-color: hsl( from var(--html-background) h s clamp(30,l,80) / 0.5);
-
-
-	border-radius: 1ex;
-	padding:1ex;
-	margin: 1ex;
-
-
-	:nth-child(1) { margin-top:0em; }
-
-
-
-	details {
-		margin:1ex 0em;
-		summary {
-			cursor:pointer;
-			border-bottom: 1px solid transparent;
-			margin-bottom: 0.5ex;
-		}
-		summary:hover {
-			border-bottom: 1px solid var(--border-colour);
-		}
-	}
-
-	details>div {	display: grid; 	}
-	summary>h3 { display:inline-block; margin: 0ex 0ex 0.1ex;}
-
-
-	label {
-		margin-top: 1ex;
-		h1,h2,h3,h4,h5 {
-			display:inline-block;
-		}
-	}
-
-	input, option { text-align: center; padding:1pt; }
-
-	h1 { font-size:2rem; }
-	h2 { font-size:1.6rem; margin-top:2ex; margin-bottom:1ex; }
-	h3 { font-size:1.2rem; margin-top:2ex; margin-bottom:1ex; }
-	h4 { font-size:1rem; margin-top:1ex; margin-bottom:.6ex; }
-
-
-	label:has(h2) { margin-top:2ex; }
 
 	.colourWithRandom {
 
@@ -89,10 +32,6 @@
 		}
 	}
 
-	/* label:after { content:':'; } */
-	label.noafter:after { content:''; }
-
-	hr { width:100%;  } /* border:1px dotted silver inset; */
 
 }/* ui-panel */
 
@@ -118,9 +57,7 @@
 	filter: drop-shadow(0px 0px 3px orange);
 }
 
-option:checked {
-	font-weight:bold;
-}
+
 
 #select-screensaver {
 	height: 7rem;
