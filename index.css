@@ -2,9 +2,12 @@
 **	index.css
 */
 
+
+@import "./[html-common]/style/fullpage/dialog-appInfo.css";
 @import "./app/user-interface.css";
 @import "./app/screensaver-output.css";
 @import "./app/animation.css";
+
 
 
 :root {
