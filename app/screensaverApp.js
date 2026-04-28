@@ -11,7 +11,7 @@ import { output } from "./screensaver-output.js";
 
 class ScreensaverApp extends HTMLApp {
 
-	appVersion = 'v0.3.0';
+	appVersion = 'v0.🖧👚';
 	projectColour = 'midnightblue';
 	appInfo = [`%c
 		Screensaver ${this.appVersion} by ldpercy
