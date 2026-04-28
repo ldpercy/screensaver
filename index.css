@@ -2,9 +2,9 @@
 **	index.css
 */
 
-@import "./user-interface.css";
-@import "./screensaver-output.css";
-@import "./animation.css";
+@import "./app/user-interface.css";
+@import "./app/screensaver-output.css";
+@import "./app/animation.css";
 
 
 :root {
