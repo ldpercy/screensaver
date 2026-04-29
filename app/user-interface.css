@@ -77,6 +77,8 @@
 }
 
 
-#dialog-appInfo::backdrop {
-	background-image:  url('../favicon.svg');
+
+#dialog-appInfo {
+	&::backdrop { background-image:  url('../favicon.svg'); }
+	h1::before { content: url("../favicon.svg"); }
 }
