@@ -78,13 +78,14 @@
 			<details open>
 				<summary><h3>page</h3></summary>
 				<fieldset>
-					<label for="input-pageColour" class="colourWithRandom">
+					<label for="input-pageColour">
 						colour
-						<div>
-							<input type="color" name="pageColour" id="input-pageColour" value="#0a0a0a">
-							<button type="button" name="pageColourRandom" id="button-pageColourRandom">🎲</button>
-						</div>
 					</label>
+					<div class="flex1">
+						<input type="color" name="pageColour" id="input-pageColour" value="#0a0a0a">
+						<button type="button" name="pageColourRandom" id="button-pageColourRandom">🎲</button>
+					</div>
+
 
 					<label for="input-blendMode">blend mode</label>
 					<select id="input-blendMode" name="blend mode" size="1">
@@ -155,18 +156,16 @@
 
 
 
-
-
 			<details open>
 				<summary><h3>fill</h3></summary>
 				<fieldset>
-					<label for="input-fillColour" class="colourWithRandom">
+					<label for="input-fillColour">
 						colour
-						<div>
+					</label>
+					<div class="flex1">
 						<input type="color" name="fillColour" id="input-fillColour" value="#00ffff">
 						<button type="button" name="fillColourRandom" id="button-fillColourRandom">🎲</button>
-						</div>
-					</label>
+					</div>
 
 					<label for="input-fillOpacity">
 						fill-opacity
@@ -185,13 +184,14 @@
 			<details open>
 				<summary><h3>stroke</h3></summary>
 				<fieldset>
-					<label for="input-strokeColour" class="colourWithRandom">
+					<label for="input-strokeColour">
 						colour
-						<div>
+					</label>
+					<div class="flex1">
 						<input type="color" name="strokeColour" id="input-strokeColour" value="#ffa500">
 						<button type="button" name="fillColourRandom" id="button-strokeColourRandom">🎲</button>
-						</div>
-					</label>
+					</div>
+
 
 					<label for="input-strokeOpacity">
 						stroke-opacity

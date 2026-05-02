@@ -6,16 +6,7 @@
 .ui-panel {
 
 
-	.colourWithRandom {
-
-		input[type=color], button {
-			width:48%;
-			height:4ex;
-			padding:0px;
-			margin:0px;
-			vertical-align: middle;
-		}
-	}
+	gap: 0.2em;
 
 
 }/* ui-panel */
