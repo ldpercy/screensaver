@@ -4,20 +4,19 @@
 
 
 .ui-panel {
-
-
-	gap: 0.2em;
-
-
-}/* ui-panel */
-
-
-
-
-#button-playPause::after {
-	content: '[' attr(data-play-state) ']';
-	font-weight:bold;
+	--gap: 0.2em;
+	label { margin-top: var(--gap); }
 }
+
+
+#button-playPause {
+	margin-bottom:1em;
+	&::after {
+		content: '[' attr(data-play-state) ']';
+		font-weight:bold;
+	}
+}
+
 
 
 #button-playPause[data-play-state=playing] {
