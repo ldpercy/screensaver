@@ -63,8 +63,8 @@ html {
 	accent-color: var(--accent-colour);
 
 	transition:
-		background-color var(--transition-time-page) linear,
-		color-scheme var(--transition-time-page) linear allow-discrete;
+		background-color var(--transition-time-page) linear;
+		/* color-scheme var(--transition-time-page) linear allow-discrete; */	/* this causes bugs in chromium */
 
 
 	body {
