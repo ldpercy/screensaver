@@ -30,7 +30,6 @@ html {
 	font-size: 14px;
 
 	body {
-
 		margin:0px;
 		padding:0px;
 
@@ -44,10 +43,6 @@ html {
 			display:block;	/*  fix for the extra pixel problem */
 		}
 	}
-
-
-
-
 }/* html */
 
 
@@ -57,6 +52,9 @@ html {
 	--scheme-colour: #0a0a0a;
 	--html-background: var(--scheme-colour);
 	--accent-colour: hsl(from var(--project-colour) h s 85 );
+
+	--default-panel-colour: var(--html-background);
+	--scheme-colour: var(--html-background);
 
 	background-color: var(--html-background);
 	color-scheme: dark;
@@ -81,13 +79,11 @@ html {
 
 html[data-colourscheme=light] {
 	color-scheme: light;
-	--scheme-colour: white;
-	--accent-colour: hsl(from var(--project-colour) h 50 50 );
+	--accent-colour: oklch(from var(--scheme-colour) 0.6 c h );
 }
 
 html[data-colourscheme=dark] {
 	color-scheme: dark;
-	--scheme-colour: #0a0a0a;
-	--accent-colour: hsl(from var(--project-colour) h s 85 );
+	--accent-colour: oklch(from var(--scheme-colour) 0.8 c h );
 }
 

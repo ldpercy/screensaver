@@ -10,9 +10,11 @@ Utilise new shared styles from html-common.
 * [x] Update app info dialog to common style
 * [x] panel styles from html-common
 * [x] Chromium dark colour scheme glitch (sorted now)
-* [ ] adaptive focus colours with theme
-* [ ] The dark accent colours are a bit wishy washy - revisit
-* [ ] update save button
+* [x] adaptive focus colours with theme
+* [x] Accent colours now follow scheme
+* [x] update save button
+* [ ] Improve colour flow
+
 
 
 The style panel
@@ -21,6 +23,10 @@ The style panel
 This is going reasonably well so far, I've the panels looking not-too-bad across the apps so far.
 
 
+Have made the accents adaptive to scheme colour.
 
+Currently though the colour flow is still a bit awkward - it's working, but not really the best in terms of this-flows-from-that.
+
+Need to work a little to make more logical.
 
 

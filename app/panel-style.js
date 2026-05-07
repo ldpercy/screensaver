@@ -256,8 +256,6 @@ class StylePanel {
 	/** @param {string} pageColour	*/
 	set pageColour(pageColour) {
 
-
-
 		const colourObj = new colour.colourRGBA();
 		colourObj.fromHexString(pageColour);
 
