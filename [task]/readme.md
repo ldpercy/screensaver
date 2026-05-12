@@ -5,7 +5,7 @@ Task
 
 Bugs
 ----
-* `chrome` There's some sort of bug in color-scheme switching in chr - some elements are updating but not others; not sure what's causing it yet
+
 * `firefox` sometimes movements aren't animating in firefox - adding more elements actually sometimes helps, it might discard an animation it can't compute in time???
 
 
@@ -32,7 +32,6 @@ Todo
 * `app` Add some sort of settings export to save as presets
 * `app` Preserve settings on module change, so changing back takes you to the previous state rather than defaults
 * Just about exhausted stroke animation ideas, try other path techniques such as text
-* `app` A base main-loop delay setting
 * `svg` Need to figure out the size of the current view port (?terminology) to use for random inputs (nb using vw and vh units kinda works but sometimes doesn't animate/transition)
 * Figure out how to abstract movement styles
 * Movement based on fixed space/grid or the viewport space
@@ -55,6 +54,8 @@ In progress
 
 Done
 ----
+* Update to html-common v0.3 for common app styles
+* color-scheme switching bug in chrome fixed
 * `app` Animations are auto paused when the page loses focus (document.visibilityState / document.visibilityChange)
 * `css` Added pause/running for key-frame animations to the main play pause control
 * `app` Centralised the settings for interval and transition timing; added some experimental multipliers for animation and transition
