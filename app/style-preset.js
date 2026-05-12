@@ -51,7 +51,7 @@ export const firebrick = {
 		strokeLinecap	: 'square',
 		strokeDash		: true,
 
-		animation		: 'stroke-linear',
+		animation		: 'stroke-alternate',
 		grid			: false,
 	},
 

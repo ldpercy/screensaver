@@ -11,7 +11,7 @@ import { output } from "./screensaver-output.js";
 
 class ScreensaverApp extends HTMLApp {
 
-	appVersion = 'v0.3.0';
+	appVersion = 'v0.4.0';
 	projectColour = 'midnightblue';
 	appInfo = [`%c
 		Screensaver ${this.appVersion} by ldpercy
@@ -25,7 +25,7 @@ class ScreensaverApp extends HTMLApp {
 	/** @type {string} */
 	defaultScreensaver = 'bezier';
 	/** @type {string} */
-	#playState = 'playing';
+	#playState = 'paused';
 	/** @type {number} */
 	#interval = 1000;
 	/** @type {module} */			// no idea if this is correct type here, but it's working for now

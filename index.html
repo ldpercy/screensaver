@@ -1,24 +1,40 @@
 <!doctype html>
 <html lang="en" data-colourscheme="dark">
 <head>
-	<title>Screensaver v0.3.0 by ldpercy</title>
+	<title>Screensaver v0.4.0 by ldpercy</title>
 	<meta charset="utf-8">
 	<link rel="icon" href="./favicon.svg">
-	<link rel="stylesheet" href="./app/index.css"/>
-	<script  type="module"  src="./app/screensaverApp.js"></script>
+	<link rel="stylesheet" href="./index.css"/>
+	<script  type="module"  src="./index.js"></script>
 </head>
-<body >
+<body>
 
 	<div class="panel-group group-left">
 
-		<form id="form-screensaver" name="form-screensaver" class="ui-panel">
+		<form id="form-screensaver" name="form-screensaver" class="ui-panel" tabindex="0">
 			<header>
-				<h1><a href="">Screensaver</a></h1>
+				<h1>Screensaver</h1>
 			</header>
 
 			<button type="button" id="button-playPause" data-play-state="foobar">
 				play/pause
 			</button>
+
+			<!-- <a id="link-save" href="#save" title="Save">Save 🖫</a> -->
+
+			<button type="button" id="button-save">save output 🖬</button>
+			<a id="download-anchor" download="drawing.turtle.svg" href="" style="display:none;"></a>
+
+			<button type="button" id="button-showAppInfo"><strong>🛈 Screensaver help</strong></button>
+
+			<select name="screensaver" id="select-screensaver" size="5">
+				<option value="bezier">bezier</option>
+				<option value="polygon">polygon</option>
+				<option value="line">line</option>
+				<option value="circle">circle</option>
+				<option value="rect">rect</option>
+				<option value="foldout">foldout</option>
+			</select>
 
 			<label for="input-mainInterval">interval</label>
 			<input
@@ -30,39 +46,19 @@
 				value="1000"
 				>
 
-
-
-			<select name="screensaver" id="select-screensaver" size="5">
-				<option value="bezier">bezier</option>
-				<option value="polygon">polygon</option>
-				<option value="line">line</option>
-				<option value="circle">circle</option>
-				<option value="rect">rect</option>
-				<option value="foldout">foldout</option>
-			</select>
-
-			<a id="link-save" href="#save" title="Save">Save 🖫</a>  <!-- download="foo.text" -->
-			<button type="button" id="button-showAppInfo"><strong>🛈 Screensaver help</strong></button>
-
-
-
-
-
 		</form>
-		<form id="form-moduleSettings" name="moduleSettings" class="ui-panel">
+
+		<form id="form-moduleSettings" name="moduleSettings" class="ui-panel" tabindex="0">
 			<!--
 			This will be populated by the individual screensaver module
 			-->
 		</form>
 
-	</div>
-
+	</div><!-- panel-group group-left -->
 
 
 	<div class="panel-group group-right">
-
-
-		<form id="form-style" name="form-style" class="ui-panel">
+		<form id="form-style" name="form-style" class="ui-panel" tabindex="0">
 			<h2>Style</h2>
 
 			<select name="preset" id="input-style-preset">
@@ -79,14 +75,15 @@
 
 			<details open>
 				<summary><h3>page</h3></summary>
-				<div>
-					<label for="input-pageColour" class="colourWithRandom">
+				<fieldset>
+					<label for="input-pageColour">
 						colour
-						<div>
-							<input type="color" name="pageColour" id="input-pageColour" value="#0a0a0a">
-							<button type="button" name="pageColourRandom" id="button-pageColourRandom">🎲</button>
-						</div>
 					</label>
+					<div class="flex1">
+						<input type="color" name="pageColour" id="input-pageColour" value="#0a0a0a">
+						<button type="button" name="pageColourRandom" id="button-pageColourRandom">🎲</button>
+					</div>
+
 
 					<label for="input-blendMode">blend mode</label>
 					<select id="input-blendMode" name="blend mode" size="1">
@@ -109,13 +106,12 @@
 						<option>plus-darker</option>
 						<option>plus-lighter</option>
 					</select>
-				</div>
+				</fieldset>
 			</details><!-- page -->
 
 			<details open>
 				<summary><h3>animation</h3></summary>
-
-				<div>
+				<fieldset>
 					<label for="input-transitionExponent" class="zoom" title="transition exponent">transition exponent</label>
 					<input type="range" name="transitionExponent" id="input-transitionExponent" value="0" min="-2" max="2" list="datalist-transitionExponent"/>
 					<datalist id="datalist-transitionExponent">
@@ -152,25 +148,20 @@
 						<option value="1">+1</option>
 						<option value="2">+2</option>
 					</datalist>
-
-				</div>
+				</fieldset>
 			</details><!-- animation -->
-
-
-
-
 
 
 			<details open>
 				<summary><h3>fill</h3></summary>
-				<div>
-					<label for="input-fillColour" class="colourWithRandom">
+				<fieldset>
+					<label for="input-fillColour">
 						colour
-						<div>
+					</label>
+					<div class="flex1">
 						<input type="color" name="fillColour" id="input-fillColour" value="#00ffff">
 						<button type="button" name="fillColourRandom" id="button-fillColourRandom">🎲</button>
-						</div>
-					</label>
+					</div>
 
 					<label for="input-fillOpacity">
 						fill-opacity
@@ -182,20 +173,21 @@
 						<option value="evenodd" selected>evenodd</option>
 						<option value="nonzero">nonzero</option>
 					</select>
-				</div>
+				</fieldset>
 			</details><!-- fill -->
 
 
 			<details open>
 				<summary><h3>stroke</h3></summary>
-				<div>
-					<label for="input-strokeColour" class="colourWithRandom">
+				<fieldset>
+					<label for="input-strokeColour">
 						colour
-						<div>
+					</label>
+					<div class="flex1">
 						<input type="color" name="strokeColour" id="input-strokeColour" value="#ffa500">
 						<button type="button" name="fillColourRandom" id="button-strokeColourRandom">🎲</button>
-						</div>
-					</label>
+					</div>
+
 
 					<label for="input-strokeOpacity">
 						stroke-opacity
@@ -241,16 +233,12 @@
 						value="5cm 5cm"
 					>
 
-				</div>
+				</fieldset>
 			</details><!-- stroke -->
 
+		</form><!-- form-style -->
 
-
-		</form>
-
-
-
-	</div>
+	</div><!-- panel-group group-right -->
 
 	<output
 		id="screensaver-output"
@@ -284,7 +272,7 @@
 	<dialog id="dialog-appInfo" closedby="any">
 		<h1>
 			<a href="https://github.com/ldpercy/screensaver/">Screensaver</a>
-			<a href="https://github.com/ldpercy/screensaver/releases/tag/v0.3.0">v0.3.0</a>
+			<a href="https://github.com/ldpercy/screensaver/releases/tag/v0.4.0">v0.4.0</a>
 			by <a href="https://github.com/ldpercy/">ldpercy</a>
 		</h1>
 
@@ -299,10 +287,7 @@
 			<dt><kbd>?</kbd></dt>
 			<dd>Show this dialog</dd>
 		</dl>
-
-
 	</dialog>
-
 
 </body>
 </html>

@@ -23,7 +23,7 @@ class MainPanel {
 	elementMap = {
 		playPauseButton		: 'button-playPause',
 		screensaverSelect	: 'select-screensaver',
-		saveLink			: 'link-save',
+		downloadAnchor		: 'download-anchor',
 		output				: 'screensaver-output',
 		appInfoDialog		: 'dialog-appInfo',
 	};
@@ -44,9 +44,9 @@ class MainPanel {
 			listener: (event)=> { screensaverApp.togglePlayState() }
 		},
 		{
-			query: '#link-save',
+			query: '#button-save',
 			type: 'click',
-			listener: this.saveListener
+			listener: this.saveOutput
 		},
 		{
 			query: '#dialog-appInfo',
@@ -144,22 +144,13 @@ class MainPanel {
 
 
 
+	saveOutput() {
 
-
-	saveListener(event) {
-
-		//this.element.saveLink.download = 'polygon.text';
-		//this.element.saveLink.href = "data:text/plain;utf8,This is polygon.text";
-
-		//	download="~/foo.text" href="data:text/plain;utf8,Some fantastic content to download"
-		//event.preventDefault();
-
-		// a very quick naive attempt that doesnb't quite work - needs some svg cleaning and rebuilding
-		this.element.saveLink.download = `screensaver_${this.selectedScreensaver}.svg`;
+		this.element.downloadAnchor.download = `screensaver_${this.selectedScreensaver}.svg`;
 
 		const screensaverGroup = document.getElementById('screensaver-group').innerHTML;
 
-		const svg= `
+		const svg = `
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400" preserveAspectRatio="xMidYMid meet" >
 				<title>screensaver - ${this.selectedScreensaver}</title>
 				<g id="screensaver-group" style="stroke:black;fill:grey;fill-opacity:50%;">
@@ -168,11 +159,13 @@ class MainPanel {
 			</svg>
 		`;
 
-		const url = new URL(`data:text/plain;utf8,${svg}`);
-		this.element.saveLink.href = url.toString();
+		const url = new URL(`data:text/plain;utf8,${encodeURIComponent(svg)}`);
+		this.element.downloadAnchor.href = url.toString();
+		this.element.downloadAnchor.click();
+		this.element.downloadAnchor.href = '';
 
 		//console.log(url.toString());
-	}
+	}/* saveOutput */
 
 
 
