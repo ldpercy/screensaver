@@ -54,6 +54,11 @@
 
 
 #dialog-appInfo {
-	&::backdrop { background-image:  url('../favicon.svg'); }
+	&::backdrop {
+		/* backdrop-filter: blur(1pt) brightness(40%); */
+		background-image:  url(../favicon.svg);
+		opacity: 0.6;
+		background-size: 100vh;
+	}
 	h1::before { content: url("../favicon.svg"); }
 }
