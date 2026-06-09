@@ -23,7 +23,7 @@ class ScreensaverApp extends HTMLApp {
 	testing = true;
 
 	/** @type {string} */
-	defaultScreensaver = 'bezier';
+	defaultScreensaver = 'swarm-of-motes';
 	/** @type {string} */
 	#playState = 'paused';
 	/** @type {number} */

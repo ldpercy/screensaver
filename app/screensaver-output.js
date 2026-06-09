@@ -11,8 +11,6 @@ import * as planarSpace from "../[html-common]/module/PlanarSpace.js";
 
 export const outputSpace = new planarSpace.Space();
 
-let xMin, xMax, yMin, yMax;
-
 
 const testing = false;
 
@@ -20,6 +18,11 @@ class ScreensaverOutput {
 
 
 	// these are just rough starting vals until until I can figure out the geometry of the viewing area
+
+	/** @type {number} */	xMin;
+	/** @type {number} */	xMax;
+	/** @type {number} */	yMin;
+	/** @type {number} */	yMax;
 
 
 	element = {};
@@ -37,28 +40,28 @@ class ScreensaverOutput {
 		//this.keyboardHandler = HTMLApp.newKeyboardHandler(this.keyFunctionMap,this);
 
 		if (testing) {
-			xMin	= -240;
-			xMax	= +240;
-			yMin	= -240;
-			yMax	= +240;
+			this.xMin	= -240;
+			this.xMax	= +240;
+			this.yMin	= -240;
+			this.yMax	= +240;
 		}
 		else {
-			xMin	= -1800;
-			xMax	= +1800;
-			yMin	= -1200;
-			yMax	= +1200;
+			this.xMin	= -1800;
+			this.xMax	= +1800;
+			this.yMin	= -1200;
+			this.yMax	= +1200;
 		}
 
 	}
 
 	/** @return {number}  */
 	randomX() {
-		return maths.getRandomIntInclusive(xMin, xMax);
+		return maths.getRandomIntInclusive(this.xMin, this.xMax);
 	}
 
 	/** @return {number}  */
 	randomY() {
-		return maths.getRandomIntInclusive(yMin, yMax);
+		return maths.getRandomIntInclusive(this.yMin, this.yMax);
 	}
 
 	/** @return {string}  */
@@ -68,7 +71,7 @@ class ScreensaverOutput {
 
 
 	randomPointConservative() {
-		return `${maths.getRandomIntInclusive(xMin/2, xMax/2)},${maths.getRandomIntInclusive(yMin/2, yMax/2)}`;
+		return `${maths.getRandomIntInclusive(this.xMin/2, this.xMax/2)},${maths.getRandomIntInclusive(this.yMin/2, this.yMax/2)}`;
 	}
 
 	/** @returns {planarSpace.CartesianCoordinates} */
