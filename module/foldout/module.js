@@ -1,7 +1,7 @@
 import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 import * as planarSpace from "../../[html-common]/module/PlanarSpace.js";
 import { ScreensaverBase } from "../screensaver-base.js";
-import { output } from "../../app/screensaver-output.js";
+import { output } from "../../app/output.js";
 import { form  } from './form.js';
 
 

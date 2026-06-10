@@ -5,7 +5,7 @@
 import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 import { mainPanel } from "./panel-main.js";
 import { stylePanel } from "./panel-style.js";
-import { output } from "./screensaver-output.js";
+import { output } from "./output.js";
 
 
 

@@ -1,6 +1,6 @@
 import { HTMLApp } from "../[html-common]/module/HTMLApp.js";
 import { screensaverApp } from "./screensaverApp.js";
-import { output } from "./screensaver-output.js";
+import { output } from "./output.js";
 
 
 class MainPanel {

@@ -1,6 +1,6 @@
 import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 import { ScreensaverBase } from "../screensaver-base.js";
-import { output, outputSpace } from "../../app/screensaver-output.js";
+import { output, outputSpace } from "../../app/output.js";
 import { form  } from './form.js';
 
 

@@ -29,6 +29,7 @@ class ScreensaverOutput {
 
 	elementMap = {
 		output			: 'screensaver-output',
+		svg 			: 'screensaver-svg',
 		group			: 'screensaver-group',
 	};
 
@@ -36,7 +37,7 @@ class ScreensaverOutput {
 
 	constructor() {
 		this.element = HTMLApp.buildElementMap(document, this.elementMap)
-		//HTMLApp.addEventListeners(this.eventListeners, this);
+		HTMLApp.addEventListeners(this.eventListeners, this);
 		//this.keyboardHandler = HTMLApp.newKeyboardHandler(this.keyFunctionMap,this);
 
 		if (testing) {
@@ -51,8 +52,34 @@ class ScreensaverOutput {
 			this.yMin	= -1200;
 			this.yMax	= +1200;
 		}
-
 	}
+
+
+	/** @type {array} */
+	eventListeners = [
+		// {
+		// 	query: '#svg-element',
+		// 	type: 'dblclick',
+		// 	listener: this.svgDblClickListener //()=>console.log('dblclick')//  // not firing sometimes for some reason???
+		// },
+		{
+			query: '#svg-element',
+			type: 'click',
+			listener: this.svgClickListener
+		},
+		// {
+		// 	query: '#svg-element',
+		// 	type: 'keydown',
+		// 	listener: this.svgKeyListener
+		// },
+		// {
+		// 	element: document,
+		// 	type: 'keydown',
+		// 	//listener: this.keyboardHandler							//	Use this for a local keyboard handler
+		// 	listener: (event) => { this.keyboardHandler(event); }		//	Use this for one generated from HTMLApp
+		// },
+	];/* eventListeners */
+
 
 	/** @return {number}  */
 	randomX() {
@@ -78,6 +105,26 @@ class ScreensaverOutput {
 	randomCartesian() {
 		return outputSpace.newCartesianCoordinates(this.randomX(), this.randomY());
 	}
+
+
+
+	svgClickListener(event) {
+		//console.debug('svgClickListener', event);
+		const domPoint = new DOMPoint(event.clientX, event.clientY);
+
+		//const pageGroup = pageArea.svgElement.getElementById('group-page');
+
+		// Get point in page SVG space
+		const pagePoint = domPoint.matrixTransform(this.element.svg.getScreenCTM().inverse());
+		console.debug('pagePoint', pagePoint);
+
+		// and send to any subscribers...
+
+	}/* svgClickListener */
+
+
+
+
 
 
 	//

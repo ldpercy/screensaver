@@ -1,8 +1,10 @@
 /*
 **	Mote
 */
-import { output } from "../../app/screensaver-output.js";
-import { form  } from './form.js';
+import { output } from "../../app/output.js";
+import { instance, Rand } from './module.js';
+import { form } from './form.js';
+
 
 // Class Mote
 export class Mote {

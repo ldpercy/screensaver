@@ -1,7 +1,7 @@
 import { HTMLApp } from "../../[html-common]/module/HTMLApp.js";
 import { ScreensaverBase } from "../screensaver-base.js";
 import * as maths from "../../[html-common]/module/Maths.js";
-import { output } from "../../app/screensaver-output.js";
+import { output } from "../../app/output.js";
 
 
 //console.log('rect module');	// this only runs the _first_ time the module is loaded - not sure what the stipulations around that are though, whether it's possible to unload etc
