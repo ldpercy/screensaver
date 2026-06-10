@@ -19,18 +19,22 @@ class SwarmOfMotesForm extends FormBase {
 
 	get html() {
 		const result = `
+			<!--
+			<label>Update interval</label>
+			<input type="number" name="updateInterval" value="7"/>
+			-->
+
 			<label>Number of motes</label>
-			<input name="elementCount" value="5"/>
+			<input type="number" name="elementCount" value="7"/>
 
 			<label>Max. Velocity</label>
-			<input name="maxVelocity" value='15'/>
-
+			<input type="number" name="maxVelocity" value="50"/>
 
 			<label>Attraction to cursor</label>
-			<input name="cursorAttraction" value='6'/>
+			<input type="number" name="cursorAttraction" value="6"/>
 
 			<label>Repulsion from peers</label>
-			<input name="peerRepulsion" value='5'/>
+			<input type="number" name="peerRepulsion" value="5"/>
 		`;
 		return result;
 	}

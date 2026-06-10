@@ -101,9 +101,6 @@ export class Mote {
 		if (this.elt === null) {
 			const svg = "http://www.w3.org/2000/svg";
 			this.elt = document.createElementNS(svg, "line");
-			this.elt.setAttributeNS(null, "stroke", "green");
-			this.elt.setAttributeNS(null, "stroke-width", "3");
-			this.elt.setAttributeNS(null, "stroke-opacity", "0.5");
 			instance.element.group.appendChild(this.elt);
 		}
 
