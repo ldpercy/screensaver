@@ -30,7 +30,7 @@ class SwarmOfMotesForm extends FormBase {
 			<input name="cursorAttraction" value='6'/>
 
 			<label>Repulsion from peers</label>
-			<input name="repel_peer" value='5'/>
+			<input name="peerRepulsion" value='5'/>
 		`;
 		return result;
 	}
@@ -60,7 +60,6 @@ class SwarmOfMotesForm extends FormBase {
 	}
 
 
-
 	/**	@returns {number}	*/
 	get cursorAttraction() {
 		return parseInt(this.form.cursorAttraction.value);
@@ -69,6 +68,17 @@ class SwarmOfMotesForm extends FormBase {
 	/**	@param {number} cursorAttraction	*/
 	set cursorAttraction(cursorAttraction) {
 		this.form.cursorAttraction.value = Math.round(cursorAttraction);
+	}
+
+
+	/**	@returns {number}	*/
+	get peerRepulsion() {
+		return parseInt(this.form.peerRepulsion.value);
+	}
+
+	/**	@param {number} peerRepulsion	*/
+	set peerRepulsion(peerRepulsion) {
+		this.form.peerRepulsion.value = Math.round(peerRepulsion);
 	}
 
 }

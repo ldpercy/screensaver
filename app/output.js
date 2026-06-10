@@ -96,7 +96,7 @@ class ScreensaverOutput {
 		return `${this.randomX()},${this.randomY()}`;
 	}
 
-
+	/** @return {string}  */
 	randomPointConservative() {
 		return `${maths.getRandomIntInclusive(this.xMin/2, this.xMax/2)},${maths.getRandomIntInclusive(this.yMin/2, this.yMax/2)}`;
 	}

@@ -22,16 +22,16 @@ export class Mote {
 	// towards the given position.
 	// Warning: Pseudo-physics — not really
 	// governed by any /real/ physical principles.
-	applyForce(pos, mag) {
-		if (pos[0] > this.x) {
+	applyForce(position, mag) {
+		if (position.x > this.position.x) {
 			this.vx += mag;
-		} else if (pos[0] < this.x) {
+		} else if (position.x < this.position.x) {
 			this.vx -= mag;
 		}
 
-		if (pos[1] > this.y) {
+		if (position.y > this.position.y) {
 			this.vy += mag;
-		} else if (pos[1] < this.y) {
+		} else if (position.y < this.position.y) {
 			this.vy -= mag;
 		}
 	}
@@ -58,29 +58,29 @@ export class Mote {
 	// on mote position.
 	capPosition() {
 
-		if (this.x < output.xMin) {
-			this.x = output.xMin;
-		} else if (this.x >= output.xMax) {
-			this.x = output.xMax;
+		if (this.position.x < output.xMin) {
+			this.position.x = output.xMin;
+		} else if (this.position.x >= output.xMax) {
+			this.position.x = output.xMax;
 		}
 
-		if (this.y < output.yMin) {
-			this.y = output.yMin;
-		} else if (this.y >= output.yMax) {
-			this.y = output.yMax;
+		if (this.position.y < output.yMin) {
+			this.position.y = output.yMin;
+		} else if (this.position.y >= output.yMax) {
+			this.position.y = output.yMax;
 		}
 	}
 
 	// Mote::move() — move a mote, update the screen.
 	move() {
 		// Apply attraction to cursor.
-		const attract = parseInt(document.getElementById("attract_cursor").value, 10);
-		const cursor = Cursor();
+		const attract = form.cursorAttraction;
+		const cursor = instance.mousePosition;
 		this.applyForce(cursor, attract);
 
 		// Apply repulsion from average mote position.
-		const repel = parseInt(document.getElementById("repel_peer").value, 10);
-		const average = AverageMotePosition();
+		const repel = form.peerRepulsion;
+		const average = instance.averageMotePosition();
 		this.applyForce(average, -repel);
 
 		// Add some randomness to the velocity.
@@ -91,10 +91,10 @@ export class Mote {
 		this.capVelocity();
 
 		// Apply velocity.
-		const old_x = this.x;
-		const old_y = this.y;
-		this.x += this.vx;
-		this.y += this.vy;
+		const old_x = this.position.x;
+		const old_y = this.position.y;
+		this.position.x += this.vx;
+		this.position.y += this.vy;
 		this.capPosition();
 
 		// Draw it.
@@ -104,14 +104,14 @@ export class Mote {
 			this.elt.setAttributeNS(null, "stroke", "green");
 			this.elt.setAttributeNS(null, "stroke-width", "3");
 			this.elt.setAttributeNS(null, "stroke-opacity", "0.5");
-			Display().appendChild(this.elt);
+			instance.element.group.appendChild(this.elt);
 		}
 
 		this.elt.setAttributeNS(null, "x1", old_x);
 		this.elt.setAttributeNS(null, "y1", old_y);
 
-		this.elt.setAttributeNS(null, "x2", this.x);
-		this.elt.setAttributeNS(null, "y2", this.y);
+		this.elt.setAttributeNS(null, "x2", this.position.x);
+		this.elt.setAttributeNS(null, "y2", this.position.y);
 	}
 
 
