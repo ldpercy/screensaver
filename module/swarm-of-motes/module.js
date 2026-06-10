@@ -134,10 +134,14 @@ class SwarmOfMotesScreensaver extends ScreensaverBase {
 	}
 
 
+	/** @param {MouseEvent} event */
+	onMouseMove(event) {
 
-	onMouseMove(evt) {
-		this.mousePosition.x = evt.clientX;
-		this.mousePosition.y = evt.clientY;
+		const domPoint = new DOMPoint(event.clientX, event.clientY);
+		// Get point in page SVG space
+		const svgPoint = domPoint.matrixTransform(this.element.svg.getScreenCTM().inverse());
+		this.mousePosition.x = svgPoint.x;
+		this.mousePosition.y = svgPoint.y;
 
 		// const widget = document.getElementById("cursor");
 		// widget.setAttributeNS(null, "cx", mouse_x);
