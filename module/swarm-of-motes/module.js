@@ -1,7 +1,7 @@
 /*
 **	Swarm of motes
 **
-**	from:	https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/Namespaces_crash_course/Example
+**	Adapted from:	https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/Namespaces_crash_course/Example
 */
 
 
@@ -10,6 +10,7 @@ import { ScreensaverBase } from "../screensaver-base.js";
 import { output, outputSpace } from "../../app/output.js";
 import { form  } from './form.js';
 import { Mote } from './mote.js';
+import { CartesianCoordinates } from "../../[html-common]/module/PlanarSpace.js";
 
 const ssg = document.getElementById('screensaver-group');
 
@@ -18,15 +19,13 @@ const ssg = document.getElementById('screensaver-group');
 class SwarmOfMotesScreensaver extends ScreensaverBase {
 
 	currentIndex = 0;
+	/** @type {Array<Mote>} */
 	moteSwarm = [];
 
 	mousePosition = outputSpace.newCartesianCoordinates();
 
 
 	elementMap = {
-		// lineType			: 'setting-lineType',
-		// elementCount		: 'setting-elementCount',
-		// pathSections		: 'setting-pathSections',
 		output				: 'screensaver-output',
 		svg					: 'screensaver-svg',
 		group				: 'screensaver-group',
@@ -116,21 +115,23 @@ class SwarmOfMotesScreensaver extends ScreensaverBase {
 
 
 
-
-	// Determine average (x,y) of the swarm
+	/** Determine average (x,y) of the swarm
+	 * @returns {CartesianCoordinates}
+	 */
 	averageMotePosition() {
-		if (!this.moteSwarm || this.moteSwarm.length === 0) {
-			return [0, 0];
-		}
+		let result = outputSpace.newCartesianCoordinates();
 
 		let sum_x = 0;
 		let sum_y = 0;
 		for (const mote of this.moteSwarm) {
-			sum_x += mote.x;
-			sum_y += mote.y;
+			sum_x += mote.position.x;
+			sum_y += mote.position.y;
 		}
 
-		return [sum_x / this.moteSwarm.length, sum_y / this.moteSwarm.length];
+		result.x = sum_x / this.moteSwarm.length;
+		result.y = sum_y / this.moteSwarm.length;
+
+		return result;
 	}
 
 

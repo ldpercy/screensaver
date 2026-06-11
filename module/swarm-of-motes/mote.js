@@ -4,24 +4,27 @@
 import { output } from "../../app/output.js";
 import { instance, Rand } from './module.js';
 import { form } from './form.js';
+import { CartesianCoordinates } from "../../[html-common]/module/PlanarSpace.js";
 
 
 // Class Mote
 export class Mote {
-	// Dimensions of drawing area.
+
+	/** @type {CartesianCoordinates} */
 	position = output.randomCartesian();
 
 	// Nil initial velocity.
 	vx = this.vy = 0;
 
-	// A visual element, initially none
-	elt = null;
+	/** @type {SVGLineElement} */
+	element = null;
 
-
-	// Mote::applyForce() — Adjust velocity
-	// towards the given position.
-	// Warning: Pseudo-physics — not really
-	// governed by any /real/ physical principles.
+	/** Mote::applyForce()
+	 * Adjust velocity towards the given position.
+	 * Warning: Pseudo-physics — not really governed by any /real/ physical principles.
+	 *
+	 * @param {CartesianCoordinates} position
+	 */
 	applyForce(position, mag) {
 		if (position.x > this.position.x) {
 			this.vx += mag;
@@ -36,21 +39,17 @@ export class Mote {
 		}
 	}
 
-	// Mote::capVelocity() — Apply an upper limit
-	// on mote velocity.
-	capVelocity() {
-		const max = form.maxVelocity;
-
-		if (max < this.vx) {
-			this.vx = max;
-		} else if (-max > this.vx) {
-			this.vx = -max;
+	/** Mote::capVelocity()
+	 * Apply an upper limit on mote velocity.
+	 *
+	 * @param {number} maxVelocity
+	 */
+	capVelocity(maxVelocity) {
+		if (Math.abs(this.vx) > maxVelocity) {
+			this.vx = maxVelocity * Math.sign(this.vx);
 		}
-
-		if (max < this.vy) {
-			this.vy = max;
-		} else if (-max > this.vy) {
-			this.vy = -max;
+		if (Math.abs(this.vy) > maxVelocity) {
+			this.vy = maxVelocity * Math.sign(this.vy);
 		}
 	}
 
@@ -60,13 +59,13 @@ export class Mote {
 
 		if (this.position.x < output.xMin) {
 			this.position.x = output.xMin;
-		} else if (this.position.x >= output.xMax) {
+		} else if (this.position.x > output.xMax) {
 			this.position.x = output.xMax;
 		}
 
 		if (this.position.y < output.yMin) {
 			this.position.y = output.yMin;
-		} else if (this.position.y >= output.yMax) {
+		} else if (this.position.y > output.yMax) {
 			this.position.y = output.yMax;
 		}
 	}
@@ -88,7 +87,7 @@ export class Mote {
 		this.vy += Rand(3) - 1;
 
 		// Put an upper limit on velocity.
-		this.capVelocity();
+		this.capVelocity(form.maxVelocity);
 
 		// Apply velocity.
 		const old_x = this.position.x;
@@ -98,17 +97,17 @@ export class Mote {
 		this.capPosition();
 
 		// Draw it.
-		if (this.elt === null) {
+		if (this.element === null) {
 			const svg = "http://www.w3.org/2000/svg";
-			this.elt = document.createElementNS(svg, "line");
-			instance.element.group.appendChild(this.elt);
+			this.element = document.createElementNS(svg, "line");
+			instance.element.group.appendChild(this.element);
 		}
 
-		this.elt.setAttributeNS(null, "x1", old_x);
-		this.elt.setAttributeNS(null, "y1", old_y);
+		this.element.setAttributeNS(null, "x1", `${old_x}`);
+		this.element.setAttributeNS(null, "y1", `${old_y}`);
 
-		this.elt.setAttributeNS(null, "x2", this.position.x);
-		this.elt.setAttributeNS(null, "y2", this.position.y);
+		this.element.setAttributeNS(null, "x2", `${this.position.x}`);
+		this.element.setAttributeNS(null, "y2", `${this.position.y}`);
 	}
 
 
