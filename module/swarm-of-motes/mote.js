@@ -12,30 +12,37 @@ export class Mote {
 
 	/** @type {CartesianCoordinates} */
 	position = output.randomCartesian();
-
 	// Nil initial velocity.
 	vx = this.vy = 0;
-
 	/** @type {SVGLineElement} */
 	element = null;
+
+
+	constructor() {
+		const svg = "http://www.w3.org/2000/svg";
+		this.element = document.createElementNS(svg, "line");
+		instance.element.group.appendChild(this.element);
+	}
+
 
 	/** Mote::applyForce()
 	 * Adjust velocity towards the given position.
 	 * Warning: Pseudo-physics — not really governed by any /real/ physical principles.
 	 *
 	 * @param {CartesianCoordinates} position
+	 * @param {number} force
 	 */
-	applyForce(position, mag) {
+	applyForce(position, force) {
 		if (position.x > this.position.x) {
-			this.vx += mag;
+			this.vx += force;
 		} else if (position.x < this.position.x) {
-			this.vx -= mag;
+			this.vx -= force;
 		}
 
 		if (position.y > this.position.y) {
-			this.vy += mag;
+			this.vy += force;
 		} else if (position.y < this.position.y) {
-			this.vy -= mag;
+			this.vy -= force;
 		}
 	}
 
@@ -72,15 +79,11 @@ export class Mote {
 
 	// Mote::move() — move a mote, update the screen.
 	move() {
-		// Apply attraction to cursor.
-		const attract = form.cursorAttraction;
-		const cursor = instance.mousePosition;
-		this.applyForce(cursor, attract);
+		// Apply attraction to cursor force
+		this.applyForce(instance.mousePosition, form.attractionForce);
 
-		// Apply repulsion from average mote position.
-		const repel = form.peerRepulsion;
-		const average = instance.averageMotePosition();
-		this.applyForce(average, -repel);
+		// Apply repulsion from average mote position
+		this.applyForce(instance.averageMotePosition(), -form.peerRepulsion);
 
 		// Add some randomness to the velocity.
 		this.vx += Rand(3) - 1;
@@ -98,9 +101,7 @@ export class Mote {
 
 		// Draw it.
 		if (this.element === null) {
-			const svg = "http://www.w3.org/2000/svg";
-			this.element = document.createElementNS(svg, "line");
-			instance.element.group.appendChild(this.element);
+
 		}
 
 		this.element.setAttributeNS(null, "x1", `${old_x}`);

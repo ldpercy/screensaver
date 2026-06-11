@@ -69,38 +69,38 @@ class SwarmOfMotesScreensaver extends ScreensaverBase {
 
 	update() {
 
-		// while (ssg.childElementCount > form.elementCount)
-		// {
-		// 	ssg.firstElementChild.remove();
-		// }
-		// while (ssg.childElementCount < form.elementCount)
-		// {
-		// 	ssg.appendChild(document.createElementNS('http://www.w3.org/2000/svg','path'));
-		// 	this.updateElement(ssg.childElementCount-1);
-		// }
+		while (ssg.childElementCount > form.elementCount)
+		{
+			this.moteSwarm.pop();
+			ssg.lastElementChild.remove();
+		}
+		while (ssg.childElementCount < form.elementCount)
+		{
+			this.moteSwarm.push(new Mote());
+		}
 
 
 		//insert from orig
 
 
-		// How many motes should there be?
-		let num = form.elementCount;
-		if (num < 0) {
-			num = 0;
-		}
+		// // How many motes should there be?
+		// let num = form.elementCount;
+		// if (num < 0) {
+		// 	num = 0;
+		// }
 
-		// Make sure we have exactly that many...
-		// Too few?
-		while (this.moteSwarm.length < num) {
-			this.moteSwarm.push(new Mote());
-		}
+		// // Make sure we have exactly that many...
+		// // Too few?
+		// while (this.moteSwarm.length < num) {
+		// 	this.moteSwarm.push(new Mote());
+		// }
 
-		// Or too many?
-		if (num === 0) {
-			this.moteSwarm = [];
-		} else if (this.moteSwarm.length > num) {
-			this.moteSwarm = this.moteSwarm.slice(0, num - 1);
-		}
+		// // Or too many?
+		// if (num === 0) {
+		// 	this.moteSwarm = [];
+		// } else if (this.moteSwarm.length > num) {
+		// 	this.moteSwarm = this.moteSwarm.slice(0, num - 1);
+		// }
 
 		// Move a random mote
 		if (this.moteSwarm.length > 0) {
