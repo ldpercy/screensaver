@@ -21,20 +21,20 @@ class SwarmOfMotesForm extends FormBase {
 		const result = `
 			<!--
 			<label>Update interval</label>
-			<input type="number" name="updateInterval" value="7"/>
+			<input type="number" name="updateInterval" value="7" required/>
 			-->
 
 			<label>Number of motes</label>
-			<input type="number" name="elementCount" value="7"/>
+			<input type="number" name="elementCount" min="1" value="7" required/>
 
 			<label>Max. Velocity</label>
-			<input type="number" name="maxVelocity" value="50"/>
+			<input type="number" name="maxVelocity" min="1" value="50" required/>
 
 			<label>Attraction to cursor</label>
-			<input type="number" name="cursorAttraction" value="6"/>
+			<input type="number" name="attractionForce" min="1" value="8" required/>
 
 			<label>Repulsion from peers</label>
-			<input type="number" name="peerRepulsion" value="5"/>
+			<input type="number" name="peerRepulsion" min="1" value="5" required/>
 		`;
 		return result;
 	}
@@ -65,13 +65,13 @@ class SwarmOfMotesForm extends FormBase {
 
 
 	/**	@returns {number}	*/
-	get cursorAttraction() {
-		return parseInt(this.form.cursorAttraction.value);
+	get attractionForce() {
+		return parseInt(this.form.attractionForce.value);
 	}
 
-	/**	@param {number} cursorAttraction	*/
-	set cursorAttraction(cursorAttraction) {
-		this.form.cursorAttraction.value = Math.round(cursorAttraction);
+	/**	@param {number} attractionForce	*/
+	set attractionForce(attractionForce) {
+		this.form.attractionForce.value = Math.round(attractionForce);
 	}
 
 

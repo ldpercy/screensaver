@@ -26,6 +26,7 @@ class MainPanel {
 		downloadAnchor		: 'download-anchor',
 		output				: 'screensaver-output',
 		appInfoDialog		: 'dialog-appInfo',
+		moduleSettingsForm	: 'form-moduleSettings',
 	};
 
 
@@ -56,7 +57,7 @@ class MainPanel {
 		{
 			query: '#form-moduleSettings',
 			type: 'change',
-			listener: this.settingChangeListener
+			listener: this.moduleSettingsChangeHandler,
 		},
 		{
 			element: document,
@@ -137,9 +138,13 @@ class MainPanel {
 		//screensaverApp.playState = this.screensaverState;
 	}
 
-
-	settingChangeListener(event) {
-		screensaverApp.settingChange();
+	/** @param {Event} event*/
+	moduleSettingsChangeHandler(event) {
+		console.log(this.element.moduleSettingsForm.checkValidity());
+		if (this.element.moduleSettingsForm.checkValidity())
+		{
+			screensaverApp.settingChange();
+		}
 	}
 
 

@@ -21,3 +21,17 @@ Already have it starting to work, but there's a few things that need sorting out
 * Figure out the magic numbers & see if they need to be scaled at all
 * Update frequency is a main problem
 
+
+
+Form validation
+---------------
+
+Getting bugs with some settings.
+This is a bit of a sidetrack, but worth stopping and getting it right.
+
+At the moment any form change, even one that puts the form into an invalid state, will "succeed".
+Need to figure out a way to prevent invalid changes from propagating.
+
+* Store a last good state?
+*
+
