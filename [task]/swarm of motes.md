@@ -33,5 +33,7 @@ At the moment any form change, even one that puts the form into an invalid state
 Need to figure out a way to prevent invalid changes from propagating.
 
 * Store a last good state?
-*
+* Actually prevent invalid input settings, eg automatically revert to last good val?
+
+
 

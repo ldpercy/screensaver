@@ -8,6 +8,7 @@ Bugs
 
 * `css`		info backdrop blur is not working in this app for some reason
 * `firefox` sometimes movements aren't animating in firefox - adding more elements actually sometimes helps, it might discard an animation it can't compute in time???
+* `firefox` "Scroll anchoring was disabled in a scroll container because of too many consecutive adjustments (10) with too little total distance (-1.1 px average, -11 px total)."
 
 
 Todo
